@@ -72,23 +72,27 @@
         </a>
       </li>
       <li>
-        <a
-          href="https://github.com/vuejs/awesome-vue"
-          target="_blank"
-        >
-          awesome-vue
-        </a>
+        <p v-html="compiledMarkdown" v-highlight></p>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+const test = "`const test = []`"
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  computed: {
+    compiledMarkdown: function () {
+      console.log('test', test)
+
+      return this.$marked(test, { sanitize: true })
     }
   }
 }
