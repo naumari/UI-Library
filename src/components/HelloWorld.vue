@@ -79,7 +79,7 @@
 </template>
 
 <script>
-const test = "`const test = []`"
+const test = "`const test = {}`"
 
 export default {
   name: 'HelloWorld',
@@ -90,8 +90,6 @@ export default {
   },
   computed: {
     compiledMarkdown: function () {
-      console.log('test', test)
-
       return this.$marked(test, { sanitize: true })
     }
   }

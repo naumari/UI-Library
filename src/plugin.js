@@ -1,9 +1,8 @@
 import marked from 'marked'
-import hljs from 'highlight.js/lib/highlight'
-import javascript from 'highlight.js/lib/languages/javascript'
-import 'highlight.js/styles/github.css'
+import hljs from 'highlight.js'
+import 'highlight.js/styles/vs2015.css'
 
-hljs.registerLanguage('javascript', javascript)
+hljs.configure({ useBR: true })
 
 export default {
     install(Vue) {
@@ -23,9 +22,7 @@ export default {
         Vue.directive('highlight',function (el) {
             let blocks = el.querySelectorAll('code')
 
-            console.log('el', el, blocks)
-
-            blocks.forEach((block)=>{
+            blocks.forEach(block => {
                 hljs.highlightBlock(block)
             })
         })
