@@ -1,0 +1,94 @@
+@import './var.scss';
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: local('material-design-icons'), local('MaterialIcons-Regular');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.markdown-body {
+  margin-top: 32px;
+  text-align: left;
+}
+
+.demo-block {
+  padding: 50px 0;
+  font-size: 16px;
+
+  .demo-title:first-child {
+    font-size: 28px;
+    font-weight: 600;
+    color: #1f2f3d;
+    & + .demo-subtitle {
+      font-size: 14px;
+      color: #5e6d82;
+      line-height: 1.5em;
+      & + .demo-row {
+        margin-top: 28px;
+      }
+    }
+  }
+
+  .demo-row {
+    display: block;
+    &:not(:last-child) {
+      margin-top: 14px;
+    }
+    .demo-row-subtitle:first-child {
+      display: block;
+      font-size: 16px;
+      color: #1f2f3d;
+      line-height: 1.5em;
+    }
+  }
+
+  .btn {
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+}
+
+::-webkit-scrollbar
+{
+	width: 5px;
+	height: 5px;
+	background-color: #ddd;
+}
+
+::-webkit-scrollbar-track
+{
+	background-color: #fff;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 5px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+	background-color: #dfe2e5;
+}
+
