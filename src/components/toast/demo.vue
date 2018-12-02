@@ -43,7 +43,6 @@ export default {
   methods: {
     handleClick() {
       let selector = event.target.name;
-      console.log('selector', selector)
 
       switch (selector) {
         case "normal":

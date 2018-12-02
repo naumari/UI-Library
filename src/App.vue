@@ -51,6 +51,8 @@ export default {
       margin-bottom: 32px;
       display: inline-block;
       text-decoration: none;
+
+      color: #1f2f3d;
     }
   }
 
