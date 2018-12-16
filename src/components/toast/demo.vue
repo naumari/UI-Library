@@ -1,15 +1,19 @@
 <template>
   <div class="demo-block">
     <div class="demo-title">Toast 弹窗</div>
-    <div class="demo-subtitle">基本用法</div>
+    <div class="demo-subtitle demo-row">悬浮出现在页面角落，显示全局的通知提醒消息。</div>
 
     <div class="demo-row" @click.stop="handleClick">
+      <span class="demo-row-subtitle">基础用法</span>
+
       <fat-button class="demo-toast-btn" name="normal">可自动关闭</fat-button>
       <fat-button class="demo-toast-btn" name="normal-close">不可自动关闭</fat-button>
       <fat-button class="demo-toast-btn" name="normal-hide">隐藏关闭按钮</fat-button>
     </div>
 
     <div class="demo-row" @click.stop="handleClick">
+      <span class="demo-row-subtitle">不同类型</span>
+
       <fat-button class="demo-toast-btn" name="warn">警告</fat-button>
       <fat-button class="demo-toast-btn" name="info">消息</fat-button>
       <fat-button class="demo-toast-btn" name="error">错误</fat-button>
@@ -17,11 +21,14 @@
     </div>
 
     <div class="demo-row" @click.stop="handleClick">
+      <span class="demo-row-subtitle">不同位置</span>
+
       <fat-button class="demo-toast-btn" name="left">左上</fat-button>
       <fat-button class="demo-toast-btn" name="right">右上</fat-button>
     </div>
 
     <div class="demo-row" @click.stop="handleClick">
+      <span class="demo-row-subtitle">监听事件</span>
       <fat-button class="demo-toast-btn" name="callback">监听toast的关闭</fat-button>
     </div>
     <div class="markdown-body" v-html="compiledMarkdown" v-highlight></div>

@@ -18,10 +18,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/assets/styles/var.scss";
+
 .button {
   position: relative;
   display: inline-flex;
-  padding: 10px 12px;
+  padding: $s-offset $m-offset;
   align-items: center;
 
   cursor: pointer;
@@ -47,11 +49,11 @@ export default {
   }
 
   &.button-mini {
-    font-size: 0.6em;
+    font-size: 0.8em;
   }
 
   &.button-small {
-    font-size: 0.8em;
+    font-size: 0.9em;
   }
 
   &.button-medium {

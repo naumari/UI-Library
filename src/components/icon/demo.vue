@@ -6,29 +6,29 @@
     <div class="demo-row">
       <span class="demo-row-subtitle">不同类型的图标</span>
 
-      <fat-icon name="backup" size="32" />
-      <fat-icon name="book" size="32" />
-      <fat-icon name="bookmark" size="32" />
-      <fat-icon name="code" size="32" />
-      <fat-icon name="done" size="32" />
+      <fat-icon name="backup" size="32"/>
+      <fat-icon name="book" size="32"/>
+      <fat-icon name="bookmark" size="32"/>
+      <fat-icon name="code" size="32"/>
+      <fat-icon name="done" size="32"/>
     </div>
 
     <div class="demo-row">
       <span class="demo-row-subtitle">可调整大小</span>
 
-      <fat-icon name="done_all" size="32" />
-      <fat-icon name="face" size="48" />
-      <fat-icon name="extension" size="64" />
-      <fat-icon name="help" size="80" />
-      <fat-icon name="input" size="96" />
+      <fat-icon name="done_all" size="32"/>
+      <fat-icon name="face" size="48"/>
+      <fat-icon name="extension" size="64"/>
+      <fat-icon name="help" size="80"/>
+      <fat-icon name="input" size="96"/>
     </div>
 
     <div class="demo-row">
       <span class="demo-row-subtitle">可调整样式</span>
 
-      <fat-icon class="icon" name="done_all" size="32" />
-      <fat-icon class="icon" name="pets" size="80" />
-      <fat-icon class="icon" name="print" size="96" />
+      <fat-icon class="icon" name="done_all" size="32"/>
+      <fat-icon class="icon" name="pets" size="80"/>
+      <fat-icon class="icon" name="print" size="96"/>
     </div>
 
     <div class="markdown-body" v-html="compiledMarkdown" v-highlight></div>
@@ -36,26 +36,26 @@
 </template>
 
 <script>
-import 'material-design-icons'
-import README from './README.md'
+import "material-design-icons";
+import README from "./README.md";
 
 export default {
   data() {
-    return {}
+    return {};
   },
   computed: {
-    compiledMarkdown: function () {
-      return this.$marked(README, { sanitize: true })
+    compiledMarkdown: function() {
+      return this.$marked(README, { sanitize: true });
     }
   },
   methods: {
-    handleClick () {
-      console.log('11')
+    handleClick() {
+      console.log("11");
     }
   }
 };
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .icon:nth-of-type(1) {
   color: red;
 }
@@ -64,5 +64,12 @@ export default {
 }
 .icon:nth-of-type(3) {
   color: antiquewhite;
+}
+.demo-row {
+  .material-icons {
+    &:not(:last-child) {
+      margin-right: 32px;
+    }
+  }
 }
 </style>

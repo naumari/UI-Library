@@ -40,7 +40,7 @@
   font-size: 16px;
 
   .demo-title:first-child {
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 600;
     color: #1f2f3d;
 
@@ -67,8 +67,17 @@
       margin-bottom: 16px;
       display: block;
       font-size: 16px;
+      font-weight: 600;
       color: #1f2f3d;
       line-height: 1.5em;
+      & + span {
+        font-size: 14px;
+        color: #5e6d82;
+        line-height: 1.5em;
+      }
+    }
+    .demo-row_content {
+      padding-top: 16px;
     }
 
     .row-item {
@@ -102,4 +111,22 @@
   border-radius: 5px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
   background-color: #dfe2e5;
+}
+
+/* font chart */
+
+$font-size-s: 12px;
+$font-size-m: 14px;
+$font-size-l: 16px;
+
+.c-size-s {
+  font-size: $font-size-s;
+}
+
+.c-size-m {
+  font-size: $font-size-m;
+}
+
+.c-size-l {
+  font-size: $font-size-l;
 }

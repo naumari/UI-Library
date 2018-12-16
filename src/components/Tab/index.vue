@@ -1,67 +1,26 @@
 <template>
-  <div :class="['m-slider-wrap', { 'is-disabled': disabled }]">
-    <div v-if="!isIE" class="progress" :style="progressStyle"></div>
-    <input
-      :class="['m-slider-inner', { 'is-disabled': disabled }]"
-      type="range"
-      v-on="$listeners"
-      v-model="rate"
-      v-bind="$attrs"
-      :disabled="disabled"
-    >
-    <span v-if="!isIE && showTooltip" class="tooltip" :style="toolTipPosition">{{ rate }}</span>
+  <div v-if="isOpen">
+    <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
   props: {
-    showTooltip: { type: Boolean, default: true },
-    value: { type: [Number, String], default: 0 },
+    label: { type: String, required: true },
+    id: { type: [String, Number], required: true },
     disabled: { type: Boolean, default: false }
   },
-  model: {
-    prop: "value",
-    event: "sliding"
-  },
-  data() {
-    return {
-      rate: 0
-    };
-  },
   computed: {
-    isIE() {
-      return (
-        !!window.ActiveXObject ||
-        "ActiveXObject" in window ||
-        navigator.userAgent.indexOf("Edge") > -1
-      );
-    },
-    progressStyle() {
-      return {
-        width: `${this.rate}%`
-      };
-    },
-    toolTipPosition() {
-      const { rate } = this;
-      const xOffset = 9 * (1 - rate / 50);
-
-      return {
-        left: `calc(${rate}% + ${xOffset}px)`,
-        transform: `translateX(-50%)`
-      };
+    isOpen() {
+      return this.$parent.activeId === this.id;
     }
   },
-  watch: {
-    rate(value) {
-      this.$emit("sliding", Number(value));
-    },
-    value: {
-      handler(value) {
-        this.rate = value;
-      },
-      immediate: true
-    }
+  created() {
+    this.$parent.children.push(this);
+  },
+  destroyed() {
+    this.$parent.children = this.$parent.children.filter(item => item.id !== this.id)
   }
 };
 </script>

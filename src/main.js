@@ -20,9 +20,10 @@ const context = require.context('@/components/', true, /index\.*$/);
 const componentRouters = context.keys().forEach(url => {
   const name = getFileName(url);
   const path = `/${name}`;
-  const plugins = ['toast'];
-
+  const plugins = ['toast', 'messagebox'];
+  
   if (plugins.some(plugin => plugin === name.toLowerCase())) {
+    console.log('name', name, path)
     Vue.use(require(`@/components${path}/index`).default);
   } else {
     Vue.component(

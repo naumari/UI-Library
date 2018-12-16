@@ -13,12 +13,17 @@
 
       <div class="row-item">
         <span class="row-item-subtitle">自定义初始值</span>
-        <fat-slider/>
+        <fat-slider v-model="range"/>
       </div>
 
       <div class="row-item">
         <span class="row-item-subtitle">隐藏Tooltip</span>
-        <fat-slider/>
+        <fat-slider :show-tooltip="false" />
+      </div>
+
+      <div class="row-item">
+        <span class="row-item-subtitle">Disabled</span>
+        <fat-slider :show-tooltip="false" disabled />
       </div>
     </div>
 
@@ -32,7 +37,9 @@ import README from "./README.md";
 
 export default {
   data() {
-    return {};
+    return {
+      range: 10
+    };
   },
   computed: {
     compiledMarkdown: function() {
@@ -51,7 +58,7 @@ export default {
   .row-item-subtitle {
     min-width: 100px;
   }
-  .row-item:not(:last-child) {
+  .row-item {
     margin-top: 32px;
   }
   .m-slider-wrap {
