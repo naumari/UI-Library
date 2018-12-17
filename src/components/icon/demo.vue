@@ -4,7 +4,7 @@
     <span class="demo-subtitle demo-row">基础的图标。</span>
 
     <div class="demo-row">
-      <span class="demo-row-subtitle">不同类型的图标</span>
+      <span class="demo-row_subtitle">不同类型的图标</span>
 
       <fat-icon name="backup" size="32"/>
       <fat-icon name="book" size="32"/>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="demo-row">
-      <span class="demo-row-subtitle">可调整大小</span>
+      <span class="demo-row_subtitle">可调整大小</span>
 
       <fat-icon name="done_all" size="32"/>
       <fat-icon name="face" size="48"/>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="demo-row">
-      <span class="demo-row-subtitle">可调整样式</span>
+      <span class="demo-row_subtitle">可调整样式</span>
 
       <fat-icon class="icon" name="done_all" size="32"/>
       <fat-icon class="icon" name="pets" size="80"/>

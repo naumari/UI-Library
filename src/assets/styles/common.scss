@@ -45,7 +45,6 @@
     color: #1f2f3d;
 
     &+.demo-subtitle {
-      font-size: 14px;
       color: #5e6d82;
       line-height: 1.5em;
 
@@ -63,19 +62,21 @@
       margin-top: 14px;
     }
 
-    .demo-row-subtitle:first-child {
+    .demo-row_subtitle:first-child {
       margin-bottom: 16px;
       display: block;
       font-size: 16px;
       font-weight: 600;
       color: #1f2f3d;
       line-height: 1.5em;
-      & + span {
+
+      &+span {
         font-size: 14px;
         color: #5e6d82;
         line-height: 1.5em;
       }
     }
+
     .demo-row_content {
       padding-top: 16px;
     }
@@ -129,4 +130,8 @@ $font-size-l: 16px;
 
 .c-size-l {
   font-size: $font-size-l;
+}
+
+.c-bold {
+  font-weight: 600;
 }

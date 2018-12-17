@@ -7,7 +7,7 @@
 type | toast提示类型 | String | normal, info, warn, success, error | normal
 title | 弹窗标题 | String | - | *
 content | 弹窗内容 | String | - | *
-autoClose | 是否允许自动关闭 | Boolean | true / false | false
+autoClose | 是否允许自动关闭 | Boolean | true / false | true
 duration | 允许自动关闭后弹窗停留时长，单位ms | Number | - | 2500
 position | 弹窗在页面的位置 | String | top-left, top-right | top-right
 showClose | 是否允许用户关闭 | Boolean | true / false | true

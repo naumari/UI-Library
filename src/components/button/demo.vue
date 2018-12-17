@@ -4,7 +4,7 @@
       <span class="demo-subtitle demo-row">基础的按钮用法。</span>
 
       <div class="demo-row">
-        <span class="demo-row-subtitle">不同尺寸</span>
+        <span class="demo-row_subtitle">不同尺寸</span>
 
         <fat-button class="btn" size="mini">超小按钮</fat-button>
         <fat-button class="btn" size="small">小型按钮</fat-button>
@@ -13,7 +13,7 @@
       </div>
 
       <div class="demo-row">
-        <span class="demo-row-subtitle">插入不同图标</span>
+        <span class="demo-row_subtitle">插入不同图标</span>
 
         <fat-button class="btn">
           <fat-icon name="done" />确定
@@ -27,7 +27,7 @@
       </div>
 
       <div class="demo-row">
-        <span class="demo-row-subtitle">不同类型</span>
+        <span class="demo-row_subtitle">不同类型</span>
 
         <fat-button class="btn" type="primary" @click="handleClick">primary</fat-button>
         <fat-button class="btn" type="success">success</fat-button>
@@ -37,7 +37,7 @@
       </div>
 
       <div class="demo-row">
-        <span class="demo-row-subtitle">禁用状态</span>
+        <span class="demo-row_subtitle">禁用状态</span>
 
         <fat-button class="btn" type="primary" disabled>primary</fat-button>
         <fat-button class="btn" type="success" disabled>success</fat-button>

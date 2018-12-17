@@ -1,12 +1,15 @@
 <template>
   <div class="tabs-wrapper">
-    <ul class="tabs-header">
+    <ul :class="['tabs-header', { 'is-card': card }]">
       <li
-        :class="['tabs-header-item', { 'is-active': activeId === item.id }, { 'is-disabled': item.disabled }]"
+        :class="['tabs-header_item', { 'is-active': activeId === item.id }, { 'is-disabled': item.disabled }]"
         v-for="(item, index) in children"
         :key="index"
         @click.stop="!item.disabled && handleClick(item)"
-      >{{ item.label }}</li>
+      >
+        <span>{{ item.label }}</span>
+        <fat-icon v-if="item.closable" class="delete-btn" name="close" @click.stop="handleDelete(item)"/>
+      </li>
     </ul>
 
     <div class="tabs-content">
@@ -18,7 +21,8 @@
 <script>
 export default {
   props: {
-    value: { type: [Number, String] }
+    value: { type: [Number, String] },
+    card: { type: Boolean, default: false }
   },
   model: {
     prop: "value",
@@ -66,6 +70,9 @@ export default {
     handleClick(item) {
       this.activeId = item.id;
       this.$emit("change", item.id);
+    },
+    handleDelete(element) {
+      this.children = this.children.filter(item => item.id !== element.id);
     }
   }
 };
@@ -76,12 +83,13 @@ export default {
 .tabs-wrapper {
   display: flex;
   flex-direction: column;
+
   .tabs-header {
     position: relative;
     display: flex;
     z-index: 2;
 
-    .tabs-header-item {
+    .tabs-header_item {
       min-width: 72px;
       height: 40px;
       line-height: 40px;
@@ -127,6 +135,46 @@ export default {
       &:not(:last-child) {
         margin-right: 32px;
       }
+    }
+    &.is-card {
+      border-bottom: none;
+      .tabs-header_item {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        line-height: 1em;
+        margin: 0 0;
+        border-top: 1px solid #e4e7ed;
+        border-right: 1px solid #e4e7ed;
+        &:first-child {
+          border-left: 1px solid #e4e7ed;
+        }
+        &.is-active {
+          border-bottom: 2px solid transparent;
+          &::after {
+            display: none;
+          }
+        }
+        &:not(.is-disabled) {
+          &:not(.is-active) {
+            border-bottom: 1px solid #e4e7ed;
+            &::after {
+              display: none;
+            }
+            &:hover {
+              &::after {
+                display: none;
+              }
+            }
+          }
+        }
+      }
+      .delete-btn {
+        display: inline-block;
+      }
+    }
+    .delete-btn {
+      display: none;
     }
   }
   .tabs-content {

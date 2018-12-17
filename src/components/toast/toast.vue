@@ -22,7 +22,7 @@ export default {
         content: { default: String, required: true },
         duration: { type: Number, default: 2500 },
         position: { type: String, default: "top-right" },
-        autoClose: { type: Boolean, default: false },
+        autoClose: { type: Boolean, default: true },
         showClose: { type: Boolean, default: true }
     },
     data() {

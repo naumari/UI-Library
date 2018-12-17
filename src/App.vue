@@ -7,17 +7,26 @@
 
       <div class="btns c-size-m">
         <router-link class="link" to="/">首页</router-link>
-        <a href class="link">作者简介</a>
+        <a href="https://juejin.im/user/5b3ed96c6fb9a04fc34bed91/posts" target="_blank" class="link">作者简介</a>
       </div>
     </div>
 
     <ul class="nav-sidebar-wrapper">
       <li>
-        <router-link class="nav-sidebar-item" to="/">首页</router-link>
+        <router-link class="nav-sidebar-item c-size-l" to="/">首页</router-link>
       </li>
 
-      <li v-for="(item, index) in componentRouters" :key="index">
-        <router-link class="nav-sidebar-item" :to="item.path">{{ item.name }}</router-link>
+      <li class="nav-sidebar-item c-size-l c-bold">组件</li>
+
+      <li v-for="(elem, key) in routers" :key="key">
+        <div>
+          <h5 class="nav-sidebar-item c-size-m is-hint">{{ key }}</h5>
+          <ul>
+            <li v-for="(item, index) in elem" :key="index">
+              <router-link class="nav-sidebar_subitem c-size-s" :to="item.path">{{ item.name }}</router-link>
+            </li>
+          </ul>
+        </div>
       </li>
     </ul>
 
@@ -27,29 +36,45 @@
 
 <script>
 const context = require.context("@/components/", true, /demo\.vue$/);
-const componentRouters = context.keys().map(url => {
+const routers = {
+  common: ["button", "icon"],
+  form: ["slider"],
+  notice: ["messagebox", "toast"],
+  navigation: ["tabs"]
+};
+context.keys().forEach(url => {
   const start = url.indexOf("/");
   const end = url.lastIndexOf("/");
   const name = url.substring(start + 1, end);
   const path = `/${name}`;
-
-  return {
-    name,
-    path
-  };
+  Object.keys(routers).forEach(key => {
+    const arr = routers[key];
+    for (let index = 0; index < arr.length; index++) {
+      const element = arr[index];
+      if (element === name.toLowerCase()) {
+        arr[index] = {
+          name,
+          path
+        };
+        break;
+      }
+    }
+  });
 });
 
 export default {
   name: "App",
   data() {
     return {
-      componentRouters
+      routers
     };
   }
 };
 </script>
 
 <style lang="scss">
+@import '@/assets/styles/var.scss';
+
 .page-wrapper {
   position: relative;
   width: 100vw;
@@ -92,19 +117,26 @@ export default {
     flex-direction: column;
     padding: 32px 0;
     width: 240px;
+    .nav-sidebar_subitem,
     .nav-sidebar-item {
       display: inline-flex;
       box-sizing: border-box;
       width: 100%;
       padding: 0 32px;
       align-items: center;
-      height: 40px;
+      min-height: 40px;
       text-decoration: none;
-      color: #1f2f3d;
+      color: #444b57;
       &.router-link-exact-active {
         color: #fff;
         background: #4d93ff;
       }
+      &.is-hint {
+        color: $disabled-color;
+      }
+    }
+    .nav-sidebar_subitem {
+      padding: 0 48px;
     }
   }
 

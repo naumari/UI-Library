@@ -3,11 +3,13 @@
     <div v-if="!isIE" class="progress" :style="progressStyle"></div>
     <input
       :class="['m-slider-inner', { 'is-disabled': disabled }]"
+      :disabled="disabled"
+      :min="min"
+      :max="max"
       type="range"
       v-on="$listeners"
       v-model="rate"
       v-bind="$attrs"
-      :disabled="disabled"
     >
     <span v-if="!isIE && showTooltip" class="tooltip" :style="toolTipPosition">{{ rate }}</span>
   </div>
@@ -17,8 +19,10 @@
 export default {
   props: {
     showTooltip: { type: Boolean, default: true },
-    value: { type: [Number, String], default: 0 },
-    disabled: { type: Boolean, default: false }
+    disabled: { type: Boolean, default: false },
+    min: { type: Number, default: 0 },
+    max: { type: Number, default: 100 },
+    value: { type: [Number, String] }
   },
   model: {
     prop: "value",
@@ -38,16 +42,18 @@ export default {
       );
     },
     progressStyle() {
+      const { rate, max, min } = this;
+
       return {
-        width: `${this.rate}%`
+        width: `${((rate - min) * 100) / (max - min)}%`
       };
     },
     toolTipPosition() {
-      const { rate } = this;
-      const xOffset = 9 * (1 - rate / 50);
+      const { rate, max, min } = this;
+      const xOffset = 9 - 18 * ((rate - min) / (max - min));
 
       return {
-        left: `calc(${rate}% + ${xOffset}px)`,
+        left: `calc(${((rate - min) * 100) / (max - min)}% + ${xOffset}px)`,
         transform: `translateX(-50%)`
       };
     }
@@ -58,7 +64,7 @@ export default {
     },
     value: {
       handler(value) {
-        this.rate = value;
+        this.rate = this.value || this.min;
       },
       immediate: true
     }
@@ -70,6 +76,7 @@ export default {
   position: relative;
   display: flex;
   align-items: center;
+  min-height: 32px;
   .tooltip {
     position: absolute;
     bottom: 100%;

@@ -9,7 +9,8 @@ export default {
   props: {
     label: { type: String, required: true },
     id: { type: [String, Number], required: true },
-    disabled: { type: Boolean, default: false }
+    disabled: { type: Boolean, default: false },
+    closable: { type: Boolean, default: false }
   },
   computed: {
     isOpen() {
