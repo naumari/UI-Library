@@ -39,7 +39,7 @@ const context = require.context("@/components/", true, /demo\.vue$/);
 const routers = {
   common: ["button", "icon"],
   form: ["slider"],
-  notice: ["messagebox", "toast"],
+  notice: ["messagebox", "toast", "message"],
   navigation: ["tabs"]
 };
 context.keys().forEach(url => {

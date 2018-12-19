@@ -8,7 +8,7 @@
       <span>当用户进行操作时会被触发，该对话框中断用户操作，直到用户确认知晓后才可关闭。</span>
 
       <div class="demo-row_content">
-        <fat-button class="demo-toast-btn">点击打开</fat-button>
+        <fat-button class="demo-message-btn">点击打开</fat-button>
       </div>
     </div>
 
@@ -17,7 +17,7 @@
       <span>提示用户确认其已经触发的动作，并询问是否进行此操作时会用到此对话框。</span>
 
       <div class="demo-row_content">
-        <fat-button class="demo-toast-btn">点击打开</fat-button>
+        <fat-button class="demo-message-btn">点击打开</fat-button>
       </div>
     </div>
 
@@ -26,7 +26,7 @@
       <span>可自定义配置不同内容。</span>
 
       <div class="demo-row_content">
-        <fat-button class="demo-toast-btn">点击打开</fat-button>
+        <fat-button class="demo-message-btn">点击打开</fat-button>
       </div>
     </div>
 
@@ -35,7 +35,7 @@
       <span>有些场景下，点击取消按钮与点击关闭按钮有着不同的含义。</span>
 
       <div class="demo-row_content">
-        <fat-button class="demo-toast-btn">点击打开</fat-button>
+        <fat-button class="demo-message-btn">点击打开</fat-button>
       </div>
     </div>
 
@@ -44,7 +44,7 @@
       <span>有些场景下，需要手动控制关闭。</span>
 
       <div class="demo-row_content">
-        <fat-button class="demo-toast-btn">点击打开</fat-button>
+        <fat-button class="demo-message-btn">点击打开</fat-button>
       </div>
     </div>
 
@@ -73,9 +73,8 @@ export default {
             title: "标题名称",
             content: "这是一段内容",
             onConfirm: () =>
-              this.$toast({
-                content: "确定",
-                autoClose: true
+              this.$message({
+                content: "确定"
               })
           });
           break;
@@ -84,15 +83,13 @@ export default {
             title: "提示",
             content: "此操作不可撤回，确定么?",
             onConfirm: () =>
-              this.$toast({
-                content: "确定",
-                autoClose: true
+              this.$message({
+                content: "确定"
               }),
             onCancel: () =>
-              this.$toast({
+              this.$message({
                 type: "warn",
-                content: "取消",
-                autoClose: true
+                content: "取消"
               })
           });
           break;
@@ -101,15 +98,13 @@ export default {
             title: "自定义提示",
             content: `<h1 style="color: red;">自定义HTML</h1>`,
             onConfirm: () =>
-              this.$toast({
-                content: "确定",
-                autoClose: true
+              this.$message({
+                content: "确定"
               }),
             onCancel: () =>
-              this.$toast({
+              this.$message({
                 type: "warn",
-                content: "取消",
-                autoClose: true
+                content: "取消"
               })
           });
           break;
@@ -120,15 +115,13 @@ export default {
             confirmButtonText: "保存",
             cancelButtonText: "放弃",
             onConfirm: () =>
-              this.$toast({
-                content: "保存",
-                autoClose: true
+              this.$message({
+                content: "保存"
               }),
             onCancel: () =>
-              this.$toast({
+              this.$message({
                 type: "warn",
-                content: "放弃",
-                autoClose: true
+                content: "放弃"
               })
           });
           break;
@@ -138,14 +131,13 @@ export default {
             content: "确认关闭",
             cancelClose: true,
             onConfirm() {
-              _self.$toast({
+              _self.$message({
                 type: "warn",
-                content: "500ms后关闭",
-                autoClose: true
+                content: "1s后关闭"
               });
               setTimeout(() => {
                 this.close();
-              }, 500);
+              }, 1000);
             }
           });
           break;

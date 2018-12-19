@@ -135,3 +135,19 @@ $font-size-l: 16px;
 .c-bold {
   font-weight: 600;
 }
+
+/* transition effect */
+@mixin transition-effect($val) {
+    transition: opacity $val, transform $val, left $val, right $val, top $val,
+      bottom $val;
+}
+
+.t-fade-enter-active,
+.t-fade-leave-active {
+    @include transition-effect(0.3s);
+}
+
+.t-fade-enter,
+.t-fade-leave-to {
+    opacity: 0;
+}

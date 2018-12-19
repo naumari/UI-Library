@@ -1,5 +1,5 @@
 <template>
-  <transition name="toast-fade">
+  <transition name="t-fade">
     <div class="mock" v-if="visible">
       <div :class="['message-box']">
         <h5 class="message-box-header c-size-l">
@@ -28,7 +28,10 @@
 </template>
 
 <script>
+import popupbox from "../mixins/popupbox";
+
 export default {
+  mixins: [popupbox],
   props: {
     type: { type: String, default: "" },
     title: { type: String, default: "提示" },
@@ -39,8 +42,7 @@ export default {
   },
   data() {
     return {
-      closed: false,
-      visible: true
+      closed: false
     };
   },
   watch: {
@@ -51,15 +53,6 @@ export default {
         !this.cancelClose && this.$emit("close");
       }
     }
-  },
-  mounted() {
-    document.body.appendChild(this.$el);
-  },
-  beforeDestroy() {
-    this.$el.removeEventListener("transitionend", this.destroyElement);
-  },
-  destroyed() {
-    this.$el.parentNode.removeChild(this.$el);
   },
   methods: {
     close() {

@@ -1,10 +1,6 @@
 import Vue from 'vue'
 import messageBox from './messagebox.vue'
-/* 
-    设计模型：Toast组件的生命周期中包含它本身在页面中的挂载与销毁,在组件外构建一层代理并提供相关方法用于调用 
-    其中组件本身dom以及style被封装，只能改变props
-*/
-/* 定义常量以及获取Toast组件相关的Props */
+
 const Constructor = Vue.extend(messageBox)
 
 function generateInstance(options, type = 'alert') {

@@ -47,11 +47,6 @@ export default {
     compiledMarkdown: function() {
       return this.$marked(README, { sanitize: true });
     }
-  },
-  methods: {
-    handleClick() {
-      console.log("11");
-    }
   }
 };
 </script>
