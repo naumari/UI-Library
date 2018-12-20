@@ -1,7 +1,9 @@
 import marked from 'marked'
-import hljs from 'highlight.js'
+import hljs from 'highlight.js/lib/highlight';
 import 'highlight.js/styles/vs2015.css'
+import javascript from 'highlight.js/lib/languages/javascript';
 
+hljs.registerLanguage('javascript', javascript);
 hljs.configure({
   useBR: true
 })

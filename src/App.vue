@@ -23,7 +23,7 @@
           <h5 class="nav-sidebar-item c-size-m is-hint">{{ key }}</h5>
           <ul>
             <li v-for="(item, index) in elem" :key="index">
-              <router-link class="nav-sidebar_subitem c-size-s" :to="item.path">{{ item.name }}</router-link>
+              <router-link class="nav-sidebar-subitem c-size-s" :to="item.path">{{ item.name }}</router-link>
             </li>
           </ul>
         </div>
@@ -117,7 +117,7 @@ export default {
     flex-direction: column;
     padding: 32px 0;
     width: 240px;
-    .nav-sidebar_subitem,
+    .nav-sidebar-subitem,
     .nav-sidebar-item {
       display: inline-flex;
       box-sizing: border-box;
@@ -135,7 +135,7 @@ export default {
         color: $disabled-color;
       }
     }
-    .nav-sidebar_subitem {
+    .nav-sidebar-subitem {
       padding: 0 48px;
     }
   }

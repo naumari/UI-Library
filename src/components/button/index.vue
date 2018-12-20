@@ -23,16 +23,16 @@ export default {
 .button {
   position: relative;
   display: inline-flex;
-  padding: $s-offset $m-offset;
   align-items: center;
 
   cursor: pointer;
   user-select: none;
   background-color: #fff;
   outline: none;
-  box-shadow: inset -1px -1px 0 0 #adafbc;
-  border: 1px solid #adafbc;
+  box-shadow: inset -1px -1px 0 0 #d9d9d9;
+  border: 1px solid #d9d9d9;
   border-radius: 4px;
+  color: rgba(0,0,0,0.65);
 
   &:hover {
     background-color: #e7e7e7;
@@ -49,18 +49,22 @@ export default {
   }
 
   &.button-mini {
+    padding: $s-offset $s-offset;
     font-size: 0.8em;
   }
 
   &.button-small {
+    padding: $s-offset $m-offset;
     font-size: 0.9em;
   }
 
   &.button-medium {
+    padding: $s-offset $l-offset;
     font-size: 1em;
   }
 
   &.button-large {
+    padding: $s-offset $xl-offset;
     font-size: 1.2em;
   }
 

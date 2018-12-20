@@ -19,8 +19,7 @@ const componentRouters = context.keys().map(url => {
 })
 
 export default new Router({
-  routes: [
-    {
+  routes: [{
       path: '/',
       name: 'mainPage',
       component: mainPage

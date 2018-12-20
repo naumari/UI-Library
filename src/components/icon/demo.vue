@@ -4,31 +4,40 @@
     <span class="demo-subtitle demo-row">基础的图标。</span>
 
     <div class="demo-row">
-      <span class="demo-row_subtitle">不同类型的图标</span>
+      <span class="demo-row-subtitle">不同类型的图标</span>
+      <span>依据material-design-icons的icon，定义name属性，可以显示不同类型的图标。</span>
 
-      <fat-icon name="backup" size="32"/>
-      <fat-icon name="book" size="32"/>
-      <fat-icon name="bookmark" size="32"/>
-      <fat-icon name="code" size="32"/>
-      <fat-icon name="done" size="32"/>
+      <div class="demo-row-content">
+        <fat-icon name="backup" size="32"/>
+        <fat-icon name="book" size="32"/>
+        <fat-icon name="bookmark" size="32"/>
+        <fat-icon name="code" size="32"/>
+        <fat-icon name="done" size="32"/>
+      </div>
     </div>
 
     <div class="demo-row">
-      <span class="demo-row_subtitle">可调整大小</span>
+      <span class="demo-row-subtitle">可调整大小</span>
+      <span>依据size属性，可以显示不同大小的图标。</span>
 
-      <fat-icon name="done_all" size="32"/>
-      <fat-icon name="face" size="48"/>
-      <fat-icon name="extension" size="64"/>
-      <fat-icon name="help" size="80"/>
-      <fat-icon name="input" size="96"/>
+      <div class="demo-row-content">
+        <fat-icon name="done_all" size="16"/>
+        <fat-icon name="face" size="24"/>
+        <fat-icon name="extension" size="32"/>
+        <fat-icon name="help" size="40"/>
+        <fat-icon name="input" size="48"/>
+      </div>
     </div>
 
     <div class="demo-row">
-      <span class="demo-row_subtitle">可调整样式</span>
+      <span class="demo-row-subtitle">可调整样式</span>
+      <span>可自定义图标的样式。</span>
 
-      <fat-icon class="icon" name="done_all" size="32"/>
-      <fat-icon class="icon" name="pets" size="80"/>
-      <fat-icon class="icon" name="print" size="96"/>
+      <div class="demo-row-content">
+        <fat-icon class="icon" name="done_all" size="16"/>
+        <fat-icon class="icon" name="pets" size="24"/>
+        <fat-icon class="icon" name="print" size="32"/>
+      </div>
     </div>
 
     <div class="markdown-body" v-html="compiledMarkdown" v-highlight></div>

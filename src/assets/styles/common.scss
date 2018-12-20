@@ -62,7 +62,7 @@
       margin-top: 14px;
     }
 
-    .demo-row_subtitle:first-child {
+    .demo-row-subtitle:first-child {
       margin-bottom: 16px;
       display: block;
       font-size: 16px;
@@ -77,7 +77,7 @@
       }
     }
 
-    .demo-row_content {
+    .demo-row-content {
       padding-top: 16px;
     }
 
@@ -116,10 +116,6 @@
 
 /* font chart */
 
-$font-size-s: 12px;
-$font-size-m: 14px;
-$font-size-l: 16px;
-
 .c-size-s {
   font-size: $font-size-s;
 }
@@ -138,16 +134,16 @@ $font-size-l: 16px;
 
 /* transition effect */
 @mixin transition-effect($val) {
-    transition: opacity $val, transform $val, left $val, right $val, top $val,
-      bottom $val;
+  transition: opacity $val, transform $val, left $val, right $val, top $val,
+    bottom $val;
 }
 
 .t-fade-enter-active,
 .t-fade-leave-active {
-    @include transition-effect(0.3s);
+  @include transition-effect(0.3s);
 }
 
 .t-fade-enter,
 .t-fade-leave-to {
-    opacity: 0;
+  opacity: 0;
 }

@@ -4,10 +4,10 @@
     <span class="demo-subtitle demo-row">分隔内容上有关联但属于不同类别的数据集合。</span>
 
     <div class="demo-row">
-      <span class="demo-row_subtitle">基础用法</span>
+      <span class="demo-row-subtitle">基础用法</span>
       <span>当用户进行点击Tab操作时会被触发相关内容的切换。</span>
 
-      <div class="demo-row_content">
+      <div class="demo-row-content">
         <fat-tabs @change="handleChange">
           <fat-tab label="Tab 1" id="tab1">Content of Tab Pane 1</fat-tab>
           <fat-tab label="Tab 2" id="tab2">Content of Tab Pane 2</fat-tab>
@@ -18,7 +18,7 @@
     </div>
 
     <div class="demo-row">
-      <span class="demo-row_subtitle">卡片样式</span>
+      <span class="demo-row-subtitle">卡片样式</span>
       <span>卡片化的标签页，在卡片模式下可设定标签页的关闭按钮。</span>
 
       <div class="row-item">
@@ -32,11 +32,11 @@
     </div>
 
     <div class="demo-row">
-      <span class="demo-row_subtitle">自定义初始位置以及切换</span>
+      <span class="demo-row-subtitle">自定义初始位置以及切换</span>
       <span>通过v-model指令控制tab活跃的标签页。</span>
       <fat-button size="mini" @click.stop="tabActive = 'tab2'">点击选中tab2</fat-button>
 
-      <div class="demo-row_content">
+      <div class="demo-row-content">
         <fat-tabs v-model="tabActive">
           <fat-tab label="Tab 1" id="tab1">Content of Tab Pane 1</fat-tab>
           <fat-tab label="Tab 2" id="tab2">Content of Tab Pane 2</fat-tab>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="demo-row">
-      <span class="demo-row_subtitle">禁用</span>
+      <span class="demo-row-subtitle">禁用</span>
       <span>禁用指定tab页。</span>
 
       <div class="row-item">
@@ -61,8 +61,8 @@
     </div>
 
     <div class="demo-row">
-      <span class="demo-row_subtitle">动态修改Tab</span>
-      <span class="demo-row_subtitle">实现动态修改Tabs数量，默认选中第一个Tab页</span>
+      <span class="demo-row-subtitle">动态修改Tab</span>
+      <span class="demo-row-subtitle">实现动态修改Tabs数量，默认选中第一个Tab页</span>
       <fat-button size="mini" @click.stop="handleClick('add')">添加</fat-button>
       <fat-button size="mini" @click.stop="handleClick('dec')">减少</fat-button>
 
