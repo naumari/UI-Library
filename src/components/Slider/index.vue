@@ -1,8 +1,8 @@
 <template>
-  <div :class="['m-slider-wrap', { 'is-disabled': disabled }]">
+  <div :class="['slider-wrapper', { 'is-disabled': disabled }]">
     <div v-if="!isIE" class="progress" :style="progressStyle"></div>
     <input
-      :class="['m-slider-inner', { 'is-disabled': disabled }]"
+      :class="['slider-inner', { 'is-disabled': disabled }]"
       :disabled="disabled"
       :min="min"
       :max="max"
@@ -53,7 +53,8 @@ export default {
       const xOffset = 9 - 18 * ((rate - min) / (max - min));
 
       return {
-        left: `calc(${((rate - min) * 100) / (max - min)}% + ${xOffset}px)`,
+        left: `${((rate - min) * 100) / (max - min)}%`,
+        marginLeft: `${xOffset}px`,
         transform: `translateX(-50%)`
       };
     }
@@ -72,7 +73,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.m-slider-wrap {
+.slider-wrapper {
   position: relative;
   display: flex;
   align-items: center;
@@ -105,8 +106,9 @@ export default {
     border: 2px solid #409eff;
     background: #fff;
     cursor: grab;
+    transition: all 0.3s;
   }
-  .m-slider-inner {
+  .slider-inner {
     position: relative;
     margin: 0 0;
     padding: 0 0;
@@ -142,14 +144,12 @@ export default {
       border-radius: 50%;
       &:active {
         cursor: grabbing;
-        transform: scale(1.1);
       }
     }
     &::-webkit-slider-thumb {
       margin-top: -6px;
       @include circle-slider-thumb();
       @include thumb-common-style();
-      transition: all 0.3s;
     }
     &.is-disabled {
       &::-webkit-slider-thumb {
@@ -176,7 +176,7 @@ export default {
         border: 2px solid #c4c4c4;
       }
     }
-    // init track
+    // init track & abstract common-track   
     @mixin common-track {
       width: 100%;
       height: 6px;
@@ -224,7 +224,7 @@ export default {
     }
   }
   &.is-disabled {
-    .m-slider-inner {
+    .slider-inner {
       cursor: not-allowed;
     }
     &::-webkit-slider-thumb {

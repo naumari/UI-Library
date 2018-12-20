@@ -26,7 +26,7 @@
       <span>可自定义初始值数值。</span>
 
       <div class="demo-row_content">
-        <fat-slider v-model="range"/>
+        <fat-slider v-model="initValue"/>
       </div>
     </div>
 
@@ -59,7 +59,7 @@ import README from "./README.md";
 export default {
   data() {
     return {
-      range: 10,
+      initValue: 10,
       value: 10
     };
   },
@@ -78,8 +78,8 @@ export default {
   .row-item {
     margin-top: 32px;
   }
-  .m-slider-wrap {
-    max-width: 320px;
+  .slider-wrapper {
+    max-width: 520px;
     flex: 1;
   }
 }
