@@ -1,68 +1,73 @@
-'use strict'
-const path = require('path')
-const utils = require('./utils')
-const webpack = require('webpack')
-const config = require('../config')
-const merge = require('webpack-merge')
-const baseWebpackConfig = require('./webpack.base.conf')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
-const {
-  VueLoaderPlugin
-} = require('vue-loader')
+'use strict';
+const path = require ('path');
+const utils = require ('./utils');
+const webpack = require ('webpack');
+const config = require ('../config');
+const merge = require ('webpack-merge');
+const baseWebpackConfig = require ('./webpack.base.conf');
+const CopyWebpackPlugin = require ('copy-webpack-plugin');
+const HtmlWebpackPlugin = require ('html-webpack-plugin');
+const MiniCssExtractPlugin = require ('mini-css-extract-plugin');
+const OptimizeCSSPlugin = require ('optimize-css-assets-webpack-plugin');
+const {VueLoaderPlugin} = require ('vue-loader');
 
-const env = require('../config/prod.env')
+const env = require ('../config/prod.env');
 
-const webpackConfig = merge(baseWebpackConfig, {
+const webpackConfig = merge (baseWebpackConfig, {
   mode: 'production',
 
   optimization: {
     splitChunks: {
       cacheGroups: {
+        'base-utils': {
+          name: 'base-utils',
+          test: module => /highlight/.test (module.context),
+          chunks: 'initial',
+          priority: 30,
+        },
         'vue-base': {
           name: 'vue-base',
-          test: (module) => /vue/.test(module.context),
+          test: module => /vue/.test (module.context),
           chunks: 'initial',
-          priority: 10,
+          priority: 20,
         },
         vendors: {
           test: /[\\/]node_modules[\\/]/,
           chunks: 'initial',
           name: 'vendors',
+          priority: 10
         },
         'async-vendors': {
           test: /[\\/]node_modules[\\/]/,
           minChunks: 2,
           chunks: 'async',
-          name: 'async-vendors'
-        }
-      }
+          name: 'async-vendors',
+        },
+      },
     },
     runtimeChunk: {
-      name: 'runtime'
-    }
+      name: 'runtime',
+    },
   },
 
   module: {
-    rules: utils.styleLoaders({
+    rules: utils.styleLoaders ({
       sourceMap: config.build.productionSourceMap,
       extract: true,
-      usePostCSS: true
-    })
+      usePostCSS: true,
+    }),
   },
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: config.build.assetsRoot,
-    filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
+    filename: utils.assetsPath ('js/[name].[chunkhash].js'),
+    chunkFilename: utils.assetsPath ('js/[id].[chunkhash].js'),
   },
   plugins: [
-    new VueLoaderPlugin(),
+    new VueLoaderPlugin (),
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
-    new webpack.DefinePlugin({
-      'process.env': env
+    new webpack.DefinePlugin ({
+      'process.env': env,
     }),
     // new UglifyJsPlugin({
     //   uglifyOptions: {
@@ -74,40 +79,42 @@ const webpackConfig = merge(baseWebpackConfig, {
     //   parallel: true
     // }),
     // extract css into its own file
-    new MiniCssExtractPlugin({
-      filename: utils.assetsPath('css/[name].[contenthash:7].css')
+    new MiniCssExtractPlugin ({
+      filename: utils.assetsPath ('css/[name].[contenthash:7].css'),
     }),
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
-    new OptimizeCSSPlugin({
-      cssProcessorOptions: config.build.productionSourceMap ? {
-        safe: true,
-        map: {
-          inline: false
-        }
-      } : {
-        safe: true
-      }
+    new OptimizeCSSPlugin ({
+      cssProcessorOptions: config.build.productionSourceMap
+        ? {
+            safe: true,
+            map: {
+              inline: false,
+            },
+          }
+        : {
+            safe: true,
+          },
     }),
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
+    new HtmlWebpackPlugin ({
       filename: config.build.index,
       template: 'index.html',
       inject: true,
       minify: {
         removeComments: true,
         collapseWhitespace: true,
-        removeAttributeQuotes: true
+        removeAttributeQuotes: true,
         // more options:
         // https://github.com/kangax/html-minifier#options-quick-reference
       },
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
+      chunksSortMode: 'dependency',
     }),
     // keep module.id stable when vendor modules does not change
-    new webpack.HashedModuleIdsPlugin(),
+    new webpack.HashedModuleIdsPlugin (),
     // enable scope hoisting
     // new webpack.optimize.ModuleConcatenationPlugin(),
     // split vendor js into its own file
@@ -141,35 +148,36 @@ const webpackConfig = merge(baseWebpackConfig, {
     // }),
 
     // copy custom static assets
-    new CopyWebpackPlugin([{
-      from: path.resolve(__dirname, '../static'),
-      to: config.build.assetsSubDirectory,
-      ignore: ['.*']
-    }])
-  ]
-})
+    new CopyWebpackPlugin ([
+      {
+        from: path.resolve (__dirname, '../static'),
+        to: config.build.assetsSubDirectory,
+        ignore: ['.*'],
+      },
+    ]),
+  ],
+});
 
 if (config.build.productionGzip) {
-  const CompressionWebpackPlugin = require('compression-webpack-plugin')
+  const CompressionWebpackPlugin = require ('compression-webpack-plugin');
 
-  webpackConfig.plugins.push(
-    new CompressionWebpackPlugin({
+  webpackConfig.plugins.push (
+    new CompressionWebpackPlugin ({
       asset: '[path].gz[query]',
       algorithm: 'gzip',
-      test: new RegExp(
-        '\\.(' +
-        config.build.productionGzipExtensions.join('|') +
-        ')$'
+      test: new RegExp (
+        '\\.(' + config.build.productionGzipExtensions.join ('|') + ')$'
       ),
       threshold: 10240,
-      minRatio: 0.8
+      minRatio: 0.8,
     })
-  )
+  );
 }
 
 if (config.build.bundleAnalyzerReport) {
-  const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
-  webpackConfig.plugins.push(new BundleAnalyzerPlugin())
+  const BundleAnalyzerPlugin = require ('webpack-bundle-analyzer')
+    .BundleAnalyzerPlugin;
+  webpackConfig.plugins.push (new BundleAnalyzerPlugin ());
 }
 
-module.exports = webpackConfig
+module.exports = webpackConfig;

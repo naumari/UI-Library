@@ -102,7 +102,7 @@ $border-radius-middle: 4px;
   justify-content: flex-start;
   align-items: center;
   padding: 16px 16px;
-  z-index: 9999;
+  z-index: 102;
 
   box-sizing: border-box;
   width: $toast-width;

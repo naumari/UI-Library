@@ -78,7 +78,7 @@ $border-radius-middle: 2px;
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  z-index: 1001;
+  z-index: 103;
 
   box-sizing: border-box;
   padding: 0 16px;
