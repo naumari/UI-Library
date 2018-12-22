@@ -1,12 +1,11 @@
 import marked from 'marked'
 import hljs from 'highlight.js/lib/highlight';
-import 'highlight.js/styles/vs2015.css'
+import 'highlight.js/styles/github.css';
 import javascript from 'highlight.js/lib/languages/javascript';
+import xml from 'highlight.js/lib/languages/xml';
 
 hljs.registerLanguage('javascript', javascript);
-hljs.configure({
-  useBR: true
-})
+hljs.registerLanguage('xml', xml);
 
 export default {
   install(Vue) {

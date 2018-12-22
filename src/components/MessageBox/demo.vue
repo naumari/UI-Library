@@ -1,8 +1,5 @@
 <template>
-  <div class="demo-block">
-    <div class="demo-title">MessageBox 弹框</div>
-    <div class="demo-subtitle demo-row">模拟系统的消息提示框而实现的一套模态对话框组件，用于消息提示、确认消息和提交内容。</div>
-
+  <Demo-block title="MessageBox 弹框" subtitle="模拟系统的消息提示框而实现的一套模态对话框组件，用于消息提示、确认消息和提交内容。" :README="README">
     <div class="demo-row" @click.stop="handleClick('alert')">
       <span class="demo-row-subtitle">消息提示</span>
       <span>当用户进行操作时会被触发，该对话框中断用户操作，直到用户确认知晓后才可关闭。</span>
@@ -47,22 +44,21 @@
         <fat-button class="demo-message-btn">点击打开</fat-button>
       </div>
     </div>
-
-    <div class="markdown-body" v-html="compiledMarkdown" v-highlight></div>
-  </div>
+  </Demo-block>
 </template>
 
 <script>
+import DemoBlock from "../common/demo-block";
 import README from "./README.md";
 
 export default {
-  data() {
-    return {};
+  components: {
+    DemoBlock
   },
-  computed: {
-    compiledMarkdown: function() {
-      return this.$marked(README, { sanitize: true });
-    }
+  data() {
+    return {
+      README
+    };
   },
   methods: {
     handleClick(selector) {

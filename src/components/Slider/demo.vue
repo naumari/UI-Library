@@ -1,8 +1,5 @@
 <template>
-  <div class="demo-block">
-    <h3 class="demo-title">Slider 滑块</h3>
-    <span class="demo-subtitle demo-row">通过拖动滑块在一个固定区间内进行选择。</span>
-
+  <Demo-block title="Slider 滑块" subtitle="通过拖动滑块在一个固定区间内进行选择。" :README="README">
     <div class="demo-row">
       <span class="demo-row-subtitle">基础用法</span>
       <span>当用户操作时，左右滑动，快速改变数值。</span>
@@ -47,26 +44,25 @@
         <fat-slider disabled/>
       </div>
     </div>
-
-    <div class="markdown-body" v-html="compiledMarkdown" v-highlight></div>
-  </div>
+  </Demo-block>
 </template>
 
 <script>
+import DemoBlock from "../common/demo-block";
 import "material-design-icons";
 import README from "./README.md";
 
 export default {
+  components: {
+    DemoBlock
+  },
   data() {
     return {
       initValue: 10,
-      value: 10
+      value: 10,
+
+      README
     };
-  },
-  computed: {
-    compiledMarkdown: function() {
-      return this.$marked(README, { sanitize: true });
-    }
   }
 };
 </script>

@@ -1,8 +1,5 @@
 <template>
-  <div class="demo-block">
-    <div class="demo-title">Toast 弹窗</div>
-    <div class="demo-subtitle demo-row">悬浮出现在页面角落，显示全局的通知提醒消息。</div>
-
+  <Demo-block title="Toast 弹窗" subtitle="悬浮出现在页面角落，显示全局的通知提醒消息。" :README="README">
     <div class="demo-row" @click.stop="handleClick">
       <span class="demo-row-subtitle">基础用法</span>
 
@@ -31,21 +28,21 @@
       <span class="demo-row-subtitle">监听事件</span>
       <fat-button class="demo-toast-btn" name="callback">监听toast的关闭</fat-button>
     </div>
-    <div class="markdown-body" v-html="compiledMarkdown" v-highlight></div>
-  </div>
+  </Demo-block>
 </template>
 
 <script>
+import DemoBlock from "../common/demo-block";
 import README from "./README.md";
 
 export default {
-  data() {
-    return {};
+  components: {
+    DemoBlock
   },
-  computed: {
-    compiledMarkdown: function() {
-      return this.$marked(README, { sanitize: true });
-    }
+  data() {
+    return {
+      README
+    };
   },
   methods: {
     handleClick() {

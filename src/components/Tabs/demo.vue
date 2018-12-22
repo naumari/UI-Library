@@ -1,8 +1,5 @@
 <template>
-  <div class="demo-block">
-    <h3 class="demo-title">Tabs 标签页</h3>
-    <span class="demo-subtitle demo-row">分隔内容上有关联但属于不同类别的数据集合。</span>
-
+  <Demo-block title="Tabs 标签页" subtitle="分隔内容上有关联但属于不同类别的数据集合。" :README="README">
     <div class="demo-row">
       <span class="demo-row-subtitle">基础用法</span>
       <span>当用户进行点击Tab操作时会被触发相关内容的切换。</span>
@@ -81,16 +78,17 @@
         </fat-tabs>
       </div>
     </div>
-
-    <div class="markdown-body" v-html="compiledMarkdown" v-highlight></div>
-  </div>
+  </Demo-block>
 </template>
 
 <script>
-import "material-design-icons";
+import DemoBlock from "../common/demo-block";
 import README from "./README.md";
 
 export default {
+  components: {
+    DemoBlock
+  },
   data() {
     return {
       range: 10,
@@ -104,13 +102,10 @@ export default {
           label: "tab",
           content: "tabContent"
         }
-      ]
+      ],
+
+      README
     };
-  },
-  computed: {
-    compiledMarkdown: function() {
-      return this.$marked(README, { sanitize: true });
-    }
   },
   methods: {
     handleClick(type) {

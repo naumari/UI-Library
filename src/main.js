@@ -21,12 +21,12 @@ context.keys().forEach(url => {
   const name = getFileName(url);
   const path = `/${name}`;
   const plugins = ['toast', 'messagebox', 'message'];
-  
+
   if (plugins.some(plugin => plugin === name.toLowerCase())) {
     Vue.use(require(`@/components${path}/index`).default);
   } else {
     Vue.component(
-      `fat-${name.toLowerCase ()}`,
+      `fat-${name.toLowerCase()}`,
       require(`@/components${path}/index`).default
     );
   }

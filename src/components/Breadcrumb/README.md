@@ -1,20 +1,22 @@
-> 常用的操作按钮。
+> 基于Vue-router实现的面包屑。
 
 #### 具体使用
 ```html
-<!-- 不同尺寸 -->
-<fat-button class="btn" size="mini">超小按钮</fat-button>
+<!-- 基础用法 -->
+<fat-breadcrumb
+    separator="/"
+    :paths="[
+        {name: '首页', to: '/'},
+        {name: '面包屑', to: '/Breadcrumb'},
+        {name: '标签页', to: '/Tabs'}
+    ]"
+/>
 
-<!-- 插入不同图标 -->
-<fat-button class="btn">
-    <fat-icon name="done"/>确定
-</fat-button>
-
-<!-- 不同类型 -->
-<fat-button class="btn" type="success">success</fat-button>
-
-<!-- 禁用状态 -->
-<fat-button class="btn" type="primary" disabled>primary</fat-button>
+<!-- 图标分隔符 -->
+<fat-breadcrumb
+    separator-icon="keyboard_arrow_right"
+    :paths="[{ name: '首页', to: '/' }, { name: '面包屑', to: '/Breadcrumb' }, { name: '标签页', to: '/Tabs' }]"
+/>
 ```
 
 #### Attributes 属性

@@ -1,8 +1,5 @@
 <template>
-  <div class="demo-block">
-    <h3 class="demo-title">Icon 图标</h3>
-    <span class="demo-subtitle demo-row">基础的图标。</span>
-
+  <Demo-block title="Icon 图标" subtitle="基础的图标。" :README="README">
     <div class="demo-row">
       <span class="demo-row-subtitle">不同类型的图标</span>
       <span>依据material-design-icons的icon，定义name属性，可以显示不同类型的图标。</span>
@@ -39,23 +36,22 @@
         <fat-icon class="icon" name="print" size="32"/>
       </div>
     </div>
-
-    <div class="markdown-body" v-html="compiledMarkdown" v-highlight></div>
-  </div>
+  </Demo-block>
 </template>
 
 <script>
+import DemoBlock from "../common/demo-block";
 import "material-design-icons";
 import README from "./README.md";
 
 export default {
-  data() {
-    return {};
+  components: {
+    DemoBlock
   },
-  computed: {
-    compiledMarkdown: function() {
-      return this.$marked(README, { sanitize: true });
-    }
+  data() {
+    return {
+      README
+    };
   }
 };
 </script>

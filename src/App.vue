@@ -37,10 +37,10 @@
 <script>
 const context = require.context("@/components/", true, /demo\.vue$/);
 const routers = {
-  common: ["button", "icon"],
+  common: ["button", "icon", "filereader"],
   form: ["slider"],
   notice: ["messagebox", "toast", "message"],
-  navigation: ["tabs"]
+  navigation: ["tabs", "breadcrumb"]
 };
 context.keys().forEach(url => {
   const start = url.indexOf("/");
@@ -51,6 +51,7 @@ context.keys().forEach(url => {
     const arr = routers[key];
     for (let index = 0; index < arr.length; index++) {
       const element = arr[index];
+
       if (element === name.toLowerCase()) {
         arr[index] = {
           name,
