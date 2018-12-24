@@ -1,7 +1,9 @@
 <template>
-  <div v-if="isOpen">
-    <slot></slot>
-  </div>
+  <transition name="move">
+    <div v-if="isOpen">
+      <slot></slot>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -18,10 +20,12 @@ export default {
     }
   },
   created() {
-    this.$parent.children.push(this);
+    this.$parent.childrens.push(this);
   },
   destroyed() {
-    this.$parent.children = this.$parent.children.filter(item => item.id !== this.id)
+    this.$parent.childrens = this.$parent.childrens.filter(
+      item => item.id !== this.id
+    );
   }
 };
 </script>

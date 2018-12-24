@@ -2,19 +2,26 @@
   <div class="tabs-wrapper">
     <ul :class="['tabs-header', { 'is-card': card }]">
       <li
-        :class="['tabs-header_item', { 'is-active': activeId === item.id }, { 'is-disabled': item.disabled }]"
-        v-for="(item, index) in children"
+        :class="['tabs-header-item', { 'is-active': activeId === item.id }, { 'is-disabled': item.disabled }]"
+        v-for="(item, index) in childrens"
         :key="index"
         @click.stop="!item.disabled && handleClick(item)"
       >
         <span>{{ item.label }}</span>
-        <fat-icon v-if="item.closable" class="delete-btn" name="close" @click.stop="handleDelete(item)"/>
+        <fat-icon
+          v-if="item.closable"
+          class="delete-btn"
+          name="close"
+          @click.stop="handleDelete(item)"
+        />
       </li>
     </ul>
 
-    <div class="tabs-content">
-      <slot></slot>
-    </div>
+    <transition name="fade">
+      <div class="tabs-content">
+        <slot></slot>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -26,29 +33,29 @@ export default {
   },
   model: {
     prop: "value",
-    event: "select"
+    event: "change"
   },
   data() {
     return {
       activeId: "",
-      children: []
+      childrens: []
     };
   },
   watch: {
-    children(value) {
-      const idHash = {};
+    childrens(value) {
+      const idMap = {};
       const error = value.every(item => {
         const { id } = item;
-        if (idHash[id]) {
+        if (idMap[id]) {
           return false;
         }
-        idHash[id] = true;
+        idMap[id] = true;
         return true;
       });
       if (!error) throw new Error("Tab has duplicate ID");
-      if (this.children.length) {
+      if (this.childrens.length) {
         let flag = false;
-        for (const iterator of this.children) {
+        for (const iterator of this.childrens) {
           if (this.value === iterator.id && !iterator.disabled) {
             this.activeId = iterator.id;
             flag = true;
@@ -56,11 +63,8 @@ export default {
           }
         }
         if (!flag)
-          this.activeId = this.children.filter(item => !item.disabled)[0].id;
+          this.activeId = this.childrens.filter(item => !item.disabled)[0].id;
       }
-    },
-    activeId(value) {
-      this.$emit("select", value);
     },
     value(value) {
       this.activeId = value;
@@ -68,11 +72,13 @@ export default {
   },
   methods: {
     handleClick(item) {
-      this.activeId = item.id;
-      this.$emit("change", item.id);
+      if (this.activeId !== item.id) {
+        this.activeId = item.id;
+        this.$emit("change", item.id);
+      }
     },
     handleDelete(element) {
-      this.children = this.children.filter(item => item.id !== element.id);
+      this.childrens = this.childrens.filter(item => item.id !== element.id);
     }
   }
 };
@@ -89,7 +95,7 @@ export default {
     display: flex;
     z-index: 2;
 
-    .tabs-header_item {
+    .tabs-header-item {
       min-width: 72px;
       height: 40px;
       line-height: 40px;
@@ -138,7 +144,7 @@ export default {
     }
     &.is-card {
       border-bottom: none;
-      .tabs-header_item {
+      .tabs-header-item {
         display: inline-flex;
         align-items: center;
         justify-content: center;

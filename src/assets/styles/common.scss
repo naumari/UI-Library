@@ -33,6 +33,7 @@
 .markdown-body {
   margin-top: 32px;
   text-align: left;
+
   pre {
     max-width: max-content;
   }
@@ -129,7 +130,7 @@
           content: "";
           width: 4px;
           height: 100%;
-          border-left:   2px solid $success-color;
+          border-left: 2px solid $success-color;
         }
       }
     }
@@ -182,15 +183,28 @@
     bottom $val;
 }
 
-.t-fade-enter-active,
-.t-fade-leave-active {
+.fade-enter-active,
+.fade-leave-active {
   @include transition-effect(0.3s);
 }
 
-.t-fade-enter,
-.t-fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
 }
+
+.move-enter-active {
+  transition: opacity .5s, transform .5s;
+}
+.move-leave-active {
+  opacity: 0;
+}
+.move-enter {
+  transform: translateX(20%);
+  opacity: 0;
+}
+
+/* end */
 
 .breadcrumb {
   display: flex;

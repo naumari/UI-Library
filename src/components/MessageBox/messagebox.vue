@@ -1,5 +1,5 @@
 <template>
-  <transition name="t-fade">
+  <transition name="fade">
     <div class="mock" v-if="visible">
       <div :class="['message-box']">
         <h5 class="message-box-header c-size-l">

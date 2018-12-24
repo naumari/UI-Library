@@ -1,5 +1,5 @@
 <template>
-  <transition name="t-fade">
+  <transition name="fade">
     <div :class="[`toast-${type}`, horizontalClass]" v-if="visible" :style="positionStyle">
       <fat-icon :name="iconType"/>
       <p class="toast-content" :title="content">{{ content }}</p>

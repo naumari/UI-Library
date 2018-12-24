@@ -7,7 +7,11 @@
 
       <div class="btns c-size-m">
         <router-link class="link" to="/">首页</router-link>
-        <a href="https://juejin.im/user/5b3ed96c6fb9a04fc34bed91/posts" target="_blank" class="link">作者简介</a>
+        <a
+          href="https://juejin.im/user/5b3ed96c6fb9a04fc34bed91/posts"
+          target="_blank"
+          class="link"
+        >作者简介</a>
       </div>
     </div>
 
@@ -38,7 +42,7 @@
 const context = require.context("@/components/", true, /demo\.vue$/);
 const routers = {
   common: ["button", "icon", "filereader"],
-  form: ["slider"],
+  form: ["slider", "radiogroup"],
   notice: ["messagebox", "toast", "message"],
   navigation: ["tabs", "breadcrumb"]
 };
@@ -74,7 +78,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '@/assets/styles/var.scss';
+@import "@/assets/styles/var.scss";
 
 .page-wrapper {
   position: relative;
@@ -118,6 +122,10 @@ export default {
     flex-direction: column;
     padding: 32px 0;
     width: 240px;
+    overflow: hidden;
+    &:hover {
+      overflow: scroll;
+    }
     .nav-sidebar-subitem,
     .nav-sidebar-item {
       display: inline-flex;
@@ -148,7 +156,6 @@ export default {
     right: 0;
     bottom: 0;
     padding: 64px 64px;
-    border-left: 1px solid #bbb;
     z-index: 1;
     overflow: auto;
   }

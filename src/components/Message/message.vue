@@ -1,5 +1,5 @@
 <template>
-  <transition name="t-fade">
+  <transition name="fade">
     <div :class="[`message-${type}`, 'center']" v-if="visible" :style="positionStyle">
       <fat-icon :name="icon" class="icon" size="16"/>
       <p class="message-content c-size-m" v-html="content"></p>
