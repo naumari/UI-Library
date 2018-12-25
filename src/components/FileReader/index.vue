@@ -1,12 +1,14 @@
 <template>
   <div
     :class="['file-reader', { 'is-disabled': disabled }]"
-    :dragable="dragable"
-    @dragenter="prevent"
-    @dragover="prevent"
-    @drop="event => dragable && eventHandler('dropReadFile', event)"
   >
-    <div class="click-area" @click.stop="eventHandler('readFile')">
+    <div 
+        class="click-area" 
+        @click.stop="eventHandler('readFile')"
+        @dragenter="prevent"
+        @dragover="prevent"
+        @drop="event => dragable && eventHandler('dropReadFile', event)"
+    >
       <slot name="clickarea">
         <fat-button :disabled="disabled" type="success">上传</fat-button>
       </slot>
@@ -41,13 +43,13 @@ export default {
     sourceFiles: {
       handler(value) {
         if (value.length) {
-          if (window.URL.createObjectURL) {
+          if (window.URL && window.URL.createObjectURL) {
             this.targetFiles = Array.prototype.map.call(value, file => ({
               url: window.URL.createObjectURL(file),
               file
             }));
           } else {
-            const reader = file => {
+            const getReader = file => {
               return new Promise(function(resolve, reject) {
                 const fileReader = new FileReader();
                 fileReader.readAsDataURL(file);
@@ -57,7 +59,7 @@ export default {
               });
             };
             const readers = Array.prototype.map.call(value, file =>
-              reader(file)
+              getReader(file)
             );
             Promise.all(readers).then(results => {
               this.targetFiles = results.map((url, i) => ({

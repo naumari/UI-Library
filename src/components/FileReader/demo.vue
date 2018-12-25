@@ -22,9 +22,9 @@
       <span>自定义上传区域。</span>
 
       <div class="demo-row-content">
-        <fat-filereader @success="event => readHandler(event, 'otherFile')">
-          <div slot="clickarea" class="upload-area">
-            <fat-icon class="icon" name="cloud_upload" size="24"/>
+        <fat-filereader dragable @success="event => readHandler(event, 'otherFile')">
+          <div slot="clickarea" class="upload-area" :style="filePreviewStyle">
+            <fat-icon v-if="!otherFile.url" class="icon" name="cloud_upload" size="24"/>
           </div>
 
           <span v-if="otherFile.name">已上传：{{ otherFile.name }}</span>
@@ -81,13 +81,26 @@ export default {
       files: []
     };
   },
+  computed: {
+    filePreviewStyle() {
+      console.log("otherFile", this.otherFile);
+
+      return this.otherFile.url
+        ? {
+            background: `url(${this.otherFile.url}) no-repeat center / contain`
+          }
+        : {};
+    }
+  },
   methods: {
-    handleClick(event) {
-      alert("button click");
-    },
     readHandler(event, type) {
-      const [{ file }] = event;
-      this[type] = file;
+      if (type === "otherFile") {
+        const [file] = event;
+        this[type] = file;
+      } else {
+        const [{ file }] = event;
+        this[type] = file;
+      }
     },
     errorHandler(error) {
       const { msg } = error;
