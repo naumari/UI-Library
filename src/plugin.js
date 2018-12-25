@@ -22,11 +22,11 @@ export default {
     })
     Vue.prototype.$marked = marked
 
-    Vue.directive('highlight', function (el) {
-      let blocks = el.querySelectorAll('code')
-      Array.prototype.forEach.call(blocks, block => {
-        hljs.highlightBlock(block)
-      })
-    })
+        Vue.directive('highlight', function (el) {
+        let blocks = el.querySelectorAll('code')
+        Array.prototype.forEach.call(blocks, block => {
+            hljs.highlightBlock(block)
+        })
+        })
   }
 }
