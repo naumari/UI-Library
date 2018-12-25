@@ -17,11 +17,9 @@
       </li>
     </ul>
 
-    <transition name="fade">
-      <div class="tabs-content">
-        <slot></slot>
-      </div>
-    </transition>
+    <div class="tabs-content">
+      <slot></slot>
+    </div>
   </div>
 </template>
 
