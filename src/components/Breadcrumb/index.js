@@ -5,12 +5,12 @@ export default {
       props: {
         paths,
         separator,
-        separatorIcon
+        separatorComponent
       }
     } = context
     let elements = paths.map(path => {
       const {
-        name,
+        label,
         to
       } = path
       const element = to ? 'router-link' : 'span'
@@ -23,14 +23,10 @@ export default {
           'breadcrumb-item': true
         },
         props
-      }, name)
+      }, label)
     })
     
-    let _separator = separatorIcon ? _h('fat-icon', {
-      props: {
-        name: separatorIcon
-      }
-    }) : _h('span', {
+    const _separator = separatorComponent ? separatorComponent : _h('span', {
       'class': {
         'separator': true
       },
@@ -60,9 +56,8 @@ export default {
       type: String,
       default: '/'
     },
-    separatorIcon: {
-      type: String,
-      default: ''
+    separatorComponent: {
+      type: Object
     }
   }
 }

@@ -7,7 +7,7 @@
       <div class="demo-row-content">
         <fat-breadcrumb
           separator="/"
-          :paths="[{ name: '首页', to: '/' }, { name: '面包屑', to: '/Breadcrumb' }, { name: '标签页', to: '/Tabs' }]"
+          :paths="[{ label: '首页', to: '/' }, { label: '面包屑', to: '/Breadcrumb' }, { label: '标签页', to: '/Tabs' }]"
         />
       </div>
     </div>
@@ -18,8 +18,8 @@
 
       <div class="demo-row-content">
         <fat-breadcrumb
-          separator-icon="keyboard_arrow_right"
-          :paths="[{ name: '首页', to: '/' }, { name: '面包屑', to: '/Breadcrumb' }, { name: '标签页', to: '/Tabs' }]"
+          :separator-component="separatorComponent"
+          :paths="[{ label: '首页', to: '/' }, { label: '面包屑', to: '/Breadcrumb' }, { label: '标签页', to: '/Tabs' }]"
         />
       </div>
     </div>
@@ -35,14 +35,17 @@ export default {
     DemoBlock
   },
   data() {
+    const _h = this.$createElement;
+
     return {
-      README
+      README,
+
+      separatorComponent: _h("fat-icon", {
+        props: {
+          name: "keyboard_arrow_right"
+        }
+      })
     };
-  },
-  methods: {
-    handleClick(event) {
-      alert("button click");
-    }
   }
 };
 </script>

@@ -12,10 +12,14 @@
     ]"
 />
 
-<!-- 图标分隔符 -->
+<!-- vnode分隔符 -->
 <fat-breadcrumb
-    separator-icon="keyboard_arrow_right"
-    :paths="[{ name: '首页', to: '/' }, { name: '面包屑', to: '/Breadcrumb' }, { name: '标签页', to: '/Tabs' }]"
+    :separator-component="separatorComponent"
+    :paths="[
+        { name: '首页', to: '/' },
+        { name: '面包屑', to: '/Breadcrumb' },
+        { name: '标签页', to: '/Tabs' }
+    ]"
 />
 ```
 
@@ -23,12 +27,6 @@
 
 参数 | 说明 | 类型 | 可选值 | 默认值
 --- | --- | --- | --- | ---
-size | button尺寸类型 | String | mini, small, medium, large | medium
-type | button形式类型 | String | primary, success, warning, error, text, normal | normal
-disabled | 是否禁用状态	 | boolean | - | false
-
-#### Events 事件
-
-事件名称 | 说明 | 回调函数参数
---- | --- | --- | 
-onClick | 当点击button时触发 | -
+paths | Breadcrumb的路径 | Array | - | []
+separator | Breadcrumb各个路径之间的分隔符 | String | - | /
+separatorComponent | Breadcrumb各个路径之间的分割组件 | Object | - | -
