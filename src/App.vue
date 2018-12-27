@@ -41,7 +41,7 @@
 <script>
 const context = require.context("@/components/", true, /demo\.vue$/);
 const routers = {
-  common: ["button", "icon", "filereader"],
+  common: ["button", "icon", "filereader", "hovertip"],
   form: ["slider", "radiogroup"],
   notice: ["messagebox", "toast", "message"],
   navigation: ["tabs", "breadcrumb"]
