@@ -16,14 +16,15 @@ export default {
   },
   computed: {
     isOpen() {
-      return this.$parent.activeId === this.id;
+      return this.fatTabs.activeId === this.id;
     }
   },
+  inject: ["fatTabs"],
   created() {
-    this.$parent.childrens.push(this);
+    this.fatTabs.childrens.push(this);
   },
   destroyed() {
-    this.$parent.childrens = this.$parent.childrens.filter(
+    this.fatTabs.childrens = this.fatTabs.childrens.filter(
       item => item.id !== this.id
     );
   }

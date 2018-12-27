@@ -39,6 +39,11 @@ export default {
       childrens: []
     };
   },
+  provide() {
+    return {
+      fatTabs: this
+    };
+  },
   watch: {
     childrens(value) {
       const idMap = {};
