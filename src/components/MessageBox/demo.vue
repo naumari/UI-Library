@@ -9,39 +9,39 @@
       </div>
     </div>
 
-    <div class="demo-row" @click.stop="handleClick('confirm')">
+    <div class="demo-row">
       <span class="demo-row-subtitle">确认消息</span>
       <span>提示用户确认其已经触发的动作，并询问是否进行此操作时会用到此对话框。</span>
 
       <div class="demo-row-content">
-        <fat-button class="demo-message-btn">点击打开</fat-button>
+        <fat-button class="demo-message-btn" @click.stop="handleClick('confirm')">点击打开</fat-button>
       </div>
     </div>
 
-    <div class="demo-row" @click.stop="handleClick('custom-content')">
+    <div class="demo-row">
       <span class="demo-row-subtitle">自定义</span>
       <span>可自定义配置不同内容。</span>
 
       <div class="demo-row-content">
-        <fat-button class="demo-message-btn">点击打开</fat-button>
+        <fat-button class="demo-message-btn" @click.stop="handleClick('custom-content')">点击打开</fat-button>
       </div>
     </div>
 
-    <div class="demo-row" @click.stop="handleClick('custom')">
+    <div class="demo-row">
       <span class="demo-row-subtitle">区分取消与关闭</span>
       <span>有些场景下，点击取消按钮与点击关闭按钮有着不同的含义。</span>
 
       <div class="demo-row-content">
-        <fat-button class="demo-message-btn">点击打开</fat-button>
+        <fat-button class="demo-message-btn" @click.stop="handleClick('custom')">点击打开</fat-button>
       </div>
     </div>
 
-    <div class="demo-row" @click.stop="handleClick('close')">
+    <div class="demo-row">
       <span class="demo-row-subtitle">取消自动关闭，手动控制</span>
       <span>有些场景下，需要手动控制关闭。</span>
 
       <div class="demo-row-content">
-        <fat-button class="demo-message-btn">点击打开</fat-button>
+        <fat-button class="demo-message-btn" @click.stop="handleClick('close')">点击打开</fat-button>
       </div>
     </div>
   </Demo-block>
