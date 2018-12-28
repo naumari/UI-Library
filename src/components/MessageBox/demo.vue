@@ -1,5 +1,9 @@
 <template>
-  <Demo-block title="MessageBox 弹框" subtitle="模拟系统的消息提示框而实现的一套模态对话框组件，用于消息提示、确认消息和提交内容。" :README="README">
+  <Demo-block
+    title="MessageBox 弹框"
+    subtitle="模拟系统的消息提示框而实现的一套模态对话框组件，用于消息提示、确认消息和提交内容。"
+    :README="README"
+  >
     <div class="demo-row" @click.stop="handleClick('alert')">
       <span class="demo-row-subtitle">消息提示</span>
       <span>当用户进行操作时会被触发，该对话框中断用户操作，直到用户确认知晓后才可关闭。</span>
