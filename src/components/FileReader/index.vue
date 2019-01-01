@@ -1,13 +1,11 @@
 <template>
-  <div
-    :class="['file-reader', { 'is-disabled': disabled }]"
-  >
-    <div 
-        class="click-area" 
-        @click.stop="eventHandler('readFile')"
-        @dragenter="prevent"
-        @dragover="prevent"
-        @drop="event => dragable && eventHandler('dropReadFile', event)"
+  <div :class="['file-reader', { 'is-disabled': disabled }]">
+    <div
+      class="click-area"
+      @click.stop="eventHandler('readFile')"
+      @dragenter="prevent"
+      @dragover="prevent"
+      @drop="event => dragable && eventHandler('dropReadFile', event)"
     >
       <slot name="clickarea">
         <fat-button :disabled="disabled" type="success">上传</fat-button>
@@ -116,6 +114,13 @@ export default {
     },
     prevent(event) {
       event.preventDefault();
+    }
+  },
+  destroyed() {
+    if (this.targetFiles.length && window.URL.revokeObjectURL) {
+      this.targetFiles.forEach(file => {
+        window.URL.revokeObjectURL(file.url);
+      });
     }
   }
 };

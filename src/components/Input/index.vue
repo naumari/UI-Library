@@ -5,26 +5,34 @@
     'have-suffix-icon': suffixIcon
   }]"
   >
-    <fat-icon v-if="prefixIcon" class="icon" :name="prefixIcon"/>
-
-    <slot name="prepend"></slot>
-
-    <input
-      v-if="type !== 'textarea'"
-      :class="['input-inner', {
-        'have-prepand': havePrepand,
-        'have-append': haveAppend
-      }]"
-      :type="type"
+    <textarea
+      v-if="type === 'textarea'"
+      class="textarea-inner"
       :value="inputValue"
       v-bind="$attrs"
       v-on="inputListeners"
-    >
-    <textarea v-else class="textarea-inner" v-bind="$attrs" v-on="$listeners" v-model="inputValue"/>
+    />
 
-    <slot name="append"></slot>
+    <template v-else>
+      <fat-icon v-if="prefixIcon" class="icon" :name="prefixIcon"/>
 
-    <fat-icon v-if="suffixIcon" class="icon" :name="suffixIcon"/>
+      <slot name="prepend"></slot>
+
+      <input
+        :class="['input-inner', {
+        'have-prepand': havePrepand,
+        'have-append': haveAppend
+      }]"
+        :type="type"
+        :value="inputValue"
+        v-bind="$attrs"
+        v-on="inputListeners"
+      />
+
+      <slot name="append"></slot>
+
+      <fat-icon v-if="suffixIcon" class="icon" :name="suffixIcon"/>
+    </template>
   </div>
 </template>
 
