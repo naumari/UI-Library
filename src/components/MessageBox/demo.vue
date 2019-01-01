@@ -39,15 +39,6 @@
         <fat-button class="demo-message-btn" @click.stop="handleClick('custom')">点击打开</fat-button>
       </div>
     </div>
-
-    <div class="demo-row">
-      <span class="demo-row-subtitle">取消自动关闭，手动控制</span>
-      <span>有些场景下，需要手动控制关闭。</span>
-
-      <div class="demo-row-content">
-        <fat-button class="demo-message-btn" @click.stop="handleClick('close')">点击打开</fat-button>
-      </div>
-    </div>
   </Demo-block>
 </template>
 
@@ -123,22 +114,6 @@ export default {
                 type: "warn",
                 content: "放弃"
               })
-          });
-          break;
-        case "close":
-          this.$alert({
-            title: "提示",
-            content: "确认关闭",
-            cancelClose: true,
-            onConfirm() {
-              _self.$message({
-                type: "warn",
-                content: "1s后关闭"
-              });
-              setTimeout(() => {
-                this.close();
-              }, 1000);
-            }
           });
           break;
       }

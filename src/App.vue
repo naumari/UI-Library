@@ -42,7 +42,7 @@
 const context = require.context("@/components/", true, /demo\.vue$/);
 const routers = {
   common: ["button", "icon", "filereader", "hovertip"],
-  form: ["slider", "radiogroup"],
+  form: ["slider", "radiogroup", "input"],
   notice: ["messagebox", "toast", "message"],
   navigation: ["tabs", "breadcrumb"]
 };
@@ -124,7 +124,7 @@ export default {
     width: 240px;
     overflow: hidden;
     &:hover {
-      overflow: scroll;
+      overflow: auto;
     }
     .nav-sidebar-subitem,
     .nav-sidebar-item {

@@ -196,9 +196,11 @@
 .move-enter-active {
   transition: opacity .5s, transform .5s;
 }
+
 .move-leave-active {
   opacity: 0;
 }
+
 .move-enter {
   transform: translateX(20%);
   opacity: 0;
@@ -230,5 +232,28 @@
     &.router-link-active {
       font-weight: 600;
     }
+  }
+}
+
+input {
+  /* input placeholder style */
+  &::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: #999;
+  }
+
+  &:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: #999;
+  }
+
+  &::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: #999;
+  }
+
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: #999;
   }
 }

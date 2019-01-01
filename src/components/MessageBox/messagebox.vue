@@ -4,10 +4,10 @@
       <div :class="['message-box']">
         <h5 class="message-box-header c-size-l">
           <span>{{ title }}</span>
-          <fat-icon name="close" class="close-btn" @click.stop="!cancelClose && close()"/>
+          <fat-icon v-if="showClose" name="close" class="close-btn" @click.stop="close"/>
         </h5>
 
-        <div class="message-box-content c-size-m" :title="content" v-html="content"></div>
+        <div class="message-box-content c-size-m" v-html="content"></div>
 
         <div class="message-box-footer">
           <fat-button
@@ -38,32 +38,12 @@ export default {
     content: { type: String, required: true },
     confirmButtonText: { type: String, default: "确定" },
     cancelButtonText: { type: String, default: "取消" },
-    cancelClose: { type: Boolean, default: false }
-  },
-  data() {
-    return {
-      closed: false
-    };
-  },
-  watch: {
-    closed(newVal) {
-      if (newVal) {
-        this.visible = false;
-        this.$el.addEventListener("transitionend", this.destroyElement);
-        !this.cancelClose && this.$emit("close");
-      }
-    }
+    showClose: { type: Boolean, default: true }
   },
   methods: {
-    close() {
-      this.closed = true;
-    },
-    destroyElement() {
-      this.$destroy();
-    },
     handleClick(type) {
-      !this.cancelClose && this.close();
       this.$emit(type);
+      this.close();
     }
   }
 };
