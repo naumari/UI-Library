@@ -7,30 +7,30 @@
       <div class="demo-row-content">
         <div class="row-content-item">
           <span>Tip 向上显示</span>
-          <fat-hovertip>
+          <fat-hover-tip>
             <template slot="tip-part">向上</template>
-          </fat-hovertip>
+          </fat-hover-tip>
         </div>
 
         <div class="row-content-item">
           <span>Tip 向下显示</span>
-          <fat-hovertip type="bottom-center">
+          <fat-hover-tip type="bottom-center">
             <template slot="tip-part">向下</template>
-          </fat-hovertip>
+          </fat-hover-tip>
         </div>
 
         <div class="row-content-item">
           <span>Tip 向右显示</span>
-          <fat-hovertip type="right-center">
+          <fat-hover-tip type="right-center">
             <template slot="tip-part">向右</template>
-          </fat-hovertip>
+          </fat-hover-tip>
         </div>
 
         <div class="row-content-item">
           <span>Tip 向左显示</span>
-          <fat-hovertip type="left-center">
+          <fat-hover-tip type="left-center">
             <template slot="tip-part">向左</template>
-          </fat-hovertip>
+          </fat-hover-tip>
         </div>
       </div>
     </div>
@@ -41,19 +41,19 @@
 
       <div class="demo-row-content">
         <div class="row-content-item">
-          <fat-hovertip>
+          <fat-hover-tip>
             <template slot="hover-part">文字</template>
             <template slot="tip-part">文字</template>
-          </fat-hovertip>
+          </fat-hover-tip>
         </div>
 
         <div class="row-content-item">
-          <fat-hovertip>
+          <fat-hover-tip>
             <template slot="hover-part">
               <fat-button>组件</fat-button>
             </template>
             <template slot="tip-part">向下</template>
-          </fat-hovertip>
+          </fat-hover-tip>
         </div>
       </div>
     </div>
@@ -64,12 +64,12 @@
 
       <div class="demo-row-content">
         <div class="row-content-item">
-          <fat-hovertip type="right-center">
+          <fat-hover-tip type="right-center">
             <template slot="hover-part">展示图片</template>
             <template slot="tip-part">
-              <img src="http://img5.imgtn.bdimg.com/it/u=2291808233,1250989260&fm=26&gp=0.jpg" alt>
+              <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546417415835&di=49edcf497eb88a3e7ef29d48d555de59&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn14%2F300%2Fw688h412%2F20181112%2F59da-hnstwwr0231024.jpg" alt="示意图" />
             </template>
-          </fat-hovertip>
+          </fat-hover-tip>
         </div>
       </div>
     </div>

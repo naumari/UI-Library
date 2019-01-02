@@ -79,9 +79,8 @@ export default {
 @import "@/assets/styles/var.scss";
 
 .demo-row-content {
-  width: 240px;
-
   .input-wrapper {
+    width: 240px;
     &:not(:first-child) {
       margin-top: 16px;
     }

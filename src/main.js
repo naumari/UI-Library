@@ -25,8 +25,10 @@ context.keys().forEach(url => {
   if (plugins.some(plugin => plugin === name.toLowerCase())) {
     Vue.use(require(`@/components${path}/index`).default);
   } else {
+    const componentName = require(`@/components${path}/index`).default.name || name
+
     Vue.component(
-      `fat-${name.toLowerCase()}`,
+      `fat-${componentName.toLowerCase()}`,
       require(`@/components${path}/index`).default
     );
   }
