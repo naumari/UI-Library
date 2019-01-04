@@ -2,10 +2,10 @@
   <Demo-block title="InputNumber 计数器" subtitle="仅允许输入标准的数字值，可定义范围。" :README="README">
     <div class="demo-row">
       <span class="demo-row-subtitle">基础用法</span>
-      <span>点击+\-按钮。</span>
+      <span>点击+\-按钮(当前值为{{ value }})。</span>
 
       <div class="demo-row-content">
-        <fat-input-number v-model="inputValue"/>
+        <fat-input-number v-model="value" />
       </div>
     </div>
 
@@ -14,7 +14,7 @@
       <span>禁止点击和输入。</span>
 
       <div class="demo-row-content">
-        <fat-input-number disabled v-model="inputValue"/>
+        <fat-input-number disabled />
       </div>
     </div>
 
@@ -23,7 +23,7 @@
       <span>允许定义递增递减的步数控制(step为5)。</span>
 
       <div class="demo-row-content">
-        <fat-input-number :step="5" v-model="inputValue"/>
+        <fat-input-number :step="5" v-model="stepValue" />
       </div>
     </div>
 
@@ -32,7 +32,7 @@
       <span>超出范围,按钮禁用。</span>
 
       <div class="demo-row-content">
-        <fat-input-number :max="20" :min="0" :step="5" v-model="inputValue"/>
+        <fat-input-number :max="20" :min="0" :step="5" v-model="limitValue" />
       </div>
     </div>
   </Demo-block>
@@ -50,7 +50,9 @@ export default {
     return {
       README,
 
-      inputValue: 0
+      value: 0,
+      stepValue: 0,
+      limitValue: 0
     };
   }
 };
