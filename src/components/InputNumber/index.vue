@@ -1,46 +1,48 @@
 <template>
   <div class="input-number-wrapper" ref="input-number">
-    <template v-if="controlsPosition === 'sides'">
-      <fat-input :disabled="disabled" @change="handleChange" v-model="inputValue" class="input-number-inner">
-        <template slot="prepend">
-          <div
-            :class="['prepend-part', {
+    <fat-input
+      class="input-number-inner"
+      type="text"
+      :disabled="disabled"
+      @change="handleChange"
+      v-model="inputValue"
+      v-bind="$attrs"
+      @focus="event => $emit('focus', event)"
+      @blur="event => $emit('blur', event)"
+    >
+      <template slot="prepend">
+        <div
+          :class="['prepend-part', {
             'is-disabled': addDisabled
           }]"
-            @mousedown.stop="!addDisabled && handleClick('add')"
-          >
-            <fat-icon name="add" size="16"/>
-          </div>
-        </template>
+          @mousedown.stop="!addDisabled && handleClick('add')"
+        >
+          <fat-icon name="add" size="16"/>
+        </div>
+      </template>
 
-        <template slot="append">
-          <div
-            :class="['append-part', {
+      <template slot="append">
+        <div
+          :class="['append-part', {
               'is-disabled': decDisabled
           }]"
-            @mousedown.stop="!decDisabled && handleClick('dec')"
-          >
-            <fat-icon name="remove" size="16"/>
-          </div>
-        </template>
-      </fat-input>
-    </template>
-
-    <template v-else></template>
+          @mousedown.stop="!decDisabled && handleClick('dec')"
+        >
+          <fat-icon name="remove" size="16"/>
+        </div>
+      </template>
+    </fat-input>
   </div>
 </template>
 
 <script>
 const isNum = num =>
-  !isNaN(num) && Object.prototype.toString.call(num) === "[object Number]";
+  !isNaN(num * 1) &&
+  Object.prototype.toString.call(num * 1) === "[object Number]";
 
 export default {
   name: "input-number",
   props: {
-    type: {
-      type: String,
-      default: "text"
-    },
     value: {
       type: [Number],
       default: 0
@@ -49,15 +51,13 @@ export default {
       type: Number,
       default: 1
     },
-    controlsPosition: {
-      type: String,
-      default: "sides"
-    },
     max: {
-      type: Number
+      type: Number,
+      default: Infinity
     },
     min: {
-      type: Number
+      type: Number,
+      default: -Infinity
     },
     disabled: {
       type: Boolean,
@@ -66,11 +66,11 @@ export default {
   },
   model: {
     prop: "value",
-    event: "change"
+    event: "input"
   },
   data() {
     return {
-      inputValue: ""
+      inputValue: 0
     };
   },
   computed: {
@@ -79,16 +79,48 @@ export default {
     },
     decDisabled() {
       return this.disabled || (isNum(this.min) && this.inputValue <= this.min);
+    },
+    inputNumberValue: {
+      get() {
+        return this.inputValue;
+      },
+      set(value) {
+        const { min, max, inputValue } = this;
+        const limits = [
+          {
+            need: value => {
+              return !isNum(value);
+            },
+            value: inputValue
+          },
+          {
+            need: value => value >= max,
+            value: max
+          },
+          {
+            need: value => value <= min,
+            value: min
+          },
+          {
+            need: () => true,
+            value: value * 1
+          }
+        ];
+
+        this.inputValue = limits.find(limit => limit.need(value)).value;
+      }
     }
   },
   watch: {
     value: {
       handler(newVal) {
-        if (isNum(newVal)) this.inputValue = newVal;
-      }
+        this.inputNumberValue = newVal;
+        console.timeEnd();
+      },
+      immediate: true
     },
     inputValue(newVal) {
-      this.$emit("change", newVal);
+      this.$emit("input", newVal);
     }
   },
   methods: {
@@ -97,8 +129,9 @@ export default {
       const period = 100;
       const timerHandle = () => {
         const { addDisabled, decDisabled } = this;
-        if (!addDisabled && type === "add") this.inputValue += step;
-        if (!decDisabled && type === "dec") this.inputValue -= step;
+        if (!addDisabled && type === "add") this.inputNumberValue += step;
+        if (!decDisabled && type === "dec") this.inputNumberValue -= step;
+        console.time();
       };
       const timer = setInterval(timerHandle, period);
       const startTime = new Date();
@@ -113,18 +146,8 @@ export default {
       document.addEventListener("mouseup", handler, false);
     },
     handleChange(event) {
-      const { max, min } = this;
-      const value = event.target.value.replace(/[^\d.]/g, "");
-      this.inputValue = test;
+      this.inputNumberValue = event.target.value.replace(/[^\d.]/g, "");
     }
-  },
-  created() {
-    const { value } = this;
-    if (
-      !isNaN(value) &&
-      Object.prototype.toString.call(value) === "[object Number]"
-    )
-      this.inputValue = this.value;
   }
 };
 </script>
@@ -143,6 +166,10 @@ export default {
     &.is-disabled {
       color: $disabled-color;
       cursor: not-allowed;
+    }
+
+    &:not(.is-disabled):hover {
+      color: $success-color;
     }
   }
   .input-number-inner {
