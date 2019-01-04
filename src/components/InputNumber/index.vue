@@ -4,9 +4,9 @@
       class="input-number-inner"
       type="text"
       :disabled="disabled"
-      @change="handleChange"
       v-model="inputValue"
       v-bind="$attrs"
+      @change="handleChange"
       @focus="event => $emit('focus', event)"
       @blur="event => $emit('blur', event)"
     >

@@ -24,7 +24,6 @@ export default {
 
     Vue.directive ('highlight', {
       bind (el) {
-        console.log ('update');
         let blocks = el.querySelectorAll ('code');
         Array.prototype.forEach.call (blocks, block => {
           hljs.highlightBlock (block);
