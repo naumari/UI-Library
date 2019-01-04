@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <!-- <div class="demo-row">
+    <div class="demo-row">
       <span class="demo-row-subtitle">禁用状态</span>
       <span>禁止点击和输入。</span>
 
@@ -34,7 +34,7 @@
       <div class="demo-row-content">
         <fat-input-number :max="20" :min="0" :step="5" v-model="limitValue" />
       </div>
-    </div> -->
+    </div>
   </Demo-block>
 </template>
 

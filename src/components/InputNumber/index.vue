@@ -88,9 +88,7 @@ export default {
         const { min, max, inputValue } = this;
         const limits = [
           {
-            need: value => {
-              return !isNum(value);
-            },
+            need: value => !isNum(value),
             value: inputValue
           },
           {
@@ -115,7 +113,6 @@ export default {
     value: {
       handler(newVal) {
         this.inputNumberValue = newVal;
-        console.timeEnd();
       },
       immediate: true
     },
@@ -127,19 +124,18 @@ export default {
     handleClick(type) {
       const { step } = this;
       const period = 100;
-      const timerHandle = () => {
+      const timerHandler = () => {
         const { addDisabled, decDisabled } = this;
         if (!addDisabled && type === "add") this.inputNumberValue += step;
         if (!decDisabled && type === "dec") this.inputNumberValue -= step;
-        console.time();
       };
-      const timer = setInterval(timerHandle, period);
+      const timer = setInterval(timerHandler, period);
       const startTime = new Date();
 
       const handler = () => {
         const endTime = new Date();
-        if (endTime - startTime < period) timerHandle();
 
+        if (endTime - startTime < period) timerHandler();
         clearInterval(timer);
         document.removeEventListener("mouseup", handler, false);
       };
