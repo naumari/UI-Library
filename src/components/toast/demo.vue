@@ -57,7 +57,8 @@ export default {
           break;
         case "normal-close":
           this.$toast({
-            content: "不可自动关闭"
+            content: "不可自动关闭",
+            autoClose: false
           });
           break;
         case "normal-hide":
