@@ -11,6 +11,16 @@
     </div>
 
     <div class="demo-row">
+      <span class="demo-row-subtitle">可清空内容</span>
+      <span>直接在组件上添加 clear</span>
+
+      <div class="demo-row-content">
+        <fat-input placeholder="请输入内容" v-model="clearModel" clear/>
+        <span class="c-size-s">输入内容为：{{ clearModel }}</span>
+      </div>
+    </div>
+
+    <div class="demo-row">
       <span class="demo-row-subtitle">禁用状态</span>
       <span>禁用该组件。</span>
 
@@ -70,7 +80,8 @@ export default {
     return {
       README,
 
-      inputValue: "hello world"
+      inputValue: "hello world",
+      clearModel: '',
     };
   }
 };

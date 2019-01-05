@@ -2,7 +2,7 @@
   <div
     :class="['input-wrapper', {
     'have-prefix-icon': prefixIcon,
-    'have-suffix-icon': suffixIcon
+    'have-suffix-icon': suffixIcon || clear
   }]"
   >
     <textarea
@@ -31,12 +31,15 @@
 
       <slot name="append"></slot>
 
-      <fat-icon v-if="suffixIcon" class="icon" :name="suffixIcon"/>
+      <fat-icon v-if="clear" class="icon cursor" name="clear" v-on:click="inputClear"/>
+      <fat-icon v-else class="icon" :name="suffixIcon"/>
     </template>
   </div>
 </template>
 
 <script>
+  import { hasOwn } from '@/utils'
+
 export default {
   props: {
     type: {
@@ -60,7 +63,8 @@ export default {
   },
   data() {
     return {
-      inputValue: ""
+      inputValue: "",
+      clear: false,
     };
   },
   computed: {
@@ -76,6 +80,15 @@ export default {
       });
     }
   },
+  methods: {
+    inputClear() {
+      if (this.inputValue) this.$emit('input', '');
+    },
+    upClear() {
+      const attrs = this.$attrs;
+      this.clear = hasOwn(attrs, 'clear') && !hasOwn(attrs, 'disabled');
+    }
+  },
   watch: {
     value: {
       handler(newVal) {
@@ -83,6 +96,12 @@ export default {
       },
       immediate: true
     }
+  },
+  created() {
+    this.upClear();
+  },
+  updated() {
+    this.upClear();
   }
 };
 </script>
@@ -104,6 +123,7 @@ export default {
 
     height: 1em;
     color: $disabled-color;
+    transition: .3s;
   }
 
   &.have-prefix-icon {
@@ -123,6 +143,13 @@ export default {
 
     .icon:last-child {
       right: 6px;
+    }
+
+    .cursor {
+      cursor: pointer;
+      &:hover {
+        color: $font-color;
+      }
     }
   }
 

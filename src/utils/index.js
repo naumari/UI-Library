@@ -5,3 +5,12 @@ export const getFileName = url => {
 
   return name
 }
+
+/**
+ * @type {(v: PropertyKey) => boolean}
+ * Check whether the object has the property.
+ */
+const hasOwnProperty = Object.prototype.hasOwnProperty;
+export function hasOwn (obj, key) {
+  return hasOwnProperty.call(obj, key)
+}

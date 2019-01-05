@@ -24,6 +24,7 @@
 type | 类型 | String | text，textarea 和其他 原生 input 的 type 值 | text
 prefix-icon | 输入框头部图标 | String | - | -
 suffix-icon | 输入框尾部图标 | String | - | -
+clear | 清空内容按钮, 和尾部图标同时存在时,clear的优先级高 | Boolean | - | -
 
 #### Events 事件
 
