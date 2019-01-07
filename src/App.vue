@@ -1,9 +1,7 @@
 <template>
-  <div id="app" class="page-wrapper">
+  <div id="app" class="page-wrapper c-normal">
     <div class="header-wrapper">
-      <span class="logo c-size-l">
-        <fat-icon name="leak_add" size="32"/>Fat-UI Lib
-      </span>
+      <div class="logo"></div>
 
       <div class="btns c-size-m">
         <router-link class="link" to="/">首页</router-link>
@@ -42,7 +40,7 @@
 const context = require.context("@/components/", true, /demo\.vue$/);
 const routers = {
   common: ["button", "icon", "filereader", "hovertip"],
-  form: ["slider", "radiogroup", "input", "inputnumber"],
+  form: ["slider", "radiogroup", "input", "inputnumber", "select"],
   notice: ["messagebox", "toast", "message"],
   navigation: ["tabs", "breadcrumb"]
 };
@@ -85,44 +83,49 @@ export default {
   width: 100vw;
   height: 100vh;
   display: flex;
+  background: #fafafa;
+
   .header-wrapper {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 2;
-    height: 64px;
-    padding: 0 32px;
+    height: 30px;
+    padding: 0 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: #fff;
-    background: #444b57;
+    color: #444b57;
+    background: #fff;
     .logo {
-      display: inline-flex;
-      align-items: center;
-      .material-icons:first-child {
-        margin-right: 8px;
-      }
+      width: 100px;
+      height: 20px;
+      background: url(/static/img/logo.png);
+      background-size: cover;
     }
     .btns {
       display: flex;
       justify-content: space-evenly;
       width: 200px;
       .link {
-        color: #fff;
         text-decoration: none;
       }
     }
   }
 
   .nav-sidebar-wrapper {
-    margin-top: 64px;
+    position: fixed;
+    top: 45px;
+    left: 15px;
     display: flex;
     flex-direction: column;
-    padding: 32px 0;
     width: 240px;
+    height: 90%;
     overflow: hidden;
+    background: #fff;
+    border-radius: 4px;
+
     &:hover {
       overflow: auto;
     }
@@ -137,11 +140,28 @@ export default {
       text-decoration: none;
       color: #444b57;
       &.router-link-exact-active {
-        color: #fff;
-        background: #4d93ff;
+        position: relative;
+        color: #4d94e6;
+        background: #f1f8ff;
+        &::before {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 2px;
+          height: 100%;
+          content: "";
+          background: #4ca0fa;
+        }
       }
       &.is-hint {
-        color: $disabled-color;
+        color: #a5a5a5;
+      }
+    }
+    .nav-sidebar-item:first-child,
+    .nav-sidebar-subitem {
+      &:not(.is-hint):hover {
+        color: #4d94e6;
+        background: #f1f8ff;
       }
     }
     .nav-sidebar-subitem {
@@ -151,11 +171,14 @@ export default {
 
   .content-wrapper {
     position: absolute;
-    top: 64px;
-    left: 240px;
-    right: 0;
+    top: 30px;
+    left: 286px;
+    right: 36px;
     bottom: 0;
+    margin: 16px 0;
     padding: 64px 64px;
+    background: #fff;
+    border-radius: 4px;
     z-index: 1;
     overflow: auto;
   }
