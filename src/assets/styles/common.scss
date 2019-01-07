@@ -7,6 +7,22 @@
   src: local('material-design-icons'), local('MaterialIcons-Regular');
 }
 
+@font-face {
+  font-family: 'MontBold';
+  src: url('/static/fonts/montserrat-semibold-webfont.woff2') format('woff2'),
+    url('/static/fonts/montserrat-semibold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('/static/fonts/montserrat-regular-webfont.woff2') format('woff2'),
+    url('/static/fonts/montserrat-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .material-icons {
   font-family: 'Material Icons';
   font-weight: normal;
@@ -154,9 +170,8 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  border-radius: 5px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
-  background-color: #dfe2e5;
+  background-color: #fafafa;
 }
 
 /* font chart */
@@ -173,8 +188,21 @@
   font-size: $font-size-l;
 }
 
+.c-normal {
+  font-family: Mont;
+}
+
 .c-bold {
-  font-weight: 600;
+  font-family: MontBold;
+}
+
+/* position-type */
+.p-center {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 /* transition effect */
@@ -236,6 +264,7 @@
 }
 
 input {
+
   /* input placeholder style */
   &::-webkit-input-placeholder {
     /* WebKit, Blink, Edge */

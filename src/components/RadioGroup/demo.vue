@@ -5,10 +5,10 @@
       <span>适用于在多个互斥的选项中选择的场景。</span>
 
       <div class="demo-row-content">
-        <fat-radiogroup v-model="value">
+        <fat-radio-group v-model="value">
           <fat-radio :value="1">备选项</fat-radio>
           <fat-radio :value="2">备选项</fat-radio>
-        </fat-radiogroup>
+        </fat-radio-group>
       </div>
     </div>
 
@@ -27,10 +27,10 @@
       <span>单选框不可用的状态。</span>
 
       <div class="demo-row-content">
-        <fat-radiogroup v-model="anotherValue">
+        <fat-radio-group v-model="anotherValue">
           <fat-radio :value="1">备选项</fat-radio>
           <fat-radio :value="2" disabled>备选项</fat-radio>
-        </fat-radiogroup>
+        </fat-radio-group>
       </div>
     </div>
   </Demo-block>

@@ -41,7 +41,7 @@ export default {
   },
   computed: {
     isGroup() {
-      return this.$parent.$options._componentTag === "fat-radiogroup";
+      return this.$parent.$options._componentTag === "fat-radio-group";
     },
     isDisabled() {
       return this.$parent.disabled || this.disabled;
