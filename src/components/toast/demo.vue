@@ -51,19 +51,18 @@ export default {
       switch (selector) {
         case "normal":
           this.$toast({
-            content: "可自动关闭",
-            autoClose: true
+            content: "可自动关闭"
           });
           break;
         case "normal-close":
           this.$toast({
-            content: "不可自动关闭"
+            content: "不可自动关闭",
+            autoClose: false
           });
           break;
         case "normal-hide":
           this.$toast({
             content: "隐藏关闭按钮",
-            autoClose: true,
             showClose: false
           });
           break;
@@ -81,20 +80,17 @@ export default {
         case "center":
           this.$toast({
             content: `Content ${selector}`,
-            position: `top-${selector}`,
-            autoClose: true
+            position: `top-${selector}`
           });
           break;
         case "callback":
           this.$toast({
             content: `Content ${selector}`,
             position: `top-right`,
-            autoClose: true,
             onClose() {
               this.$toast({
                 content: "toast 已经关闭",
-                position: "top-left",
-                autoClose: true
+                position: "top-left"
               });
             }
           });
