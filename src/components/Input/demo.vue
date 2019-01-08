@@ -72,6 +72,11 @@ export default {
 
       inputValue: "hello world"
     };
+  },
+  methods: {
+    handleClick() {
+      console.log('handleClick')
+    }
   }
 };
 </script>
