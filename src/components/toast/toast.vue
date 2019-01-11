@@ -82,7 +82,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/var.scss";
+
 
 $content-font-size: 14px;
 $close-btn-size: 10px;

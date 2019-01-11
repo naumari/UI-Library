@@ -1,93 +1,115 @@
 <template>
   <Demo-block title="HoverTip Hover提示" subtitle="常用于展示鼠标 hover 时的提示信息。" :README="README">
-    <div class="demo-row">
-      <span class="demo-row-subtitle">基本用法</span>
-      <span>提供 4 种不同方向的展示方式，可以通过以下完整示例来理解，选择你要的效果。</span>
-
-      <div class="demo-row-content">
-        <div class="row-content-item">
-          <span>Tip 向上显示</span>
-          <fat-hover-tip>
-            <template slot="tip-part">向上</template>
-          </fat-hover-tip>
-        </div>
-
-        <div class="row-content-item">
-          <span>Tip 向下显示</span>
-          <fat-hover-tip type="bottom-center">
-            <template slot="tip-part">向下</template>
-          </fat-hover-tip>
-        </div>
-
-        <div class="row-content-item">
-          <span>Tip 向右显示</span>
-          <fat-hover-tip type="right-center">
-            <template slot="tip-part">向右</template>
-          </fat-hover-tip>
-        </div>
-
-        <div class="row-content-item">
-          <span>Tip 向左显示</span>
-          <fat-hover-tip type="left-center">
-            <template slot="tip-part">向左</template>
-          </fat-hover-tip>
-        </div>
+    <Demo-row title="基本用法" description="提供 4 种不同方向的展示方式，可以通过以下完整示例来理解，选择你要的效果" :code="example1">
+      <div class="row-content-item">
+        <span>Tip 向上显示</span>
+        <fat-hover-tip>
+          <template slot="tip-part">向上</template>
+        </fat-hover-tip>
       </div>
-    </div>
 
-    <div class="demo-row">
-      <span class="demo-row-subtitle">自定义Hover-part</span>
-      <span>提供 4 种不同方向的展示方式，可以通过以下完整示例来理解，选择你要的效果。</span>
-
-      <div class="demo-row-content">
-        <div class="row-content-item">
-          <fat-hover-tip>
-            <template slot="hover-part">文字</template>
-            <template slot="tip-part">文字</template>
-          </fat-hover-tip>
-        </div>
-
-        <div class="row-content-item">
-          <fat-hover-tip>
-            <template slot="hover-part">
-              <fat-button>组件</fat-button>
-            </template>
-            <template slot="tip-part">向下</template>
-          </fat-hover-tip>
-        </div>
+      <div class="row-content-item">
+        <span>Tip 向下显示</span>
+        <fat-hover-tip type="bottom-center">
+          <template slot="tip-part">向下</template>
+        </fat-hover-tip>
       </div>
-    </div>
 
-    <div class="demo-row">
-      <span class="demo-row-subtitle">自定义Tip-part</span>
-      <span>提供 4 种不同方向的展示方式，可以通过以下完整示例来理解，选择你要的效果。</span>
-
-      <div class="demo-row-content">
-        <div class="row-content-item">
-          <fat-hover-tip type="right-center">
-            <template slot="hover-part">展示图片</template>
-            <template slot="tip-part">
-              <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1546417415835&di=49edcf497eb88a3e7ef29d48d555de59&imgtype=0&src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn14%2F300%2Fw688h412%2F20181112%2F59da-hnstwwr0231024.jpg" alt="示意图" />
-            </template>
-          </fat-hover-tip>
-        </div>
+      <div class="row-content-item">
+        <span>Tip 向右显示</span>
+        <fat-hover-tip type="right-center">
+          <template slot="tip-part">向右</template>
+        </fat-hover-tip>
       </div>
-    </div>
+
+      <div class="row-content-item">
+        <span>Tip 向左显示</span>
+        <fat-hover-tip type="left-center">
+          <template slot="tip-part">向左</template>
+        </fat-hover-tip>
+      </div>
+    </Demo-row>
+
+    <Demo-row title="自定义Hover-part" description="利用具名插槽来自定义Hover内容" :code="example2">
+      <div class="row-content-item">
+        <fat-hover-tip>
+          <template slot="hover-part">文字</template>
+          <template slot="tip-part">文字</template>
+        </fat-hover-tip>
+      </div>
+
+      <div class="row-content-item">
+        <fat-hover-tip>
+          <template slot="hover-part">
+            <fat-button>组件</fat-button>
+          </template>
+          <template slot="tip-part">向下</template>
+        </fat-hover-tip>
+      </div>
+    </Demo-row>
+
+    <Demo-row title="自定义Tip-part" description="利用具名插槽来自定义Tip内容" :code="example3">
+      <div class="row-content-item">
+        <fat-hover-tip type="right-center">
+          <template slot="hover-part">展示图片</template>
+          <template slot="tip-part">
+            <img src="/static/img/gakki.jpg" alt="示意图">
+          </template>
+        </fat-hover-tip>
+      </div>
+    </Demo-row>
   </Demo-block>
 </template>
 
 <script>
-import DemoBlock from "../common/demo-block";
+import DemoCommon from "../common/demo-common";
 import README from "./README.md";
 
 export default {
-  components: {
-    DemoBlock
-  },
+  mixins: [DemoCommon],
   data() {
     return {
       README
     };
+  },
+  computed: {
+    example1() {
+      return `<fat-hover-tip>
+    <template slot="tip-part">向上</template>
+</fat-hover-tip>
+<fat-hover-tip type="bottom-center">
+    <template slot="tip-part">向下</template>
+</fat-hover-tip>
+<fat-hover-tip type="right-center">
+    <template slot="tip-part">向右</template>
+</fat-hover-tip>
+<fat-hover-tip type="left-center">
+    <template slot="tip-part">向左</template>
+</fat-hover-tip>`;
+    },
+    example2() {
+      return `<fat-hover-tip>
+    <template slot="hover-part">文字</template>
+    <template slot="tip-part">文字</template>
+</fat-hover-tip>
+<fat-hover-tip>
+    <template slot="hover-part">
+        <fat-button>组件</fat-button>
+    </template>
+    <template slot="tip-part">向下</template>
+</fat-hover-tip>`;
+    },
+    example3() {
+      return `<fat-hover-tip type="right-center">
+    <template slot="hover-part">展示图片</template>
+    <template slot="tip-part">
+        <img
+        src="/static/img/gakki.jpg"
+        alt="示意图"
+        >
+    </template>
+</fat-hover-tip>`;
+    }
   }
 };
 </script>

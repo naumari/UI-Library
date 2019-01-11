@@ -40,7 +40,7 @@
 const context = require.context("@/components/", true, /demo\.vue$/);
 const routers = {
   common: ["button", "icon", "filereader", "hovertip"],
-  form: ["slider", "radiogroup", "input", "inputnumber"],
+  form: ["slider", "radiogroup", "input", "inputnumber", "select"],
   notice: ["messagebox", "toast", "message"],
   navigation: ["tabs", "breadcrumb"]
 };
@@ -77,8 +77,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/var.scss";
-
 .page-wrapper {
   position: relative;
   width: 100vw;

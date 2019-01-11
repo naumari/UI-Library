@@ -1,17 +1,5 @@
 > 基于 Input 组件进行拓展的 InputNumber 组件
 
-#### 具体使用
-```html
-<!-- 基础用法 -->
-<fat-input-number v-model="value" />
-<!-- 禁用状态 -->
-<fat-input-number disabled />
-<!-- 步数 -->
-<fat-input-number :step="5" v-model="stepValue" />
-<!-- 最大,最小值限制 -->
-<fat-input-number :max="20" :min="0" :step="5" v-model="value" />
-```
-
 #### Attributes 属性
 
 参数 | 说明 | 类型 | 可选值 | 默认值

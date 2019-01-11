@@ -1,57 +1,66 @@
 <template>
   <Demo-block title="Icon 图标" subtitle="基础的图标。" :README="README">
-    <div class="demo-row">
-      <span class="demo-row-subtitle">不同类型的图标</span>
-      <span>依据material-design-icons的icon，定义name属性，可以显示不同类型的图标。</span>
+    <Demo-row
+      title="不同类型的图标"
+      description="依据material-design-icons的icon，定义name属性，可以显示不同类型的图标"
+      :code="example1"
+    >
+      <fat-icon name="backup" size="32"/>
+      <fat-icon name="book" size="32"/>
+      <fat-icon name="bookmark" size="32"/>
+      <fat-icon name="code" size="32"/>
+      <fat-icon name="done" size="32"/>
+    </Demo-row>
 
-      <div class="demo-row-content">
-        <fat-icon name="backup" size="32"/>
-        <fat-icon name="book" size="32"/>
-        <fat-icon name="bookmark" size="32"/>
-        <fat-icon name="code" size="32"/>
-        <fat-icon name="done" size="32"/>
-      </div>
-    </div>
+    <Demo-row title="可调整大小" description="依据size属性，可以显示不同大小的图标" :code="example1">
+      <fat-icon name="done_all" size="16"/>
+      <fat-icon name="face" size="24"/>
+      <fat-icon name="extension" size="32"/>
+      <fat-icon name="help" size="40"/>
+      <fat-icon name="input" size="48"/>
+    </Demo-row>
 
-    <div class="demo-row">
-      <span class="demo-row-subtitle">可调整大小</span>
-      <span>依据size属性，可以显示不同大小的图标。</span>
-
-      <div class="demo-row-content">
-        <fat-icon name="done_all" size="16"/>
-        <fat-icon name="face" size="24"/>
-        <fat-icon name="extension" size="32"/>
-        <fat-icon name="help" size="40"/>
-        <fat-icon name="input" size="48"/>
-      </div>
-    </div>
-
-    <div class="demo-row">
-      <span class="demo-row-subtitle">可调整样式</span>
-      <span>可自定义图标的样式。</span>
-
-      <div class="demo-row-content">
-        <fat-icon class="icon" name="done_all" size="16"/>
-        <fat-icon class="icon" name="pets" size="24"/>
-        <fat-icon class="icon" name="print" size="32"/>
-      </div>
-    </div>
+    <Demo-row title="可调整样式" description="可自定义图标的样式" :code="example3">
+      <fat-icon name="done_all" size="16"/>
+      <fat-icon name="face" size="24"/>
+      <fat-icon name="extension" size="32"/>
+      <fat-icon name="help" size="40"/>
+      <fat-icon name="input" size="48"/>
+    </Demo-row>
   </Demo-block>
 </template>
 
 <script>
-import DemoBlock from "../common/demo-block";
-import "material-design-icons";
+import DemoCommon from "../common/demo-common";
 import README from "./README.md";
 
 export default {
-  components: {
-    DemoBlock
-  },
+  mixins: [DemoCommon],
   data() {
     return {
       README
     };
+  },
+  computed: {
+    example1() {
+      return `<fat-icon name="backup" size="32"/>
+<fat-icon name="book" size="32"/>
+<fat-icon name="bookmark" size="32"/>
+<fat-icon name="code" size="32"/>
+<fat-icon name="done" size="32"/>`;
+    },
+    example2() {
+      return `<fat-icon name="done_all" size="16"/>
+<fat-icon name="face" size="24"/>
+<fat-icon name="extension" size="32"/>
+<fat-icon name="help" size="40"/>
+<fat-icon name="input" size="48"/>`;
+    },
+    example3() {
+      return `<fat-icon class="icon" name="done_all" size="16"/>
+<fat-icon class="icon" name="pets" size="24"/>
+<fat-icon class="icon" name="print" size="32"/>`;
+    }
   }
 };
 </script>

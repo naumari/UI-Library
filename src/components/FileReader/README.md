@@ -1,35 +1,5 @@
 > 读取本地文件,支持多种上传方式,以及多个上传。
 
-#### 具体使用
-```html
-<!-- 基础用法 -->
-<fat-filereader
-    accept=".png, .jpg"
-    :size="500 * 1024"
-    @success="event => readHandler(event, 'file')"
-    @error="errorHandler"
-/>
-
-<!-- 自定义上传区域 -->
-<fat-filereader @success="event => readHandler(event, 'otherFile')">
-    <div slot="clickarea" class="upload-area">
-        <fat-icon class="icon" name="cloud_upload" size="24"/>
-    </div>
-</fat-filereader>
-
-<!-- 拖拽上传 -->
-<fat-filereader dragable @success="event => readHandler(event, 'anotherFile')">
-    <div slot="clickarea" class="upload-area">
-        <fat-icon class="icon" name="cloud_upload" size="24"/>
-    </div>
-
-    <span v-if="anotherFile.name">已上传：{{ anotherFile.name }}</span>
-</fat-filereader>
-
-<!-- 上传多个文件 -->
-<fat-filereader multiple :limit="5" @success="multipleHandler" @error="errorHandler"/>
-```
-
 #### Attributes 属性
 
 参数 | 说明 | 类型 | 可选值 | 默认值

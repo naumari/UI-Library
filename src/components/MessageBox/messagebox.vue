@@ -50,7 +50,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/var.scss";
+
 
 .mock {
   position: fixed;

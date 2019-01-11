@@ -149,7 +149,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/var.scss";
+
 
 .input-number-wrapper {
   .prepend-part,

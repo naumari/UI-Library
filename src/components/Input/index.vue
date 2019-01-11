@@ -88,7 +88,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/assets/styles/var.scss";
+
 
 .input-wrapper {
   position: relative;

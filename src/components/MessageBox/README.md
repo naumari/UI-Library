@@ -1,28 +1,4 @@
-> 用于提示用户，完成确认的任务
-
-#### 具体使用
-```js
-this.$confirm({
-    title: "自定义提示",
-    content: `<h1 style="color: red;">自定义HTML</h1>`,
-    onConfirm: () => this.$message({
-        content: "确定"
-    }),
-    onCancel: () => this.$message({
-        type: "warn",
-        content: "取消"
-    })
-});
-
-this.$alert({
-    title: "标题名称",
-    content: "这是一段内容",
-    onConfirm: () =>
-    this.$message({
-        content: "确定"
-    })
-});
-```
+> 用于提示用户，完成确认的任务。
 
 #### Attributes 属性
 

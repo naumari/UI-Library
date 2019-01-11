@@ -1,61 +1,33 @@
 <template>
   <Demo-block title="Slider 滑块" subtitle="通过拖动滑块在一个固定区间内进行选择。" :README="README">
-    <div class="demo-row">
-      <span class="demo-row-subtitle">基础用法</span>
-      <span>当用户操作时，左右滑动，快速改变数值。</span>
+    <Demo-row title="基础用法" description="当用户操作时，左右滑动，快速改变数值" :code="example1">
+      <fat-slider/>
+    </Demo-row>
 
-      <div class="demo-row-content">
-        <fat-slider/>
-      </div>
-    </div>
+    <Demo-row title="基本设置" description="设定min为20，max为40，step为5" :code="example2">
+      <fat-slider :min="20" :max="40" step="5" />
+    </Demo-row>
 
-    <div class="demo-row">
-      <span class="demo-row-subtitle">基本设置</span>
-      <span>设定min为20，max为40，step为5。</span>
+    <Demo-row title="自定义初始值" description="可自定义初始值数值" :code="example3">
+      <fat-slider v-model="initValue" />
+    </Demo-row>
 
-      <div class="demo-row-content">
-        <fat-slider :min="20" :max="40" step="5"/>
-      </div>
-    </div>
+    <Demo-row title="隐藏Tooltip" :description="`隐藏Tooltip，取消提示功能，值为${ value }`" :code="example4">
+      <fat-slider v-model="value" :show-tooltip="false"/>
+    </Demo-row>
 
-    <div class="demo-row">
-      <span class="demo-row-subtitle">自定义初始值</span>
-      <span>可自定义初始值数值。</span>
-
-      <div class="demo-row-content">
-        <fat-slider v-model="initValue"/>
-      </div>
-    </div>
-
-    <div class="demo-row">
-      <span class="demo-row-subtitle">隐藏Tooltip</span>
-      <span>隐藏Tooltip，取消提示功能，值为{{ value }}。</span>
-
-      <div class="demo-row-content">
-        <fat-slider v-model="value" :show-tooltip="false"/>
-      </div>
-    </div>
-
-    <div class="demo-row">
-      <span class="demo-row-subtitle">Disabled</span>
-      <span>disable 该组件，无法拖拽</span>
-
-      <div class="demo-row-content">
-        <fat-slider disabled/>
-      </div>
-    </div>
+    <Demo-row title="禁用状态" description="禁用该组件" :code="example5">
+      <fat-slider disabled />
+    </Demo-row>
   </Demo-block>
 </template>
 
 <script>
-import DemoBlock from "../common/demo-block";
-import "material-design-icons";
+import DemoCommon from "../common/demo-common";
 import README from "./README.md";
 
 export default {
-  components: {
-    DemoBlock
-  },
+  mixins: [DemoCommon],
   data() {
     return {
       initValue: 10,
@@ -63,6 +35,23 @@ export default {
 
       README
     };
+  },
+  computed: {
+    example1() {
+      return `<fat-slider />`;
+    },
+    example2() {
+      return `<fat-slider :min="20" :max="40" step="5" />`;
+    },
+    example3() {
+      return `<fat-slider v-model="initValue" />`;
+    },
+    example4() {
+      return `<fat-slider v-model="value" :show-tooltip="false" />`;
+    },
+    example5() {
+      return `<fat-slider disabled />`
+    }
   }
 };
 </script>

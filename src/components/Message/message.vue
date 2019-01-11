@@ -57,7 +57,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/assets/styles/var.scss";
+
 
 $base-height: 50px;
 

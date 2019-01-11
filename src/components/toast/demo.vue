@@ -1,48 +1,77 @@
 <template>
   <Demo-block title="Toast 弹窗" subtitle="悬浮出现在页面角落，显示全局的通知提醒消息。" :README="README">
-    <div class="demo-row" @click.stop="handleClick">
-      <span class="demo-row-subtitle">基础用法</span>
+    <Demo-row title="基础用法" :code="example1">
+      <fat-button class="demo-toast-btn" name="normal" @click.stop="handleClick">可自动关闭</fat-button>
+      <fat-button class="demo-toast-btn" name="normal-close" @click.stop="handleClick">不可自动关闭</fat-button>
+      <fat-button class="demo-toast-btn" name="normal-hide" @click.stop="handleClick">隐藏关闭按钮</fat-button>
+    </Demo-row>
 
-      <fat-button class="demo-toast-btn" name="normal">可自动关闭</fat-button>
-      <fat-button class="demo-toast-btn" name="normal-close">不可自动关闭</fat-button>
-      <fat-button class="demo-toast-btn" name="normal-hide">隐藏关闭按钮</fat-button>
-    </div>
+    <Demo-row title="不同类型" :code="example2">
+      <fat-button class="demo-toast-btn" name="warn" @click.stop="handleClick">警告</fat-button>
+      <fat-button class="demo-toast-btn" name="info" @click.stop="handleClick">消息</fat-button>
+      <fat-button class="demo-toast-btn" name="error" @click.stop="handleClick">错误</fat-button>
+      <fat-button class="demo-toast-btn" name="success" @click.stop="handleClick">成功</fat-button>
+    </Demo-row>
 
-    <div class="demo-row" @click.stop="handleClick">
-      <span class="demo-row-subtitle">不同类型</span>
+    <Demo-row title="不同位置" :code="example3">
+      <fat-button class="demo-toast-btn" name="left" @click.stop="handleClick">左上</fat-button>
+      <fat-button class="demo-toast-btn" name="right" @click.stop="handleClick">右上</fat-button>
+    </Demo-row>
 
-      <fat-button class="demo-toast-btn" name="warn">警告</fat-button>
-      <fat-button class="demo-toast-btn" name="info">消息</fat-button>
-      <fat-button class="demo-toast-btn" name="error">错误</fat-button>
-      <fat-button class="demo-toast-btn" name="success">成功</fat-button>
-    </div>
-
-    <div class="demo-row" @click.stop="handleClick">
-      <span class="demo-row-subtitle">不同位置</span>
-
-      <fat-button class="demo-toast-btn" name="left">左上</fat-button>
-      <fat-button class="demo-toast-btn" name="right">右上</fat-button>
-    </div>
-
-    <div class="demo-row" @click.stop="handleClick">
-      <span class="demo-row-subtitle">监听事件</span>
-      <fat-button class="demo-toast-btn" name="callback">监听toast的关闭</fat-button>
-    </div>
+    <Demo-row title="监听事件" :code="example4">
+      <fat-button class="demo-toast-btn" name="callback" @click.stop="handleClick">监听toast的关闭</fat-button>
+    </Demo-row>
   </Demo-block>
 </template>
 
 <script>
-import DemoBlock from "../common/demo-block";
+import DemoCommon from "../common/demo-common";
 import README from "./README.md";
 
 export default {
-  components: {
-    DemoBlock
-  },
+  mixins: [DemoCommon],
   data() {
     return {
       README
     };
+  },
+  computed: {
+    example1() {
+      return `this.$toast({
+    content: "可自动关闭"
+});
+this.$toast({
+    content: "不可自动关闭",
+    autoClose: false
+});
+this.$toast({
+    content: "隐藏关闭按钮",
+    showClose: false
+});`;
+    },
+    example2() {
+      return `this.$toast({
+    type,
+    content
+});`;
+    },
+    example3() {
+      return `this.$toast({
+    content,
+    position
+});`
+    },
+    example4() {
+      return `this.$toast({
+    ...
+    onClose() {
+        this.$message({
+        content: "toast 已经关闭",
+        position: "top-left"
+        });
+    }
+});`
+    }
   },
   methods: {
     handleClick() {
@@ -88,7 +117,7 @@ export default {
             content: `Content ${selector}`,
             position: `top-right`,
             onClose() {
-              this.$toast({
+              this.$message({
                 content: "toast 已经关闭",
                 position: "top-left"
               });

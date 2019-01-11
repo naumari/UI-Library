@@ -1,39 +1,27 @@
 <template>
   <Demo-block title="Breadcrumb 面包屑" subtitle="显示当前页面的路径，快速返回之前的任意页面。" :README="README ">
-    <div class="demo-row">
-      <span class="demo-row-subtitle">基础用法</span>
-      <span>适用广泛的基础用法。</span>
+    <Demo-row title="基础用法" description="适用广泛的基础用法" :code="example1">
+      <fat-breadcrumb
+        separator="/"
+        :paths="[{ label: '首页', to: '/' }, { label: '面包屑', to: '/Breadcrumb' }, { label: '标签页', to: '/Tabs' }]"
+      />
+    </Demo-row>
 
-      <div class="demo-row-content">
-        <fat-breadcrumb
-          separator="/"
-          :paths="[{ label: '首页', to: '/' }, { label: '面包屑', to: '/Breadcrumb' }, { label: '标签页', to: '/Tabs' }]"
-        />
-      </div>
-    </div>
-
-    <div class="demo-row">
-      <span class="demo-row-subtitle">图标分隔符</span>
-      <span>采用图标来分割不同的cumb。</span>
-
-      <div class="demo-row-content">
-        <fat-breadcrumb
-          :separator-component="separatorComponent"
-          :paths="[{ label: '首页', to: '/' }, { label: '面包屑', to: '/Breadcrumb' }, { label: '标签页', to: '/Tabs' }]"
-        />
-      </div>
-    </div>
+    <Demo-row title="组件分隔符" description="利用组件来分割不同的cumb" :code="example2">
+      <fat-breadcrumb
+        :separator-component="separatorComponent"
+        :paths="[{ label: '首页', to: '/' }, { label: '面包屑', to: '/Breadcrumb' }, { label: '标签页', to: '/Tabs' }]"
+      />
+    </Demo-row>
   </Demo-block>
 </template>
 
 <script>
-import DemoBlock from "../common/demo-block";
+import DemoCommon from "../common/demo-common";
 import README from "./README.md";
 
 export default {
-  components: {
-    DemoBlock
-  },
+  mixins: [DemoCommon],
   data() {
     const _h = this.$createElement;
 
@@ -46,6 +34,20 @@ export default {
         }
       })
     };
+  },
+  computed: {
+    example1() {
+      return `<fat-breadcrumb
+    separator="/"
+    :paths="[{ label: '首页', to: '/' }, { label: '面包屑', to: '/Breadcrumb' }, { label: '标签页', to: '/Tabs' }]"
+/>`;
+    },
+    example2() {
+      return `<fat-breadcrumb
+    :separator-component="separatorComponent"
+    :paths="[{ label: '首页', to: '/' }, { label: '面包屑', to: '/Breadcrumb' }, { label: '标签页', to: '/Tabs' }]"
+/>`
+    }
   }
 };
 </script>

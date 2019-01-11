@@ -1,65 +1,42 @@
 <template>
   <Demo-block title="Tabs 标签页" subtitle="分隔内容上有关联但属于不同类别的数据集合。" :README="README">
-    <div class="demo-row">
-      <span class="demo-row-subtitle">基础用法</span>
-      <span>当用户进行点击Tab操作时会被触发相关内容的切换。</span>
+    <Demo-row title="基础用法" description="当用户操作时，左右滑动，快速改变数值" :code="example1">
+      <fat-tabs @change="handleChange">
+        <fat-tab label="Tab 1" id="tab1">Content of Tab Pane 1</fat-tab>
+        <fat-tab label="Tab 2" id="tab2">Content of Tab Pane 2</fat-tab>
+        <fat-tab label="Tab 3" id="tab3">Content of Tab Pane 3</fat-tab>
+        <fat-tab label="Tab 4" id="tab4">Content of Tab Pane 4</fat-tab>
+      </fat-tabs>
+    </Demo-row>
 
-      <div class="demo-row-content">
-        <fat-tabs @change="handleChange">
-          <fat-tab label="Tab 1" id="tab1">Content of Tab Pane 1</fat-tab>
-          <fat-tab label="Tab 2" id="tab2">Content of Tab Pane 2</fat-tab>
-          <fat-tab label="Tab 3" id="tab3">Content of Tab Pane 3</fat-tab>
-          <fat-tab label="Tab 4" id="tab4">Content of Tab Pane 4</fat-tab>
-        </fat-tabs>
-      </div>
-    </div>
+    <Demo-row title="卡片样式" description="卡片化的标签页，在卡片模式下可设定标签页的关闭按钮" :code="example2">
+      <fat-tabs card>
+        <fat-tab label="Tab 1" id="tab1">Content of Tab Pane 1</fat-tab>
+        <fat-tab label="Tab 2" id="tab2" closable>Content of Tab Pane 2</fat-tab>
+        <fat-tab label="Tab 3" id="tab3">Content of Tab Pane 3</fat-tab>
+        <fat-tab label="Tab 4" id="tab4">Content of Tab Pane 4</fat-tab>
+      </fat-tabs>
+    </Demo-row>
 
-    <div class="demo-row">
-      <span class="demo-row-subtitle">卡片样式</span>
-      <span>卡片化的标签页，在卡片模式下可设定标签页的关闭按钮。</span>
+    <Demo-row title="自定义初始位置以及切换" description="通过v-model指令控制tab活跃的标签页" :code="example3">
+      <fat-tabs v-model="tab">
+        <fat-tab label="Tab 1" id="tab1" cacheable>Content of Tab Pane 1</fat-tab>
+        <fat-tab label="Tab 2" id="tab2">Content of Tab Pane 2</fat-tab>
+        <fat-tab label="Tab 3" id="tab3">Content of Tab Pane 3</fat-tab>
+        <fat-tab label="Tab 4" id="tab4">Content of Tab Pane 4</fat-tab>
+      </fat-tabs>
+    </Demo-row>
 
-      <div class="row-item">
-        <fat-tabs card>
-          <fat-tab label="Tab 1" id="tab1">Content of Tab Pane 1</fat-tab>
-          <fat-tab label="Tab 2" id="tab2" closable>Content of Tab Pane 2</fat-tab>
-          <fat-tab label="Tab 3" id="tab3">Content of Tab Pane 3</fat-tab>
-          <fat-tab label="Tab 4" id="tab4">Content of Tab Pane 4</fat-tab>
-        </fat-tabs>
-      </div>
-    </div>
+    <Demo-row title="禁用" description="禁用指定tab页" :code="example4">
+      <fat-tabs v-model="otherTabActive">
+        <fat-tab label="Tab 1" id="tab1">Content of Tab Pane 1</fat-tab>
+        <fat-tab label="Tab 2" id="tab2" disabled>Content of Tab Pane 2</fat-tab>
+        <fat-tab label="Tab 3" id="tab3">Content of Tab Pane 3</fat-tab>
+        <fat-tab label="Tab 4" id="tab4">Content of Tab Pane 4</fat-tab>
+      </fat-tabs>
+    </Demo-row>
 
-    <div class="demo-row">
-      <span class="demo-row-subtitle">自定义初始位置以及切换</span>
-      <span>通过v-model指令控制tab活跃的标签页。</span>
-      <fat-button size="mini" @click.stop="tab = 'tab2'">点击选中tab2</fat-button>
-
-      <div class="demo-row-content">
-        <fat-tabs v-model="tab">
-          <fat-tab label="Tab 1" id="tab1" cacheable>Content of Tab Pane 1</fat-tab>
-          <fat-tab label="Tab 2" id="tab2">Content of Tab Pane 2</fat-tab>
-          <fat-tab label="Tab 3" id="tab3">Content of Tab Pane 3</fat-tab>
-          <fat-tab label="Tab 4" id="tab4">Content of Tab Pane 4</fat-tab>
-        </fat-tabs>
-      </div>
-    </div>
-
-    <div class="demo-row">
-      <span class="demo-row-subtitle">禁用</span>
-      <span>禁用指定tab页。</span>
-
-      <div class="row-item">
-        <fat-tabs v-model="otherTabActive">
-          <fat-tab label="Tab 1" id="tab1">Content of Tab Pane 1</fat-tab>
-          <fat-tab label="Tab 2" id="tab2" disabled>Content of Tab Pane 2</fat-tab>
-          <fat-tab label="Tab 3" id="tab3">Content of Tab Pane 3</fat-tab>
-          <fat-tab label="Tab 4" id="tab4">Content of Tab Pane 4</fat-tab>
-        </fat-tabs>
-      </div>
-    </div>
-
-    <div class="demo-row">
-      <span class="demo-row-subtitle">动态修改Tab</span>
-      <span class="demo-row-subtitle">实现动态修改Tabs数量，默认选中第一个Tab页</span>
+    <Demo-row title="动态修改Tab" description="实现动态修改Tabs数量，默认选中第一个Tab页">
       <fat-button size="mini" @click.stop="handleClick('add')">添加</fat-button>
       <fat-button size="mini" @click.stop="handleClick('dec')">减少</fat-button>
 
@@ -77,18 +54,16 @@
           </fat-tab>
         </fat-tabs>
       </div>
-    </div>
+    </Demo-row>
   </Demo-block>
 </template>
 
 <script>
-import DemoBlock from "../common/demo-block";
+import DemoCommon from "../common/demo-common";
 import README from "./README.md";
 
 export default {
-  components: {
-    DemoBlock
-  },
+  mixins: [DemoCommon],
   data() {
     return {
       range: 10,
@@ -110,6 +85,40 @@ export default {
 
       README
     };
+  },
+  computed: {
+    example1() {
+      return `<fat-tabs @change="handleChange">
+    <fat-tab label="Tab 1" id="tab1">Content of Tab Pane 1</fat-tab>
+    <fat-tab label="Tab 2" id="tab2">Content of Tab Pane 2</fat-tab>
+    <fat-tab label="Tab 3" id="tab3">Content of Tab Pane 3</fat-tab>
+    <fat-tab label="Tab 4" id="tab4">Content of Tab Pane 4</fat-tab>
+</fat-tabs>`;
+    },
+    example2() {
+      return `<fat-tabs card>
+    <fat-tab label="Tab 1" id="tab1">Content of Tab Pane 1</fat-tab>
+    <fat-tab label="Tab 2" id="tab2" closable>Content of Tab Pane 2</fat-tab>
+    <fat-tab label="Tab 3" id="tab3">Content of Tab Pane 3</fat-tab>
+    <fat-tab label="Tab 4" id="tab4">Content of Tab Pane 4</fat-tab>
+</fat-tabs>`;
+    },
+    example3() {
+      return `<fat-tabs v-model="tab">
+    <fat-tab label="Tab 1" id="tab1" cacheable>Content of Tab Pane 1</fat-tab>
+    <fat-tab label="Tab 2" id="tab2">Content of Tab Pane 2</fat-tab>
+    <fat-tab label="Tab 3" id="tab3">Content of Tab Pane 3</fat-tab>
+    <fat-tab label="Tab 4" id="tab4">Content of Tab Pane 4</fat-tab>
+</fat-tabs>`;
+    },
+    example4() {
+      return `<fat-tabs v-model="otherTabActive">
+    <fat-tab label="Tab 1" id="tab1">Content of Tab Pane 1</fat-tab>
+    <fat-tab label="Tab 2" id="tab2" disabled>Content of Tab Pane 2</fat-tab>
+    <fat-tab label="Tab 3" id="tab3">Content of Tab Pane 3</fat-tab>
+    <fat-tab label="Tab 4" id="tab4">Content of Tab Pane 4</fat-tab>
+</fat-tabs>`;
+    }
   },
   methods: {
     handleClick(type) {

@@ -1,20 +1,5 @@
 > Radio的单选框，互斥选项。
 
-#### 具体使用
-```html
-<!-- 基础用法 -->
-<fat-slider v-model="value" :min="20" :max="40" step="5"/>
-
-<!-- 自定义初始值 -->
-<fat-slider v-model="initValue"/>
-
-<!-- 隐藏Tooltip -->
-<fat-slider v-model="value" :show-tooltip="false"/>
-
-<!-- Disabled -->
-<fat-slider disabled/>
-```
-
 #### Attributes 属性
 
 参数 | 说明 | 类型 | 可选值 | 默认值

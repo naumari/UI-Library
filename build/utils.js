@@ -5,59 +5,69 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const packageConfig = require('../package.json')
 
 exports.assetsPath = function (_path) {
-  const assetsSubDirectory = process.env.NODE_ENV === 'production'
-    ? config.build.assetsSubDirectory
-    : config.dev.assetsSubDirectory
+  const assetsSubDirectory = process.env.NODE_ENV === 'production' ?
+    config.build.assetsSubDirectory :
+    config.dev.assetsSubDirectory
 
   return path.posix.join(assetsSubDirectory, _path)
 }
 
-exports.cssLoaders = function(options) {
-    options = options || {}
+exports.cssLoaders = function (options) {
+  options = options || {}
 
-    const cssLoader = {
-        loader: 'css-loader',
-        options: {
-            minimize: process.env.NODE_ENV === 'production',
-            sourceMap: options.sourceMap,
-            importLoaders: 1
-        }
+  const cssLoader = {
+    loader: 'css-loader',
+    options: {
+      minimize: process.env.NODE_ENV === 'production',
+      sourceMap: options.sourceMap,
+      importLoaders: 1
+    }
+  }
+
+  // generate loader string to be used with extract text plugin
+  function generateLoaders(loader, loaderOptions) {
+    let loaders = []
+    if (loader) {
+      loaders = [{
+        loader: loader + '-loader',
+        options: Object.assign({}, loaderOptions, {
+          sourceMap: options.sourceMap
+        })
+      }]
     }
 
-    // generate loader string to be used with extract text plugin
-    function generateLoaders(loader, loaderOptions) {
-        let loaders = []
-        if (loader) {
-            loaders = [{
-                loader: loader + '-loader',
-                options: Object.assign({}, loaderOptions, {
-                    sourceMap: options.sourceMap
-                })
-            }]
-        }
-
-        if (options.extract) {
-            let extractLoader = {
-                loader: MiniCssExtractPlugin.loader,
-                options: {}
-            }
-            // 不清楚先后顺序是否影响编译，但当前顺序是正确的
-            return [extractLoader, 'css-loader'].concat(['postcss-loader'], loaders)
-        } else {
-            // 不清楚先后顺序是否影响编译，但当前顺序是正确的
-            return ['vue-style-loader', 'css-loader'].concat(['postcss-loader'], loaders)
-        }
+    if (options.extract) {
+      let extractLoader = {
+        loader: MiniCssExtractPlugin.loader,
+        options: {}
+      }
+      // 不清楚先后顺序是否影响编译，但当前顺序是正确的
+      return [extractLoader, 'css-loader'].concat(['postcss-loader'], loaders)
+    } else {
+      // 不清楚先后顺序是否影响编译，但当前顺序是正确的
+      return ['vue-style-loader', 'css-loader'].concat(['postcss-loader'], loaders)
     }
+  }
 
-    return {
-        css: generateLoaders(),
-        postcss: generateLoaders(),
-        less: generateLoaders('less'),
-        sass: generateLoaders('sass', { indentedSyntax: true }),
-        scss: generateLoaders('sass'),
-        stylus: generateLoaders('stylus'),
-        styl: generateLoaders('stylus')
-    }
+  console.log('static', path.resolve(__dirname, '../static'))
+  console.log('common', path.resolve(__dirname, '../src/assets/styles/common.scss'))
+
+  return {
+    css: generateLoaders(),
+    postcss: generateLoaders(),
+    less: generateLoaders('less'),
+    sass: generateLoaders('sass', {
+      indentedSyntax: true
+    }),
+    scss: generateLoaders('sass').concat({
+      loader: 'sass-resources-loader',
+      options: {
+        resources: path.resolve(__dirname, '../src/assets/styles/common.scss')
+      }
+    }),
+    stylus: generateLoaders('stylus'),
+    styl: generateLoaders('stylus')
+  }
 }
 
 // Generate loaders for standalone style files (outside of .vue)

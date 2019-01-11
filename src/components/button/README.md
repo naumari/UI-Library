@@ -1,22 +1,5 @@
 > 常用的操作按钮。
 
-#### 具体使用
-```html
-<!-- 不同尺寸 -->
-<fat-button class="btn" size="mini">超小按钮</fat-button>
-
-<!-- 插入不同图标 -->
-<fat-button class="btn">
-    <fat-icon name="done"/>确定
-</fat-button>
-
-<!-- 不同类型 -->
-<fat-button class="btn" type="success">success</fat-button>
-
-<!-- 禁用状态 -->
-<fat-button class="btn" type="primary" disabled>primary</fat-button>
-```
-
 #### Attributes 属性
 
 参数 | 说明 | 类型 | 可选值 | 默认值
