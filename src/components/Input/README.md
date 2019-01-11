@@ -1,21 +1,4 @@
-> 基于原生的 HTML 标签进行拓展的 Input 组件
-
-#### 具体使用
-```html
-<!-- 基础用法 -->
-<fat-input placeholder="请输入内容" v-model="inputValue" />
-
-<!-- 复合型输入框 -->
-<fat-input placeholder="请输入内容">
-    <template slot="prepend">
-        <div class="prepend-part c-size-s">Http://</div>
-    </template>
-
-    <template slot="append">
-        <div class="append-part c-size-s">.com</div>
-    </template>
-</fat-input>
-```
+> 基于原生的 HTML 标签进行拓展的 Input 组件。
 
 #### Attributes 属性
 

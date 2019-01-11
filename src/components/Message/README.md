@@ -1,17 +1,5 @@
 > 与 Toast 的区别是后者更多用于系统级通知的被动提醒，常用于后台报错等情景。
 
-#### 具体使用
-```js
-this.$message({
-    type,
-    content,
-    verticalOffset,
-    onClose() {
-        console.log("close");
-    }
-});
-```
-
 #### Attributes 属性
 
 参数 | 说明 | 类型 | 可选值 | 默认值

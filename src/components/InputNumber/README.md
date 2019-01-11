@@ -1,4 +1,4 @@
-> 基于 Input 组件进行拓展的 InputNumber 组件
+> 基于 Input 组件进行拓展的 InputNumber 组件。
 
 #### Attributes 属性
 

@@ -1,17 +1,5 @@
 > 用于提示、通知的空间。
 
-#### 具体使用
-```js
-this.$toast({
-    content: `Content ${selector}`,
-    position: `top-right`,
-    autoClose: true,
-    onClose() {
-        ...event handler
-    }
-});
-```
-
 #### Attributes 属性
 
 参数 | 说明 | 类型 | 可选值 | 默认值
