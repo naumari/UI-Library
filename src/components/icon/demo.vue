@@ -21,11 +21,9 @@
     </Demo-row>
 
     <Demo-row title="可调整样式" description="可自定义图标的样式" :code="example3">
-      <fat-icon name="done_all" size="16"/>
-      <fat-icon name="face" size="24"/>
-      <fat-icon name="extension" size="32"/>
-      <fat-icon name="help" size="40"/>
-      <fat-icon name="input" size="48"/>
+      <fat-icon class="icon" name="done_all" size="32"/>
+      <fat-icon class="icon" name="face" size="32"/>
+      <fat-icon class="icon" name="extension" size="32"/>
     </Demo-row>
   </Demo-block>
 </template>
@@ -57,9 +55,9 @@ export default {
 <fat-icon name="input" size="48"/>`;
     },
     example3() {
-      return `<fat-icon class="icon" name="done_all" size="16"/>
-<fat-icon class="icon" name="pets" size="24"/>
-<fat-icon class="icon" name="print" size="32"/>`;
+      return `<fat-icon class="icon" name="done_all" size="32"/>
+<fat-icon class="icon" name="face" size="32"/>
+<fat-icon class="icon" name="extension" size="32"/>`;
     }
   }
 };

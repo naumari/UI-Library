@@ -4,7 +4,8 @@
       :class="['select-wrapper', { 'is-disabled': disabled }]"
       tabindex="0"
       @click.stop="isOpen = !disabled && !isOpen"
-      @blur="isOpen = false"
+      @blur="handleBlur"
+      @focus="handleFocus"
     >
       <div class="select-top-part">
         <template v-if="!selectItems.length">
@@ -89,7 +90,7 @@ export default {
     value: {
       handler(value) {
         const { multiple } = this;
-        const init = value ? value : multiple ? [] : '';
+        const init = value ? value : multiple ? [] : "";
         this.selectValue = multiple ? [...init] : init;
       },
       immediate: true
@@ -104,8 +105,15 @@ export default {
     handleDelete(item) {
       const { value } = item;
       this.selectValue = this.selectValue.filter(item => item !== value);
-      this.$emit('input', this.selectValue);
-      this.$emit('change', this.selectValue);
+      this.$emit("input", this.selectValue);
+      this.$emit("change", this.selectValue);
+    },
+    handleBlur(event) {
+      this.isOpen = false;
+      this.$emit('blur', event);
+    },
+    handleFocus(event) {
+      this.$emit('focus', event);
     }
   }
 };

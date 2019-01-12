@@ -79,10 +79,10 @@ export default {
     },
     example2() {
       return `<fat-filereader dragable @success="event => readHandler(event, 'otherFile')">
-<div slot="clickarea" class="upload-area" :style="filePreviewStyle">
-    <fat-icon v-if="!otherFile.url" class="icon" name="cloud_upload" size="24"/>
-</div>
-<span v-if="otherFile.name">已上传：{{ otherFile.name }}</span>
+    <div slot="clickarea" class="upload-area" :style="filePreviewStyle">
+        <fat-icon v-if="!otherFile.url" class="icon" name="cloud_upload" size="24"/>
+    </div>
+    <span v-if="otherFile.name">已上传：{{ otherFile.name }}</span>
 </fat-filereader>`;
     },
     example3() {

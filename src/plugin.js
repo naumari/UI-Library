@@ -1,8 +1,11 @@
 import marked from 'marked';
 import hljs from 'highlight.js/lib/highlight';
-import 'highlight.js/styles/github.css';
+import 'highlight.js/styles/lightfair.css';
 import javascript from 'highlight.js/lib/languages/javascript';
 import xml from 'highlight.js/lib/languages/xml';
+
+// shades-of-purple
+// qtcreator_light
 
 hljs.registerLanguage ('javascript', javascript);
 hljs.registerLanguage ('xml', xml);

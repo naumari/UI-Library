@@ -80,8 +80,8 @@ export default {
           this.fatSelect.selectValue.push(value);
         }
       }
-      this.$emit('change', this.fatSelect.selectValue);
-      this.fatSelect.$emit('input', this.fatSelect.selectValue);
+      this.fatSelect.$emit("change", this.fatSelect.selectValue);
+      this.fatSelect.$emit("input", this.fatSelect.selectValue);
     },
 
     handleClick() {
@@ -100,8 +100,6 @@ export default {
 </script>
 
 <style lang="scss">
-
-
 .select-option-wrapper {
   padding: 0 24px 0 12px;
   cursor: pointer;

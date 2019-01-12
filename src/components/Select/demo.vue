@@ -1,5 +1,5 @@
 <template>
-  <Demo-block title="Select 选择器" subtitle="当选项过多时，使用下拉菜单展示并选择内容。" :README="README">
+  <Demo-block title="Select 选择器" subtitle="下拉选择器" :README="README">
     <Demo-row title="基础用法" description="适用广泛的基础单选" :code="example1">
       <fat-select v-model="inputValue">
         <fat-option
@@ -153,6 +153,11 @@ export default {
         :disabled="item.disabled"
     >{{ item.label }}</fat-option>
 </fat-select>`;
+    }
+  },
+  methods: {
+    test() {
+        console.log('test')
     }
   }
 };

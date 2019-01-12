@@ -1,4 +1,4 @@
-> 基于原生的 HTML 标签进行拓展的 Input 组件
+> 当选项过多时，使用下拉菜单展示并选择内容。
 
 #### Attributes 属性
 
@@ -14,6 +14,6 @@ collapseTags | 是否缩略已选项 | Boolean | true/false | true
 
 事件名称 | 说明 | 回调函数参数
 --- | --- | --- | 
-change | 在 Input 值改变时触发 | event
-focus | 在 Input 获得焦点时触发 | event
-blur | 在 Input 失去焦点时触发 | event
+change | 在 Select 值改变时触发 | Select Options
+focus | 在 Select 获得焦点时触发 | event
+blur | 在 Select 失去焦点时触发 | event

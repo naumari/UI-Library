@@ -1,42 +1,42 @@
 <template>
-  <div class="main-page">
-    <div class="main-page-header">
-        <div class="loading"></div>
-        <p>{{ msg }}</p>
-    </div>
-
+  <div class="main-page-wrapper">
+    <div class="main-page" ref="main-page"></div>
     <p>有问题可以邮件联系我，Email：duangci@aliyun.com</p>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      msg: "Welcome to Fat-UI-Lib"
-    };
+  created() {
+    let material = new Blotter.SlidingDoorMaterial();
+    let text = new Blotter.Text("Fat-UI Lib", {
+      family: "serif",
+      size: 120,
+      fill: "#171717"
+    });
+    let blotter = new Blotter(material, { texts: text });
+    let scope = blotter.forText(text);
+
+    this.$nextTick(() => {
+      scope.appendTo(this.$refs["main-page"]);
+    });
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-.main-page {
+.main-page-wrapper {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 
-  .main-page-header {
+  .main-page {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-  }
-
-  .loading {
-    display: inline-block;
-    width: 100px;
-    height: 100px;
-    background: url(/static/img/loading.gif) center;
   }
 }
 </style>

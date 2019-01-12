@@ -54,9 +54,14 @@ export default {
   max-width: max-content;
   padding: 16px 16px;
   border: 1px solid #ebedf0;
+  transform: all .5;
 
   &:not(:last-child) {
     margin-top: 14px;
+  }
+
+  &:hover {
+    box-shadow: 2px 2px 5px #bbb;
   }
 
   .demo-row-subtitle:first-child {
@@ -83,6 +88,9 @@ export default {
     .demo-row-example,
     .open-btn {
       margin-top: 16px;
+    }
+    .hljs {
+      line-height: 24px;
     }
   }
 
