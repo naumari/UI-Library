@@ -1,0 +1,162 @@
+{
+  "CN": {
+    "month": [{
+        "label": "1月",
+        "value": 0
+      },
+      {
+        "label": "2月",
+        "value": 1
+      },
+      {
+        "label": "3月",
+        "value": 2
+      },
+      {
+        "label": "4月",
+        "value": 3
+      },
+      {
+        "label": "5月",
+        "value": 4
+      },
+      {
+        "label": "6月",
+        "value": 5
+      },
+      {
+        "label": "7月",
+        "value": 6
+      },
+      {
+        "label": "8月",
+        "value": 7
+      },
+      {
+        "label": "9月",
+        "value": 8
+      },
+      {
+        "label": "10月",
+        "value": 9
+      },
+      {
+        "label": "11月",
+        "value": 10
+      },
+      {
+        "label": "12月",
+        "value": 11
+      }
+    ],
+    "day": [{
+        "type": "week",
+        "label": "日"
+      },
+      {
+        "type": "week",
+        "label": "一"
+      },
+      {
+        "type": "week",
+        "label": "二"
+      },
+      {
+        "type": "week",
+        "label": "三"
+      },
+      {
+        "type": "week",
+        "label": "四"
+      },
+      {
+        "type": "week",
+        "label": "五"
+      },
+      {
+        "type": "week",
+        "label": "六"
+      }
+    ]
+  },
+  "EN": {
+    "month": [{
+        "label": "Jan",
+        "value": 0
+      },
+      {
+        "label": "Feb",
+        "value": 1
+      },
+      {
+        "label": "Mar",
+        "value": 2
+      },
+      {
+        "label": "Apr",
+        "value": 3
+      },
+      {
+        "label": "May",
+        "value": 4
+      },
+      {
+        "label": "Jun",
+        "value": 5
+      },
+      {
+        "label": "Jul",
+        "value": 6
+      },
+      {
+        "label": "Aug",
+        "value": 7
+      },
+      {
+        "label": "Sep",
+        "value": 8
+      },
+      {
+        "label": "Oct",
+        "value": 9
+      },
+      {
+        "label": "Nov",
+        "value": 10
+      },
+      {
+        "label": "Dec",
+        "value": 11
+      }
+    ],
+    "day": [{
+        "type": "week",
+        "label": "Sun"
+      },
+      {
+        "type": "week",
+        "label": "Mon"
+      },
+      {
+        "type": "week",
+        "label": "Tues"
+      },
+      {
+        "type": "week",
+        "label": "Wed"
+      },
+      {
+        "type": "week",
+        "label": "Thur"
+      },
+      {
+        "type": "week",
+        "label": "Fri"
+      },
+      {
+        "type": "week",
+        "label": "Sat"
+      }
+    ]
+  }
+}

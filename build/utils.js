@@ -49,9 +49,6 @@ exports.cssLoaders = function (options) {
     }
   }
 
-  console.log('static', path.resolve(__dirname, '../static'))
-  console.log('common', path.resolve(__dirname, '../src/assets/styles/common.scss'))
-
   return {
     css: generateLoaders(),
     postcss: generateLoaders(),

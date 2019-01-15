@@ -7,7 +7,7 @@
   >
     <textarea
       v-if="type === 'textarea'"
-      class="textarea-inner"
+      class="textarea-inner c-normal c-size-m"
       :value="inputValue"
       v-bind="$attrs"
       v-on="inputListeners"
@@ -19,7 +19,7 @@
       <slot name="prepend"></slot>
 
       <input
-        :class="['input-inner', {
+        :class="['input-inner', 'c-normal', 'c-size-m', {
         'have-prepand': havePrepand,
         'have-append': haveAppend
       }]"
@@ -135,7 +135,6 @@ export default {
     box-sizing: border-box;
     border: 1px solid $main-color;
     border-radius: $base-radius;
-    font-size: 14px;
     color: $font-color;
     text-overflow: ellipsis;
     outline: none;

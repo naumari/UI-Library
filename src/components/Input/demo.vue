@@ -86,7 +86,7 @@ export default {
 <style lang="scss">
 .demo-row-content {
   .input-wrapper {
-    width: 240px;
+    width: 250px;
     &:not(:first-child) {
       margin-top: 16px;
     }

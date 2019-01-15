@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="['select-option-wrapper', { 'is-select': isSelect }, { 'is-disabled': disabled }]"
+    :class="['select-option-wrapper', { 'is-selected': isSelect }, { 'is-disabled': disabled }]"
     @click.stop="handleClick"
   >
     <slot></slot>
@@ -108,7 +108,7 @@ export default {
     background-color: #f5f7fa;
   }
 
-  &.is-select {
+  &.is-selected {
     color: $success-color;
   }
 
