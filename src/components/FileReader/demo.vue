@@ -61,8 +61,6 @@ export default {
   },
   computed: {
     filePreviewStyle() {
-      console.log("otherFile", this.otherFile);
-
       return this.otherFile.url
         ? {
             background: `url(${this.otherFile.url}) no-repeat center / contain`

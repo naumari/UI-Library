@@ -1,5 +1,3 @@
-# Date-Picker 日期选择器
-
 > 用于选择日期
 
 ## Attributes 属性
