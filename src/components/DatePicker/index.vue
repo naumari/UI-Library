@@ -15,14 +15,14 @@
             <fat-icon
               class="panel-header-btn"
               name="chevron_left"
-              @click.stop="handleClick('decYear')"
               :size="20"
+              @click.stop="handleClick('decYear')"
             />
             <fat-icon
               class="panel-header-btn"
               name="chevron_left"
-              @click.stop="handleClick('decMonth')"
               :size="20"
+              @click.stop="handleClick('decMonth')"
             />
           </div>
           <div>
@@ -35,7 +35,6 @@
               @click.stop="handleClick('month')"
             >{{ date.month | dateFormat('month', lang) }}</span>
           </div>
-
           <div>
             <fat-icon
               class="panel-header-btn"
@@ -43,7 +42,6 @@
               :size="20"
               @click.stop="handleClick('addMonth')"
             />
-
             <fat-icon
               class="panel-header-btn"
               name="chevron_right"
@@ -52,13 +50,12 @@
             />
           </div>
         </div>
-
         <date-panel
           class="panel-content"
           :type="panelType"
           :data="list"
-          @select="panelClick"
           :lang="lang"
+          @select="panelClick"
         />
       </div>
     </transition>
@@ -134,6 +131,7 @@ export default {
     },
     dayList() {
       const {
+        lang,
         date: { year, month },
         selectValue
       } = this;
@@ -174,7 +172,8 @@ export default {
           value: item
         });
       }
-      return days;
+
+      return CONST[lang].day.concat(days);
     },
     list() {
       const { panelType, yearList, monthList, dayList } = this;
@@ -257,8 +256,8 @@ export default {
           }
           if (!flag) {
             this.UI.isOpen = flag;
-            document.removeEventListener("click", handler, true);
           }
+          document.removeEventListener("click", handler, true);
         };
         document.addEventListener("click", handler, true);
       }
@@ -277,14 +276,6 @@ export default {
   height: 34px;
   &:focus {
     outline: none;
-  }
-  .arrow {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    text-align: center;
-    background: #fff;
   }
   .picker-data {
     position: relative;

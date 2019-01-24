@@ -1,17 +1,14 @@
 import Vue from 'vue'
-import CONST from '../CONST.json'
 import GeneratorRows from './basic'
 
 export default Vue.component('panel', {
   functional: true,
   render: function (_h, context) {
     const {
-      lang,
-      data,
+      data: list,
       type
     } = context.props
     let result = null
-    let list = type === 'day' ? CONST[lang].day.concat(data) : data
     let num = type === 'day' ? 7 : 3
 
     const clickHandler = (e) => {
@@ -44,14 +41,6 @@ export default Vue.component('panel', {
     return result
   },
   props: {
-    lang: {
-      type: String,
-      default: 'CN'
-    },
-    state: {
-      type: Boolean,
-      default: false
-    },
     data: {
       type: Array,
       default: () => []
