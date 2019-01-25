@@ -4,16 +4,13 @@ import 'highlight.js/styles/lightfair.css';
 import javascript from 'highlight.js/lib/languages/javascript';
 import xml from 'highlight.js/lib/languages/xml';
 
-// shades-of-purple
-// qtcreator_light
-
-hljs.registerLanguage ('javascript', javascript);
-hljs.registerLanguage ('xml', xml);
+hljs.registerLanguage('javascript', javascript);
+hljs.registerLanguage('xml', xml);
 
 export default {
-  install (Vue) {
-    const rendererMD = new marked.Renderer ();
-    marked.setOptions ({
+  install(Vue) {
+    const rendererMD = new marked.Renderer();
+    marked.setOptions({
       renderer: rendererMD,
       gfm: true,
       tables: true,
@@ -25,11 +22,11 @@ export default {
     });
     Vue.prototype.$marked = marked;
 
-    Vue.directive ('highlight', {
-      bind (el) {
-        let blocks = el.querySelectorAll ('code');
-        Array.prototype.forEach.call (blocks, block => {
-          hljs.highlightBlock (block);
+    Vue.directive('highlight', {
+      bind(el) {
+        let blocks = el.querySelectorAll('code');
+        Array.prototype.forEach.call(blocks, block => {
+          hljs.highlightBlock(block);
         });
       },
     });

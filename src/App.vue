@@ -40,9 +40,17 @@
 const context = require.context("@/components/", true, /demo\.vue$/);
 const routers = {
   common: ["button", "icon", "filereader", "hovertip"],
-  form: ["slider", "radiogroup", "input", "inputnumber", "select", "datepicker"],
+  form: [
+    "slider",
+    "radiogroup",
+    "input",
+    "inputnumber",
+    "select",
+    "datepicker"
+  ],
   notice: ["messagebox", "toast", "message"],
-  navigation: ["tabs", "breadcrumb"]
+  navigation: ["tabs", "breadcrumb"],
+  data: ["table"]
 };
 context.keys().forEach(url => {
   const start = url.indexOf("/");
