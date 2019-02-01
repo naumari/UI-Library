@@ -10,11 +10,6 @@ export default {
     label: { type: String, required: true }
   },
   inject: ["fatTable"],
-  data() {
-    return {};
-  },
-  computed: {},
-  watch: {},
   created() {
     this.$nextTick(() => {
       let dom = this.$el.parentNode;
@@ -29,7 +24,7 @@ export default {
         this.fatTable.addLabel(this.label);
 
         this.$destroy = () => {
-          this.fatTable.delLable(this.label);
+          this.fatTable.delLabel(this.label);
         };
       }
     });

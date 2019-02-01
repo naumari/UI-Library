@@ -50,7 +50,7 @@ const routers = {
   ],
   notice: ["messagebox", "toast", "message"],
   navigation: ["tabs", "breadcrumb"],
-  data: ["table"]
+  data: ["table", "pagination"]
 };
 context.keys().forEach(url => {
   const start = url.indexOf("/");

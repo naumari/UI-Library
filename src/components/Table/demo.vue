@@ -126,16 +126,4 @@ export default {
 };
 </script>
 <style lang="scss">
-.demo-row {
-  .row-item-subtitle {
-    min-width: 100px;
-  }
-  .row-item {
-    margin-top: 32px;
-  }
-  .slider-wrapper {
-    max-width: 520px;
-    flex: 1;
-  }
-}
 </style>

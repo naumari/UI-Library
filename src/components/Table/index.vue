@@ -50,7 +50,7 @@ export default {
         });
       }
     },
-    delLable(label) {
+    delLabel(label) {
       this.labels = this.labels.filter(item => item.label !== label);
     }
   }
