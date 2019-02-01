@@ -14,4 +14,4 @@
 
 事件名称 | 说明 | 回调函数参数
 --- | --- | --- | 
-change | 在 Pagination 值改变时触发 | current page
+`change` | 在 Pagination 值改变时触发 | current page
