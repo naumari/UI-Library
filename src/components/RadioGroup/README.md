@@ -4,15 +4,15 @@
 
 参数 | 说明 | 类型 | 可选值 | 默认值
 --- | --- | --- | --- | ---
-`showTooltip` | 是否显示 tooltip | Boolean | - | false
-`disabled` | 是否禁用 | Boolean | - | false
-`min` | 最小值 | Number | - | *
-`max` | 最大值 | Number | - | *
-`step` | 步长 | Number | - | 1
+`value` | 当前 Radio 的值 | String/value | - | -
+`disabled` | 是否禁用 Radio | Boolean | - | false
+`propValue` | `v-model` 绑定的值 | String/value | - | -
 
-#### Events 事件
+> 多个Radio的单选框构成的Radio-Group，互斥选项。
 
-事件名称 | 说明 | 回调函数参数
---- | --- | --- | 
-`change` | 滑动后触发 | -
-`input` | 滑动时触发 | -
+#### Attributes 属性
+
+参数 | 说明 | 类型 | 可选值 | 默认值
+--- | --- | --- | --- | ---
+`value` | 当前 RadioGroup 的值 | String/value | - | -
+`disabled` | 是否禁用 RadioGroup | Boolean | - | false

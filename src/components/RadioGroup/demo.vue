@@ -1,15 +1,33 @@
 <template>
   <Demo-block title="RadioGroup 单选框组" subtitle="在一组备选项中进行单选。" :README="README">
-    <Demo-row title="基础用法" description="适用于在多个互斥的选项中选择的场景" :code="example1">
+    <Demo-row title="基础用法" :description="`适用于在多个互斥的选项中选择的场景，当前选中值${value}`" :code="example1">
       <fat-radio-group v-model="value">
         <fat-radio :value="1">备选项</fat-radio>
         <fat-radio :value="2">备选项</fat-radio>
       </fat-radio-group>
     </Demo-row>
 
-    <Demo-row title="单独使用Radio组件" description="适用少量互斥选项" :code="example2">
-      <fat-radio v-model="otherValue" value="1">备选项</fat-radio>
-      <fat-radio v-model="otherValue" value="2">备选项</fat-radio>
+    <Demo-row title="单独使用Radio组件" :description="`适用少量互斥选项，当前选中值${otherValue}`" :code="example2">
+      <fat-radio v-model="otherValue" :value="1">
+        <fat-hover-tip type="right-center">
+          <template slot="hover-part">あらがき ゆい</template>
+          <template slot="tip-part">
+            <img src="/static/img/gakki.jpg" style="width: 100px" alt="示意图">
+          </template>
+        </fat-hover-tip>
+      </fat-radio>
+      <fat-radio v-model="otherValue" :value="2">
+        <fat-hover-tip type="right-center">
+          <template slot="hover-part">石原さとみ</template>
+          <template slot="tip-part">
+            <img
+              src="/static/img/u=4046980169,286278015&fm=26&gp=0.jpg"
+              style="width: 100px"
+              alt="示意图"
+            >
+          </template>
+        </fat-hover-tip>
+      </fat-radio>
     </Demo-row>
 
     <Demo-row title="禁用状态" description="单选框不可用的状态" :code="example3">
@@ -52,11 +70,6 @@ export default {
     <fat-radio :value="1">备选项</fat-radio>
     <fat-radio :value="2" disabled>备选项</fat-radio>
 </fat-radio-group>`;
-    }
-  },
-  watch: {
-    value(value) {
-      console.log("watch", value);
     }
   }
 };

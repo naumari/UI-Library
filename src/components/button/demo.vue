@@ -24,7 +24,7 @@
       <fat-button class="btn" type="success">success</fat-button>
       <fat-button class="btn" type="warning">warning</fat-button>
       <fat-button class="btn" type="error">error</fat-button>
-      <fat-button class="btn" type="text">文字按钮</fat-button>
+      <fat-button class="btn" type="text">{{ test }}</fat-button>
     </Demo-row>
 
     <Demo-row title="禁用状态" description="不可点击，禁用状态下的按钮" :code="example4">
@@ -51,6 +51,10 @@ export default {
     };
   },
   computed: {
+    test() {
+        // console.log('getter!s', this.$store.getters.total)
+        return this.$store.getters.total
+    },
     example1() {
       return `<fat-button class="btn" size="mini">超小按钮</fat-button>
 <fat-button class="btn" size="small">小型按钮</fat-button>
@@ -85,6 +89,7 @@ export default {
   },
   methods: {
     handleClick(event) {
+      this.$store.state.count += 100
       alert("button click");
     }
   }

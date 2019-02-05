@@ -9,8 +9,8 @@
 export default {
   name: "radio-group",
   props: {
-    value: {},
-    disabled: Boolean
+    value: { type: [String, Number] },
+    disabled: { type: Boolean }
   },
   model: {
     prop: "value",

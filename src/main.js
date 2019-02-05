@@ -34,6 +34,23 @@ context.keys().forEach(url => {
   }
 });
 
+function Store(store) {
+    Object.keys(store).forEach( key => {
+        this[key] = store[key]
+    })
+}
+
+const store = new Store({
+    state: {
+        count: 0
+    },
+    getters: {
+        total: state =>  {
+            return state.count + 1
+        }
+    }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
@@ -42,4 +59,5 @@ new Vue({
     App
   },
   template: '<App/>',
+  store
 });
