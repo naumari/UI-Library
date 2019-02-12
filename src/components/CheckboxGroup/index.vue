@@ -26,7 +26,10 @@ export default {
     },
     deleteItem(item) {
       const { value: selectItems } = this;
-      this.$emit("select", selectItems.filter(selectitem => selectitem !== item));
+      this.$emit(
+        "select",
+        selectItems.filter(selectitem => selectitem !== item)
+      );
     }
   }
 };

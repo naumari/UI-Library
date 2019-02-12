@@ -11,14 +11,7 @@
       <fat-icon name="check"/>
     </span>
     
-    <input
-      v-if="false"
-      type="radio"
-      :disabled="isDisabled"
-      v-bind="$attrs"
-      :value="model"
-      @click.stop
-    >
+    <input v-if="false" type="checkbox" v-bind="$attrs" :value="model" @click.stop>
     <slot></slot>
   </label>
 </template>
@@ -81,10 +74,8 @@ export default {
   methods: {
     handleClick(event) {
       const { isDisabled, isGroup, model, value } = this;
-      if (isGroup) {
-        this.model = value;
-      } else {
-        !this.isDisabled && (this.model = !model);
+      if (!isDisabled) {
+        this.model = isGroup ? value : !model;
       }
     }
   }
