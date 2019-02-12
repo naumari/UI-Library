@@ -1,7 +1,5 @@
 <template>
-  <div :class="[
-            'radio-group'
-        ]" name="radio-group">
+  <div class="radio-group-wrapper" name="radio-group">
     <slot></slot>
   </div>
 </template>
@@ -24,12 +22,12 @@ export default {
 };
 </script>
 <style lang="scss">
-.radio-group {
+.radio-group-wrapper {
   display: flex;
   align-items: center;
 
   $base-space: 20px;
-  .radio {
+  .radio-item {
     &:not(:last-child) {
       margin-right: $base-space;
     }

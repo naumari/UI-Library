@@ -46,7 +46,8 @@ const routers = {
     "input",
     "inputnumber",
     "select",
-    "datepicker"
+    "datepicker",
+    "checkboxgroup"
   ],
   notice: ["messagebox", "toast", "message"],
   navigation: ["tabs", "breadcrumb"],

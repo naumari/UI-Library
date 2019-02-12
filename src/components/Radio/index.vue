@@ -1,15 +1,15 @@
 <template>
   <label
-    class="radio"
     :class="[
+        'radio-item',
         { 'is-checked': value === model },
         { 'is-disabled': isDisabled }
     ]"
     @click.stop="handleClick"
   >
-    <span class="radio-inner"></span>
+    <span class="radio-input"></span>
     <input
-      class="f-hide"
+      v-if="false"
       type="radio"
       :disabled="isDisabled"
       v-bind="$attrs"
@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style lang="scss">
-.radio {
+.radio-item {
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
@@ -74,7 +74,7 @@ export default {
 
   $radio-size: 14px;
   $radio-space: 8px;
-  .radio-inner {
+  .radio-input {
     margin-right: $radio-space;
     display: inline-block;
     width: $radio-size;
@@ -86,7 +86,7 @@ export default {
 
   $radio-checked-size: 16px;
   &.is-checked {
-    .radio-inner {
+    .radio-input {
       width: $radio-checked-size;
       height: $radio-checked-size;
       box-sizing: border-box;
@@ -102,10 +102,6 @@ export default {
     &:hover {
       opacity: 0.5;
     }
-  }
-
-  .f-hide {
-    display: none;
   }
 }
 </style>
