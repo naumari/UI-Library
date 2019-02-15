@@ -1,11 +1,11 @@
 <template>
-  <div :class="['hover-tip', customClass]">
-    <div class="hover-part">
+  <div class="hover-tip-wrapper">
+    <div class="hover-tip__part">
       <slot name="hover-part">
         <fat-icon name="help" size="18" />
       </slot>
     </div>
-    <div :class="[type, 'tip-part']">
+    <div :class="[type, 'hover-tip__tip']">
       <slot name="tip-part"></slot>
       <div class="arrow"></div>
       <div class="block"></div>
@@ -18,8 +18,7 @@ export default {
   name: "hover-tip",
 
   props: {
-    type: { type: String, default: "top-center" },
-    customClass: { type: String, default: "" }
+    type: { type: String, default: "top-center" }
   }
 };
 </script>
@@ -28,14 +27,14 @@ export default {
 $base-offset: 8px;
 $arrow-size: 10px;
 
-.hover-tip {
+.hover-tip-wrapper {
   position: relative;
   display: inline-flex;
-  .hover-part {
+  .hover-tip__part {
     display: flex;
     align-items: center;
   }
-  .tip-part {
+  .hover-tip__tip {
     display: none;
     padding: 20px;
     width: max-content;
@@ -59,7 +58,7 @@ $arrow-size: 10px;
       background: #fff;
     }
   }
-  .hover-part:hover + .tip-part {
+  .hover-tip__part:hover + .hover-tip__tip {
     display: block;
   }
   .left-center,

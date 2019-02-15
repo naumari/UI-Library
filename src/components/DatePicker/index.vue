@@ -3,23 +3,23 @@
     <fat-input
       type="text"
       readonly
-      :class="['picker-data', 'not-select', {'disabled': disabled}]"
+      :class="['date-picker-input', 'not-select', {'disabled': disabled}]"
       :value="selectValue | dateFormat('day', lang)"
       :placeholder="placeholder"
       @click="toggle"
     />
     <transition name="fade">
-      <div class="picker-panel" v-show="UI.isOpen">
-        <div class="panel-header">
+      <div class="date-picker-dropdown" v-show="UI.isOpen">
+        <div class="date-picker-dropdown__header">
           <div class="left-part">
             <fat-icon
-              class="panel-header-btn"
+              class="date-picker-dropdown__header_btn"
               name="chevron_left"
               :size="20"
               @click.stop="handleClick('decYear')"
             />
             <fat-icon
-              class="panel-header-btn"
+              class="date-picker-dropdown__header_btn"
               name="chevron_left"
               :size="20"
               @click.stop="handleClick('decMonth')"
@@ -27,23 +27,23 @@
           </div>
           <div>
             <span
-              class="panel-header-btn"
+              class="date-picker-dropdown__header_btn"
               @click.stop="handleClick('year')"
             >{{ date.year | dateFormat('year', lang) }}</span>
             <span
-              class="panel-header-btn"
+              class="date-picker-dropdown__header_btn"
               @click.stop="handleClick('month')"
             >{{ date.month | dateFormat('month', lang) }}</span>
           </div>
           <div>
             <fat-icon
-              class="panel-header-btn"
+              class="date-picker-dropdown__header_btn"
               name="chevron_right"
               :size="20"
               @click.stop="handleClick('addMonth')"
             />
             <fat-icon
-              class="panel-header-btn"
+              class="date-picker-dropdown__header_btn"
               name="chevron_right"
               :size="20"
               @click.stop="handleClick('addYear')"
@@ -51,7 +51,7 @@
           </div>
         </div>
         <date-panel
-          class="panel-content"
+          class="date-picker-dropdown__content"
           :type="panelType"
           :data="list"
           :lang="lang"
@@ -277,48 +277,48 @@ export default {
   &:focus {
     outline: none;
   }
-  .picker-data {
+  .date-picker-input {
     position: relative;
   }
-  .picker-panel {
+  .date-picker-dropdown {
     position: absolute;
     top: 100%;
     background: #fff;
     border-radius: 4px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     user-select: none;
-    .panel-header {
+    .date-picker-dropdown__header {
       display: flex;
       justify-content: space-between;
       align-items: center;
       height: 48px;
-      .panel-header-btn {
+      .date-picker-dropdown__header_btn {
         &:hover {
           color: $success-color;
         }
       }
     }
-    .panel-content {
+    .date-picker-dropdown__content {
       width: 250px;
       background: #fff;
-      .head-item,
-      .data-item {
-        padding: 0.4em 0;
-        text-align: center;
+    }
+    .date-table-head__item,
+    .date-table-data__item {
+      padding: 0.4em 0;
+      text-align: center;
+    }
+    .date-table-data__item {
+      &:not(.is-selected):hover {
+        cursor: pointer;
+        color: #fff;
+        background: $success-color;
       }
-      .data-item {
-        &:not(.is-selected):hover {
-          cursor: pointer;
-          color: #fff;
-          background: $success-color;
-        }
-        &.is-selected {
-          color: $success-color;
-        }
-        &.pre-month,
-        &.next-month {
-          color: $disabled-color;
-        }
+      &.is-selected {
+        color: $success-color;
+      }
+      &.pre-month,
+      &.next-month {
+        color: $disabled-color;
       }
     }
   }

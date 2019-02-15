@@ -7,7 +7,7 @@
     ]"
     @click.stop="handleClick"
   >
-    <span class="checkbox-input">
+    <span class="checkout-item__input">
       <fat-icon name="check"/>
     </span>
     
@@ -91,7 +91,7 @@ export default {
 
   $size: 14px;
   $space: 8px;
-  .checkbox-input {
+  .checkout-item__input {
     margin-right: $space;
     display: inline-block;
     width: $size;
@@ -105,7 +105,7 @@ export default {
 
   $checked-size: 16px;
   &.is-checked {
-    .checkbox-input {
+    .checkout-item__input {
       display: flex;
       justify-content: center;
       align-items: center;

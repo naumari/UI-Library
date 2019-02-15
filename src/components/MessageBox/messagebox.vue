@@ -1,15 +1,15 @@
 <template>
   <transition name="fade">
     <div class="mock" v-if="visible">
-      <div :class="['message-box']">
-        <h5 class="message-box-header c-size-l">
+      <div class="message-box-wrapper">
+        <h5 class="message-box__header c-size-l">
           <span>{{ title }}</span>
           <fat-icon v-if="showClose" name="close" class="close-btn" @click.stop="close"/>
         </h5>
 
-        <div class="message-box-content c-size-m" v-html="content"></div>
+        <div class="message-box__content c-size-m" v-html="content"></div>
 
-        <div class="message-box-footer">
+        <div class="message-box__footer">
           <fat-button
             size="mini"
             v-if="cancelButtonText && type !== 'alert'"
@@ -66,7 +66,7 @@ export default {
   z-index: 101;
 }
 
-.message-box {
+.message-box-wrapper {
   display: inline-flex;
   flex-direction: column;
   min-width: 420px;
@@ -77,7 +77,7 @@ export default {
   text-align: left;
   overflow: hidden;
   backface-visibility: hidden;
-  .message-box-header {
+  .message-box__header {
     display: inline-flex;
     justify-content: space-between;
     align-items: center;
@@ -85,12 +85,12 @@ export default {
       cursor: pointer;
     }
   }
-  .message-box-content {
+  .message-box__content {
     padding: $l-offset 0;
     max-width: 420px;
     line-height: 20px;
   }
-  .message-box-footer {
+  .message-box__footer {
     display: inline-flex;
     justify-content: flex-end;
     .button {

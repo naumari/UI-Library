@@ -10,7 +10,7 @@
         >{{ item.label }}</th>
       </tr>
     </thead>
-    <tbody class="table-body-wrapper">
+    <tbody class="table__body-wrapper">
       <tr v-for="(item, index) in data" :key="index" :data-index="index" class="tr-wrapper">
         <slot v-bind:item="item"></slot>
       </tr>
@@ -59,7 +59,7 @@ export default {
 <style lang="scss">
 .table-wrapper {
   &.is-stripe {
-    .table-body-wrapper {
+    .table__body-wrapper {
       .tr-wrapper:nth-child(2n) {
         background: $main-color;
       }
@@ -83,7 +83,7 @@ export default {
       text-align: right;
     }
   }
-  .table-body-wrapper {
+  .table__body-wrapper {
     .tr-wrapper:hover {
       background: $hover-color;
     }

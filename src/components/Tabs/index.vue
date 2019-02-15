@@ -1,8 +1,8 @@
 <template>
   <div class="tabs-wrapper">
-    <ul :class="['tabs-header', { 'is-card': card }]">
+    <ul :class="['tabs__header', { 'is-card': card }]">
       <li
-        :class="['tabs-header-item', { 'is-active': activeId === item.id }, { 'is-disabled': item.disabled }]"
+        :class="['tabs__header-item', { 'is-active': activeId === item.id }, { 'is-disabled': item.disabled }]"
         v-for="(item, index) in childrens"
         :key="index"
         @click.stop="!item.disabled && handleClick(item)"
@@ -17,7 +17,7 @@
       </li>
     </ul>
 
-    <div class="tabs-content">
+    <div class="tabs__content">
       <slot></slot>
     </div>
   </div>
@@ -93,12 +93,12 @@ export default {
   display: flex;
   flex-direction: column;
 
-  .tabs-header {
+  .tabs__header {
     position: relative;
     display: flex;
     z-index: 2;
 
-    .tabs-header-item {
+    .tabs__header-item {
       min-width: 72px;
       height: 40px;
       line-height: 40px;
@@ -147,7 +147,7 @@ export default {
     }
     &.is-card {
       border-bottom: none;
-      .tabs-header-item {
+      .tabs__header-item {
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -186,7 +186,7 @@ export default {
       display: none;
     }
   }
-  .tabs-content {
+  .tabs__content {
     padding: 32px 0;
   }
 }

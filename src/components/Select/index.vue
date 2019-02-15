@@ -16,7 +16,7 @@
           <div v-if="!multiple">{{ selectItems[0].label }}</div>
 
           <template v-else-if="!collapseTags">
-            <span v-for="value in selectItems" :key="value.key" class="select-tag-item c-size-s">
+            <span v-for="value in selectItems" :key="value.key" class="select__item_tag c-size-s">
               {{ value.label }}
               <fat-icon
                 class="delete-btn"
@@ -27,7 +27,7 @@
             </span>
           </template>
           <template v-else>
-            <span class="select-tag-item c-size-s">
+            <span class="select__item_tag c-size-s">
               {{ selectItems[0].label }}
               <fat-icon
                 class="delete-btn"
@@ -36,7 +36,7 @@
                 @click.stop="handleDelete(selectItems[0])"
               />
             </span>
-            <span v-if="restValueNum" class="select-tag-item c-size-s c-bold">
+            <span v-if="restValueNum" class="select__item_tag c-size-s c-bold">
               +
               {{ restValueNum }}
             </span>
@@ -46,7 +46,7 @@
 
       <fat-icon v-if="isOpen" class="arrow" name="arrow_drop_up"/>
 
-      <div class="select-bottom-part" v-show="isOpen">
+      <div class="select-dropdown" v-show="isOpen">
         <slot></slot>
       </div>
     </div>
@@ -155,7 +155,7 @@ export default {
     color: #999;
   }
 
-  .select-tag-item {
+  .select__item_tag {
     position: relative;
     display: inline-flex;
     align-items: center;
@@ -186,7 +186,7 @@ export default {
     height: 14px;
   }
 
-  .select-bottom-part {
+  .select-dropdown {
     position: absolute;
     top: 100%;
     left: 0;

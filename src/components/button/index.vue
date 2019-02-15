@@ -1,5 +1,5 @@
 <template>
-<a :class="['button', `button-${size}`, `button-${type}`, { 'is-disabled': disabled }]"
+<a :class="['button-wrapper', `button-${size}`, `button-${type}`, { 'is-disabled': disabled }]"
   v-bind="$attrs" @click="event => !disabled && $emit('click', event)"
 >
   <slot></slot>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.button {
+.button-wrapper {
   position: relative;
   display: inline-flex;
   align-items: center;

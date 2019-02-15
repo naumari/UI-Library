@@ -7,7 +7,7 @@
     ]"
     @click.stop="handleClick"
   >
-    <span class="radio-input"></span>
+    <span class="radio-item_input"></span>
     <input
       v-if="false"
       type="radio"
@@ -74,7 +74,7 @@ export default {
 
   $radio-size: 14px;
   $radio-space: 8px;
-  .radio-input {
+  .radio-item_input {
     margin-right: $radio-space;
     display: inline-block;
     width: $radio-size;
@@ -86,7 +86,7 @@ export default {
 
   $radio-checked-size: 16px;
   &.is-checked {
-    .radio-input {
+    .radio-item_input {
       width: $radio-checked-size;
       height: $radio-checked-size;
       box-sizing: border-box;

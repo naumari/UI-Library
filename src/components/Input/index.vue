@@ -14,7 +14,7 @@
     />
 
     <template v-else>
-      <fat-icon v-if="prefixIcon" class="icon" :name="prefixIcon"/>
+      <fat-icon v-if="prefixIcon" class="input__icon" :name="prefixIcon"/>
 
       <slot name="prepend"></slot>
 
@@ -31,7 +31,7 @@
 
       <slot name="append"></slot>
 
-      <fat-icon v-if="suffixIcon" class="icon" :name="suffixIcon"/>
+      <fat-icon v-if="suffixIcon" class="input__icon" :name="suffixIcon"/>
     </template>
   </div>
 </template>
@@ -96,7 +96,7 @@ export default {
   align-items: center;
   width: 100%;
 
-  .icon {
+  .input__icon {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -111,7 +111,7 @@ export default {
       padding-left: 24px;
     }
 
-    .icon:first-child {
+    .input__icon:first-child {
       left: 6px;
     }
   }
@@ -121,7 +121,7 @@ export default {
       padding-right: 24px;
     }
 
-    .icon:last-child {
+    .input__icon:last-child {
       right: 6px;
     }
   }

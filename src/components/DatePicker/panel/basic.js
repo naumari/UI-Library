@@ -4,7 +4,7 @@ export default function GeneratorRows(_h, type, list, itemNum) {
 
   list.forEach((elem, index) => {
     let dom = index < itemNum ? 'th' : 'td'
-    let className = index < itemNum && type === 'day' ? 'head-item' : `data-item ${elem.type}`
+    let className = index < itemNum && type === 'day' ? 'date-table-head__item' : `date-table-data__item ${elem.type}`
     let label = elem.label || elem.value
 
     row.push(

@@ -1,0 +1,26 @@
+.breadcrumb-wrapper {
+  display: flex;
+  align-items: center;
+
+  .breadcrumb__separator {
+    display: inline-block;
+    margin: 0 $s-offset;
+    font-weight: 700;
+    color: #c0c4cc;
+    font-size: 0.8em;
+  }
+
+  .breadcrumb__item {
+    color: #1f2f3d;
+    text-decoration: none;
+
+    &:hover {
+      color: $success-color;
+      cursor: pointer;
+    }
+
+    &.router-link-active {
+      font-weight: 600;
+    }
+  }
+}
