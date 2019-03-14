@@ -1,5 +1,5 @@
 <template>
-  <div class="pagination-wrapper">
+  <div class="pagination">
     <ul :class="['pagination-inner', { 'has-background': background }]">
       <li
         :class="['pagination-item', 'pre', { 'is-disabled': !canPre }]"
@@ -147,7 +147,7 @@ export default {
 </script>
 
 <style lang="scss">
-.pagination-wrapper {
+.pagination {
   padding: 3px 0 5px 0;
 
   .pagination-inner {

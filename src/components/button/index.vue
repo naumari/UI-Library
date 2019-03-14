@@ -1,5 +1,5 @@
 <template>
-<a :class="['button-wrapper', `button-${size}`, `button-${type}`, { 'is-disabled': disabled }]"
+<a :class="['button', `is-${size}`, `is-${type}`, { 'is-disabled': disabled }]"
   v-bind="$attrs" @click="event => !disabled && $emit('click', event)"
 >
   <slot></slot>
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.button-wrapper {
+.button {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -46,27 +46,27 @@ export default {
     }
   }
 
-  &.button-mini {
+  &.is-mini {
     padding: $s-offset $s-offset;
     font-size: 0.8em;
   }
 
-  &.button-small {
+  &.is-small {
     padding: $s-offset $m-offset;
     font-size: 0.9em;
   }
 
-  &.button-medium {
+  &.is-medium {
     padding: $s-offset $l-offset;
     font-size: 1em;
   }
 
-  &.button-large {
+  &.is-large {
     padding: $s-offset $xl-offset;
     font-size: 1.2em;
   }
 
-  &.button-primary {
+  &.is-primary {
     color: #f7f7f7;
     border: 1px solid #92cc41;
     background-color: #92cc41;
@@ -88,7 +88,7 @@ export default {
     }
   }
 
-  &.button-success {
+  &.is-success {
     color: #f7f7f7;
     border: 1px solid #209cee;
     background-color: #209cee;
@@ -110,7 +110,7 @@ export default {
     }
   }
 
-  &.button-warning {
+  &.is-warning {
     color: #f7f7f7;
     border: 1px solid #f7d51d;
     background-color: #f7d51d;
@@ -132,7 +132,7 @@ export default {
     }
   }
 
-  &.button-error {
+  &.is-error {
     color: #f7f7f7;
     border: 1px solid #e76e55;
     background-color: #e76e55;
@@ -154,7 +154,7 @@ export default {
     }
   }
 
-  &.button-text {
+  &.is-text {
     padding: 0 0;
     color: #606266;
     background-color: transparent;

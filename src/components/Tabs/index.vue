@@ -1,5 +1,5 @@
 <template>
-  <div class="tabs-wrapper">
+  <div class="tabs">
     <ul :class="['tabs__header', { 'is-card': card }]">
       <li
         :class="['tabs__header-item', { 'is-active': activeId === item.id }, { 'is-disabled': item.disabled }]"
@@ -89,7 +89,7 @@ export default {
 <style lang="scss">
 @import "../../assets/styles/var.scss";
 
-.tabs-wrapper {
+.tabs {
   display: flex;
   flex-direction: column;
 

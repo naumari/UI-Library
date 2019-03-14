@@ -1,5 +1,5 @@
 <template>
-  <div class="radio-group-wrapper" name="radio-group">
+  <div class="radio-group" name="radio-group">
     <slot></slot>
   </div>
 </template>
@@ -22,7 +22,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.radio-group-wrapper {
+.radio-group {
   display: flex;
   align-items: center;
 

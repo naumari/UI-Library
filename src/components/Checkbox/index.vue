@@ -1,17 +1,23 @@
 <template>
   <label
     :class="[
-        'checkbox-item',
-        { 'is-checked': isChecked },
-        { 'is-disabled': isDisabled }
+      'checkbox',
+      { 'is-checked': isChecked },
+      { 'is-disabled': isDisabled }
     ]"
     @click.stop="handleClick"
   >
-    <span class="checkout-item__input">
-      <fat-icon name="check"/>
+    <span class="checkbox__label">
+      <fat-icon name="check" />
     </span>
-    
-    <input v-if="false" type="checkbox" v-bind="$attrs" :value="model" @click.stop>
+
+    <input
+      v-if="false"
+      type="checkbox"
+      v-bind="$attrs"
+      :value="model"
+      @click.stop
+    />
     <slot></slot>
   </label>
 </template>
@@ -83,7 +89,7 @@ export default {
 </script>
 
 <style lang="scss">
-.checkbox-item {
+.checkbox {
   display: inline-flex;
   align-items: center;
   vertical-align: middle;
@@ -91,7 +97,7 @@ export default {
 
   $size: 14px;
   $space: 8px;
-  .checkout-item__input {
+  .checkbox__label {
     margin-right: $space;
     display: inline-block;
     width: $size;
@@ -105,7 +111,7 @@ export default {
 
   $checked-size: 16px;
   &.is-checked {
-    .checkout-item__input {
+    .checkbox__label {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -118,7 +124,7 @@ export default {
       border: none;
       transition: background 0.5s;
 
-      .icon-wrapper {
+      .icon {
         display: inline-block;
         color: #fff;
       }

@@ -1,5 +1,5 @@
 <template>
-  <i class="icon-wrapper material-icons" :style="iconSize" v-bind="$attrs" v-on="$listeners">{{ name }}</i>
+  <i class="icon material-icons" :style="iconSize" v-bind="$attrs" v-on="$listeners">{{ name }}</i>
 </template>
 
 <script>
@@ -20,7 +20,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.icon-wrapper {
+.icon {
   user-select: none;
 }
 </style>

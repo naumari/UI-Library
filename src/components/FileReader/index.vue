@@ -1,5 +1,5 @@
 <template>
-  <div :class="['file-reader-wrapper', { 'is-disabled': disabled }]">
+  <div :class="['file-reader', { 'is-disabled': disabled }]">
     <div
       class="file-reader__click-area"
       @click.stop="eventHandler('readFile')"
@@ -19,7 +19,7 @@
       v-bind="$attrs"
       @change="event => eventHandler('change', event)"
       :disabled="disabled"
-    >
+    />
   </div>
 </template>
 
@@ -127,7 +127,7 @@ export default {
 </script>
 
 <style lang="scss">
-.file-reader-wrapper {
+.file-reader {
   display: inline-block;
   &.is-disabled {
     cursor: not-allowed;

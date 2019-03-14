@@ -1,8 +1,8 @@
 <template>
-  <div :class="['slider-wrapper', { 'is-disabled': disabled }]">
-    <div v-if="!isIE" class="progress" :style="progressStyle"></div>
+  <div :class="['slider', { 'is-disabled': disabled }]">
+    <div v-if="!isIE" class="slider__progress" :style="progressStyle"></div>
     <input
-      :class="['slider-inner', { 'is-disabled': disabled }]"
+      :class="['slider__inner', { 'is-disabled': disabled }]"
       :disabled="disabled"
       :min="min"
       :max="max"
@@ -73,7 +73,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.slider-wrapper {
+.slider {
   position: relative;
   display: flex;
   align-items: center;
@@ -90,7 +90,7 @@ export default {
     color: #fff;
     background: rgba(0, 0, 0, 0.7);
   }
-  .progress {
+  .slider__progress {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -108,7 +108,7 @@ export default {
     cursor: grab;
     transition: all 0.3s;
   }
-  .slider-inner {
+  .slider__inner {
     position: relative;
     margin: 0 0;
     padding: 0 0;
@@ -224,7 +224,7 @@ export default {
     }
   }
   &.is-disabled {
-    .slider-inner {
+    .slider__inner {
       cursor: not-allowed;
     }
     &::-webkit-slider-thumb {

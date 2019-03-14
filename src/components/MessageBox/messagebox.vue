@@ -1,7 +1,7 @@
 <template>
   <transition name="fade">
     <div class="mock" v-if="visible">
-      <div class="message-box-wrapper">
+      <div class="message-box">
         <h5 class="message-box__header c-size-l">
           <span>{{ title }}</span>
           <fat-icon v-if="showClose" name="close" class="close-btn" @click.stop="close"/>
@@ -66,7 +66,7 @@ export default {
   z-index: 101;
 }
 
-.message-box-wrapper {
+.message-box {
   display: inline-flex;
   flex-direction: column;
   min-width: 420px;

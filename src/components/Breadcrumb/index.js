@@ -46,7 +46,7 @@ export default {
       'div',
       {
         class: {
-          'breadcrumb-wrapper': true,
+          'breadcrumb': true,
         },
       },
       elements

@@ -1,23 +1,30 @@
 <template>
   <div class="demo-row">
     <span class="demo-row-subtitle">{{ title }}</span>
-    <span v-if="description" class="demo-row-description">{{ description }}。</span>
+    <span v-if="description" class="demo-row-description"
+      >{{ description }}。</span
+    >
 
     <div class="demo-row-content">
       <div>
-          <slot></slot>
+        <slot></slot>
       </div>
-    
+
       <fat-button class="btn open-btn" type="text" @click.stop="handleClick">
         <fat-icon name="code" />示例代码
       </fat-button>
-      <div v-if="UI.isOpen && code" class="demo-row-example" v-html="compiledCode" v-highlight></div>
+      <div
+        v-if="UI.isOpen && code"
+        class="demo-row-example"
+        v-html="compiledCode"
+        v-highlight
+      ></div>
     </div>
   </div>
 </template>
 
 <script>
-import { StringToCode } from './utils';
+import { StringToCode } from "./utils";
 
 export default {
   props: {
@@ -54,7 +61,7 @@ export default {
   max-width: max-content;
   padding: 16px 16px;
   border: 1px solid #ebedf0;
-  transform: all .5;
+  transform: all 0.5;
 
   &:not(:last-child) {
     margin-top: 14px;
@@ -100,6 +107,14 @@ export default {
 
     .row-item-subtitle:first-child {
       margin: 8px 8px 8px 0;
+    }
+  }
+
+  .input,
+  .select {
+    width: 250px;
+    &:not(:first-child) {
+      margin-top: 16px;
     }
   }
 }

@@ -163,12 +163,4 @@ export default {
 };
 </script>
 <style lang="scss">
-.demo-row-content {
-  .select-wrapper {
-    width: 240px;
-    &:not(:first-child) {
-      margin-top: 16px;
-    }
-  }
-}
 </style>

@@ -84,14 +84,6 @@ export default {
 };
 </script>
 <style lang="scss">
-.demo-row-content {
-  .input-wrapper {
-    width: 250px;
-    &:not(:first-child) {
-      margin-top: 16px;
-    }
-  }
-}
 .prepend-part,
 .append-part {
   display: block;

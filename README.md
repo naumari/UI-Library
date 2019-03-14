@@ -27,6 +27,39 @@ npm run build --report
 
 <hr/>
 
+> 开发规范
+
+* Style
+
+  参考<span style="color: #666;">[BEM 命名规范](https://www.w3cplus.com/css/bem-definitions.html)</span>进行的魔改自定义：）。
+
+  * 外层：最外层为组件块（Block），命名规范为（组件名），例如 `button`（一般一到两个单词，利用`-`连接）；
+
+  * 子元素：利用`__`符号连接，例如 `table` 组件存在 `head` 以及 `body`，则表示为 `table__head`，以及 `tabel__body`，如果依次往下还存在着子元素，则利用上层元素的来命名 `body__head`；
+
+  * 状态：利用 vue 动态class 结合 sass 
+
+    `:class="['table', { 'is-stripe': stripe }]"`
+
+    ```scss
+    .table {
+      // 或 have-..
+      &.is-stripe {
+        .table__body {
+          ...
+        }
+      }
+    }
+    ```
+
+* JavaScript
+
+  todo 补充
+
+
+
+<hr/>
+
 >开发文档
 
 + [从零实现Vue的组件库（零）- 基本结构以及构建工具](https://juejin.im/post/5c0b8ece5188254f9e2809fe)

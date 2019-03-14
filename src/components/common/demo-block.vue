@@ -9,7 +9,9 @@
         :key="index"
         :class="['demo-nav-item', { 'is-active': index === UI.activeIndex }]"
         @click.stop="scrollTo(item.offsetTop)"
-      >{{ item.title }}</p>
+      >
+        {{ item.title }}
+      </p>
     </div>
 
     <slot></slot>

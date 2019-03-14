@@ -1,5 +1,5 @@
 <template>
-  <table :class="['table-wrapper', { 'is-stripe': stripe }]">
+  <table :class="['table', { 'is-stripe': stripe }]">
     <thead>
       <tr class="tr-wrapper">
         <th
@@ -7,11 +7,18 @@
           :key="index"
           :colspan="item.colspan"
           :class="`th-wrapper c-size-l c-bold text-${align}`"
-        >{{ item.label }}</th>
+        >
+          {{ item.label }}
+        </th>
       </tr>
     </thead>
     <tbody class="table__body-wrapper">
-      <tr v-for="(item, index) in data" :key="index" :data-index="index" class="tr-wrapper">
+      <tr
+        v-for="(item, index) in data"
+        :key="index"
+        :data-index="index"
+        class="tr-wrapper"
+      >
         <slot v-bind:item="item"></slot>
       </tr>
     </tbody>
@@ -35,8 +42,6 @@ export default {
       labels: []
     };
   },
-  computed: {},
-  watch: {},
   methods: {
     addLabel(label) {
       const { labels } = this;
@@ -57,7 +62,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.table-wrapper {
+.table {
   &.is-stripe {
     .table__body-wrapper {
       .tr-wrapper:nth-child(2n) {

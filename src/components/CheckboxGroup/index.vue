@@ -1,5 +1,5 @@
 <template>
-  <div class="checkbox-group-wrapper" name="checkbox-group">
+  <div class="checkbox-group" name="checkbox-group">
     <slot></slot>
   </div>
 </template>
@@ -35,7 +35,7 @@ export default {
 };
 </script>
 <style lang="scss">
-.checkbox-group-wrapper {
+.checkbox-group {
   display: flex;
   align-items: center;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="hover-tip-wrapper">
+  <div class="hover-tip">
     <div class="hover-tip__part">
       <slot name="hover-part">
         <fat-icon name="help" size="18" />
@@ -7,8 +7,8 @@
     </div>
     <div :class="[type, 'hover-tip__tip']">
       <slot name="tip-part"></slot>
-      <div class="arrow"></div>
-      <div class="block"></div>
+      <div class="tip__arrow"></div>
+      <div class="tip__block"></div>
     </div>
   </div>
 </template>
@@ -25,9 +25,9 @@ export default {
 
 <style lang="scss">
 $base-offset: 8px;
-$arrow-size: 10px;
+$tip__arrow-size: 10px;
 
-.hover-tip-wrapper {
+.hover-tip {
   position: relative;
   display: inline-flex;
   .hover-tip__part {
@@ -46,14 +46,14 @@ $arrow-size: 10px;
     box-shadow: 0 0 4px 0 #babec1;
     z-index: 2;
 
-    .arrow {
+    .tip__arrow {
       position: absolute;
-      width: $arrow-size;
-      height: $arrow-size;
+      width: $tip__arrow-size;
+      height: $tip__arrow-size;
       background-color: #fff;
       box-shadow: 0 0 4px 0 #babec1;
     }
-    .block {
+    .tip__block {
       position: absolute;
       background: #fff;
     }
@@ -66,10 +66,10 @@ $arrow-size: 10px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    .arrow {
+    .tip__arrow {
       top: 50%;
     }
-    .block {
+    .tip__block {
       top: 50%;
       width: 8px;
       height: 15px;
@@ -80,11 +80,11 @@ $arrow-size: 10px;
     margin-left: $base-offset;
     left: 100%;
 
-    .arrow {
+    .tip__arrow {
       left: 0;
       transform: translateY(-50%) translateX(-50%) rotateZ(45deg);
     }
-    .block {
+    .tip__block {
       left: 0;
     }
   }
@@ -92,11 +92,11 @@ $arrow-size: 10px;
     margin-right: $base-offset;
     right: 100%;
 
-    .arrow {
+    .tip__arrow {
       right: 0;
       transform: translateY(-50%) translateX(50%) rotateZ(45deg);
     }
-    .block {
+    .tip__block {
       right: 0;
     }
   }
@@ -105,10 +105,10 @@ $arrow-size: 10px;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    .arrow {
+    .tip__arrow {
       left: 50%;
     }
-    .block {
+    .tip__block {
       left: 50%;
       width: 15px;
       height: 8px;
@@ -119,11 +119,11 @@ $arrow-size: 10px;
     margin-top: $base-offset;
     top: 100%;
 
-    .arrow {
+    .tip__arrow {
       top: 0;
       transform: translateY(-50%) translateX(-50%) rotateZ(45deg);
     }
-    .block {
+    .tip__block {
       top: 0;
     }
   }
@@ -131,11 +131,11 @@ $arrow-size: 10px;
     margin-bottom: $base-offset;
     bottom: 100%;
 
-    .arrow {
+    .tip__arrow {
       bottom: 0;
       transform: translateY(50%) translateX(-50%) rotateZ(45deg);
     }
-    .block {
+    .tip__block {
       bottom: 0;
     }
   }

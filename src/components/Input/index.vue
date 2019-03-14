@@ -1,28 +1,36 @@
 <template>
   <div
-    :class="['input-wrapper', {
-    'have-prefix-icon': prefixIcon,
-    'have-suffix-icon': suffixIcon
-  }]"
+    :class="[
+      'input',
+      {
+        'have-prefix-icon': prefixIcon,
+        'have-suffix-icon': suffixIcon
+      }
+    ]"
   >
     <textarea
       v-if="type === 'textarea'"
-      class="textarea-inner c-normal c-size-m"
+      class="input__textarea-inner c-normal c-size-m"
       :value="inputValue"
       v-bind="$attrs"
       v-on="inputListeners"
     />
 
     <template v-else>
-      <fat-icon v-if="prefixIcon" class="input__icon" :name="prefixIcon"/>
+      <fat-icon v-if="prefixIcon" class="input__icon" :name="prefixIcon" />
 
       <slot name="prepend"></slot>
 
       <input
-        :class="['input-inner', 'c-normal', 'c-size-m', {
-        'have-prepand': havePrepand,
-        'have-append': haveAppend
-      }]"
+        :class="[
+          'input__input-inner',
+          'c-normal',
+          'c-size-m',
+          {
+            'have-prepand': havePrepand,
+            'have-append': haveAppend
+          }
+        ]"
         :type="type"
         :value="inputValue"
         v-bind="$attrs"
@@ -31,7 +39,7 @@
 
       <slot name="append"></slot>
 
-      <fat-icon v-if="suffixIcon" class="input__icon" :name="suffixIcon"/>
+      <fat-icon v-if="suffixIcon" class="input__icon" :name="suffixIcon" />
     </template>
   </div>
 </template>
@@ -88,9 +96,7 @@ export default {
 </script>
 
 <style lang="scss">
-
-
-.input-wrapper {
+.input {
   position: relative;
   display: flex;
   align-items: center;
@@ -107,7 +113,7 @@ export default {
   }
 
   &.have-prefix-icon {
-    .input-inner {
+    .input__input-inner {
       padding-left: 24px;
     }
 
@@ -117,7 +123,7 @@ export default {
   }
 
   &.have-suffix-icon {
-    .input-inner {
+    .input__input-inner {
       padding-right: 24px;
     }
 
@@ -126,8 +132,8 @@ export default {
     }
   }
 
-  .input-inner,
-  .textarea-inner {
+  .input__input-inner,
+  .input__textarea-inner {
     padding: 0 $m-offset;
     width: 100%;
     min-height: 32px;
@@ -165,7 +171,7 @@ export default {
     }
   }
 
-  .textarea-inner {
+  .input__textarea-inner {
     min-height: 2.5em;
     line-height: 32px;
   }

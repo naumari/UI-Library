@@ -1,15 +1,15 @@
 <template>
-  <div class="date-picker-wrapper" ref="date-picker">
+  <div class="date-picker" ref="date-picker">
     <fat-input
       type="text"
       readonly
-      :class="['date-picker-input', 'not-select', {'disabled': disabled}]"
+      :class="['date-picker__input', 'not-select', {'disabled': disabled}]"
       :value="selectValue | dateFormat('day', lang)"
       :placeholder="placeholder"
       @click="toggle"
     />
     <transition name="fade">
-      <div class="date-picker-dropdown" v-show="UI.isOpen">
+      <div class="date-picker__dropdown" v-show="UI.isOpen">
         <div class="date-picker-dropdown__header">
           <div class="left-part">
             <fat-icon
@@ -267,7 +267,7 @@ export default {
 </script>
 
 <style lang="scss">
-.date-picker-wrapper {
+.date-picker {
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -277,10 +277,10 @@ export default {
   &:focus {
     outline: none;
   }
-  .date-picker-input {
+  .date-picker__input {
     position: relative;
   }
-  .date-picker-dropdown {
+  .date-picker__dropdown {
     position: absolute;
     top: 100%;
     background: #fff;

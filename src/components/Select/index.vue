@@ -1,13 +1,13 @@
 <template>
   <transition name="fade">
     <div
-      :class="['select-wrapper', { 'is-disabled': disabled }]"
+      :class="['select', { 'is-disabled': disabled }]"
       tabindex="0"
       @click.stop="isOpen = !disabled && !isOpen"
       @blur="handleBlur"
       @focus="handleFocus"
     >
-      <div class="select-top-part">
+      <div>
         <template v-if="!selectItems.length">
           <span class="placeholder">{{ placeholder }}</span>
         </template>
@@ -16,7 +16,11 @@
           <div v-if="!multiple">{{ selectItems[0].label }}</div>
 
           <template v-else-if="!collapseTags">
-            <span v-for="value in selectItems" :key="value.key" class="select__item_tag c-size-s">
+            <span
+              v-for="value in selectItems"
+              :key="value.key"
+              class="select__item-tag c-size-s"
+            >
               {{ value.label }}
               <fat-icon
                 class="delete-btn"
@@ -27,7 +31,7 @@
             </span>
           </template>
           <template v-else>
-            <span class="select__item_tag c-size-s">
+            <span class="select__item-tag c-size-s">
               {{ selectItems[0].label }}
               <fat-icon
                 class="delete-btn"
@@ -36,7 +40,7 @@
                 @click.stop="handleDelete(selectItems[0])"
               />
             </span>
-            <span v-if="restValueNum" class="select__item_tag c-size-s c-bold">
+            <span v-if="restValueNum" class="select__item-tag c-size-s c-bold">
               +
               {{ restValueNum }}
             </span>
@@ -44,7 +48,7 @@
         </template>
       </div>
 
-      <fat-icon v-if="isOpen" class="arrow" name="arrow_drop_up"/>
+      <fat-icon v-if="isOpen" class="arrow" name="arrow_drop_up" />
 
       <div class="select-dropdown" v-show="isOpen">
         <slot></slot>
@@ -110,17 +114,17 @@ export default {
     },
     handleBlur(event) {
       this.isOpen = false;
-      this.$emit('blur', event);
+      this.$emit("blur", event);
     },
     handleFocus(event) {
-      this.$emit('focus', event);
+      this.$emit("focus", event);
     }
   }
 };
 </script>
 
 <style lang="scss">
-.select-wrapper {
+.select {
   position: relative;
   padding: 0 24px 0 12px;
   width: 100%;
@@ -155,7 +159,7 @@ export default {
     color: #999;
   }
 
-  .select__item_tag {
+  .select__item-tag {
     position: relative;
     display: inline-flex;
     align-items: center;

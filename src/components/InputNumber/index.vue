@@ -1,7 +1,7 @@
 <template>
-  <div class="input-number-wrapper" ref="input-number">
+  <div class="input-number" ref="input-number">
     <fat-input
-      class="input-number-inner"
+      class="input-number__inner"
       type="text"
       :disabled="disabled"
       v-model="inputValue"
@@ -151,7 +151,7 @@ export default {
 <style lang="scss">
 
 
-.input-number-wrapper {
+.input-number {
   .prepend-part,
   .append-part {
     display: flex;
@@ -168,9 +168,9 @@ export default {
       color: $success-color;
     }
   }
-  .input-number-inner {
+  .input-number__inner {
     max-width: 150px;
-    .input-inner {
+    .input__input-inner {
       text-align: center;
     }
   }
