@@ -98,6 +98,7 @@ export default {
     border-radius: 3px;
     height: 6px;
     background: #409eff;
+    pointer-events: none;
     z-index: 1;
   }
   @mixin thumb-common-style() {

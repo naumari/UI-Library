@@ -39,17 +39,17 @@
 <script>
 const context = require.context("@/components/", true, /demo\.vue$/);
 const routers = {
-  common: ["button", "icon", "filereader", "hovertip"],
+  common: ["button", "icon", "file-reader", "hover-tip", "dropdown"],
   form: [
     "slider",
-    "radiogroup",
+    "radio-group",
     "input",
-    "inputnumber",
+    "input-number",
     "select",
-    "datepicker",
-    "checkboxgroup"
+    "date-picker",
+    "checkbox-group",
   ],
-  notice: ["messagebox", "toast", "message"],
+  notice: ["message-box", "toast", "message"],
   navigation: ["tabs", "breadcrumb"],
   data: ["table", "pagination"]
 };
