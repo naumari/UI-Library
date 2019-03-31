@@ -154,11 +154,6 @@ export default {
     >{{ item.label }}</fat-option>
 </fat-select>`;
     }
-  },
-  methods: {
-    test() {
-        console.log('test')
-    }
   }
 };
 </script>

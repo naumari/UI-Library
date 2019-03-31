@@ -55,8 +55,6 @@
   }
 }
 
-
-
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
@@ -95,8 +93,17 @@
   font-weight: 800;
 }
 
+.c-color-normal {
+  color: $font-color;
+}
+
 .c-color-success {
   color: $success-color;
+}
+
+/* text-type */
+.t-none-decoration {
+  text-decoration: none;
 }
 
 /* position-type */

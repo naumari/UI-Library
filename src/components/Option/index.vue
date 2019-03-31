@@ -1,6 +1,10 @@
 <template>
   <div
-    :class="['select-option-wrapper', { 'is-selected': isSelect }, { 'is-disabled': disabled }]"
+    :class="[
+      'select-option',
+      { 'is-selected': isSelect },
+      { 'is-disabled': disabled }
+    ]"
     @click.stop="handleClick"
   >
     <slot></slot>
@@ -14,7 +18,9 @@ export default {
     label: { type: String },
     disabled: { type: Boolean, defa: false }
   },
-  inject: ["fatSelect"],
+  inject: {
+    fatSelect: { default: "fatSelect" }
+  },
   computed: {
     isSelect() {
       const {
@@ -100,7 +106,7 @@ export default {
 </script>
 
 <style lang="scss">
-.select-option-wrapper {
+.select-option {
   padding: 0 24px 0 12px;
   cursor: pointer;
 
