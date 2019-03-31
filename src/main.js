@@ -20,7 +20,7 @@ const context = require.context('@/components/', true, /index\.*$/);
 context.keys().forEach(url => {
   const name = getFileName(url);
   const path = `/${name}`;
-  const plugins = ['toast', 'messagebox', 'message'];
+  const plugins = ['toast', 'message-box', 'message'];
 
   if (plugins.some(plugin => plugin === name.toLowerCase())) {
     Vue.use(require(`@/components${path}/index`).default);

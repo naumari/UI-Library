@@ -19,7 +19,7 @@
             <span
               v-for="value in selectItems"
               :key="value.key"
-              class="select__item-tag c-size-s"
+              class="select__item__tag c-size-s"
             >
               {{ value.label }}
               <fat-icon
@@ -31,7 +31,7 @@
             </span>
           </template>
           <template v-else>
-            <span class="select__item-tag c-size-s">
+            <span class="select__item__tag c-size-s">
               {{ selectItems[0].label }}
               <fat-icon
                 class="delete-btn"
@@ -40,7 +40,7 @@
                 @click.stop="handleDelete(selectItems[0])"
               />
             </span>
-            <span v-if="restValueNum" class="select__item-tag c-size-s c-bold">
+            <span v-if="restValueNum" class="select__item__tag c-size-s c-bold">
               +
               {{ restValueNum }}
             </span>
@@ -159,7 +159,7 @@ export default {
     color: #999;
   }
 
-  .select__item-tag {
+  .select__item__tag {
     position: relative;
     display: inline-flex;
     align-items: center;
