@@ -73,7 +73,12 @@
       description="可以通过配置不同插槽，来修改Dropdown的label、menu模块"
       :code="example3"
     >
-      <fat-dropdown v-model="selectValue" option-key="label" trigger="click">
+      <fat-dropdown
+        v-model="selectValue"
+        option-key="label"
+        trigger="click"
+        @change="handleChange"
+      >
         <template slot="label">
           <span class="c-color-success">{{ selectValue }}</span>
         </template>
@@ -236,6 +241,9 @@ export default {
   methods: {
     handleClick() {
       this.$message({ type: "warn", content: "小心点" });
+    },
+    handleChange(item) {
+      this.$message({ type: "warn", content: `选中${item}` });
     }
   }
 };

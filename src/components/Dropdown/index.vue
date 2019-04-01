@@ -2,9 +2,10 @@
   <div
     :class="['dropdown', { 'is-hover': trigger === 'hover' && isOpen }]"
     tabindex="0"
+    @click.stop="isOpen = !isOpen"
     @blur="trigger !== 'hover' && (isOpen = false)"
   >
-    <div :class="['dropdown__label']" @click.stop="isOpen = true">
+    <div :class="['dropdown__label']">
       <slot name="label">
         <span class="c-color-success">{{ placeholder }}</span>
       </slot>
@@ -33,8 +34,7 @@ export default {
   },
   data() {
     return {
-      isOpen: this.trigger === "hover",
-      selectItem: {}
+      isOpen: this.trigger === "hover"
     };
   },
   model: {

@@ -33,47 +33,20 @@ export default {
       return key === selectValue;
     }
   },
-  watch: {
-    ["Dropdown.selectValue"]: {
-      handler(newValue) {
-        const {
-          value,
-          label,
-          Dropdown: { optionKey, selectItem }
-        } = this;
-        const key = this[optionKey] || this.$attrs[optionKey];
-
-        if (newValue === value) {
-          this.Dropdown.selectItem = {
-            key,
-            label,
-            value
-          };
-        }
-      },
-      immediate: true
-    }
-  },
   methods: {
     handleSelect(key) {
       let {
-        Dropdown: { multiple, selectItem, trigger },
+        Dropdown: { multiple, trigger },
         value,
         label
       } = this;
 
-      this.Dropdown.selectItem = {
-        key,
-        label,
-        value
-      };
-      this.Dropdown.$emit("change", this.Dropdown.selectItem);
+      this.Dropdown.$emit("change", key);
       this.Dropdown.$emit("select", key);
       if (trigger !== "hover") {
         this.Dropdown.isOpen = false;
       }
     },
-
     handleClick() {
       let {
         Dropdown: { optionKey },
@@ -83,7 +56,7 @@ export default {
 
       if (!disabled) {
         this.$slots.default[0].elm.click && this.$slots.default[0].elm.click();
-        this.handleSelect(key);
+        key && this.handleSelect(key);
       }
     }
   }
