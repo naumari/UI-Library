@@ -9,30 +9,39 @@
           href="https://juejin.im/user/5b3ed96c6fb9a04fc34bed91/posts"
           target="_blank"
           class="link"
-        >作者简介</a>
+          >作者简介</a
+        >
       </div>
     </div>
 
-    <ul class="nav-sidebar-wrapper">
-      <li>
-        <router-link class="nav-sidebar-item c-size-l" to="/">首页</router-link>
-      </li>
+    <fat-scroll-view class="nav-sidebar-wrapper">
+      <ul>
+        <li>
+          <router-link class="nav-sidebar-item c-size-l" to="/"
+            >首页</router-link
+          >
+        </li>
 
-      <li class="nav-sidebar-item c-size-l c-bold">组件</li>
+        <li class="nav-sidebar-item c-size-l c-bold">组件</li>
 
-      <li v-for="(elem, key) in routers" :key="key">
-        <div>
-          <h5 class="nav-sidebar-item c-size-m is-hint">{{ key }}</h5>
-          <ul>
-            <li v-for="(item, index) in elem" :key="index">
-              <router-link class="nav-sidebar-subitem c-size-s" :to="item.path">{{ item.name }}</router-link>
-            </li>
-          </ul>
-        </div>
-      </li>
-    </ul>
+        <li v-for="(elem, key) in routers" :key="key">
+          <div>
+            <h5 class="nav-sidebar-item c-size-m is-hint">{{ key }}</h5>
+            <ul>
+              <li v-for="(item, index) in elem" :key="index">
+                <router-link
+                  class="nav-sidebar-subitem c-size-s"
+                  :to="item.path"
+                  >{{ item.name }}</router-link
+                >
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </fat-scroll-view>
 
-    <router-view class="content-wrapper"/>
+    <router-view class="content-wrapper" />
   </div>
 </template>
 
@@ -47,10 +56,10 @@ const routers = {
     "input-number",
     "select",
     "date-picker",
-    "checkbox-group",
+    "checkbox-group"
   ],
   notice: ["message-box", "toast", "message"],
-  navigation: ["tabs", "breadcrumb"],
+  navigation: ["tabs", "breadcrumb", "scroll-view"],
   data: ["table", "pagination"]
 };
 context.keys().forEach(url => {
@@ -134,9 +143,9 @@ export default {
     background: #fff;
     border-radius: 4px;
 
-    &:hover {
-      overflow: auto;
-    }
+    // &:hover {
+    //   overflow: auto;
+    // }
     .nav-sidebar-subitem,
     .nav-sidebar-item {
       display: inline-flex;

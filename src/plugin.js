@@ -31,56 +31,13 @@ export default {
       },
     });
 
-    Vue.mixin({
-      beforeCreate() {
-
-        const isDef = v => v !== undefined
-
-        if (isDef(this.$options.store)) {
-          const {
-            store
-          } = this.$options
-          const {
-            state,
-            getters
-          } = store
-          const computed = Object.create(null)
-
-          this.$store = store
-          Object.keys(getters).forEach(key => {
-            const fun = getters[key]
-
-            computed[key] = () =>  fun(state)
-          })
-          this.$options.store._vm = new Vue({
-            data: {
-              $$state: state
-            },
-            computed
-          })
-
-          Object.keys(getters).forEach(key => {
-            Object.defineProperty(this.$store.getters, key, {
-              get: () => {
-                return store._vm[key]
-              }
-            })
-          })
-
-        } else if (this.$options.parent && this.$options.parent.$store) {
-          this.$store = this.$options.parent.$store
+    Vue.directive('loading', {
+        bind() {
+            console.log('bind')
+        },
+        componentUpdated(el, binding, vnode, oldVnode) {
+            console.log(el, binding, vnode, oldVnode)
         }
-      }
     })
-
-
-
-
-
-
-
-
-
-
   },
 };
