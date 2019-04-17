@@ -18,6 +18,7 @@ export default {
         {
           class: {
             breadcrumb__item: true,
+            'is-navigative': !!to
           },
           props,
         },

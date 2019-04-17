@@ -249,4 +249,8 @@ export default {
 };
 </script>
 <style lang="scss">
+.demo-block-test {
+  width: 100%;
+  height: 100%;
+}
 </style>

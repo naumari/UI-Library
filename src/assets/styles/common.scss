@@ -47,7 +47,7 @@
 }
 
 .markdown-body {
-  margin-top: 32px;
+  margin: 32px 0;
   text-align: left;
 
   pre {
@@ -55,20 +55,20 @@
   }
 }
 
-::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
-  background-color: #ddd;
-}
+// ::-webkit-scrollbar {
+//   width: 5px;
+//   height: 5px;
+//   background-color: #ddd;
+// }
 
-::-webkit-scrollbar-track {
-  background-color: #fff;
-}
+// ::-webkit-scrollbar-track {
+//   background-color: #fff;
+// }
 
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: rgba(144, 147, 153, 0.3);
-}
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 10px;
+//   background-color: rgba(144, 147, 153, 0.3);
+// }
 
 /* font chart */
 

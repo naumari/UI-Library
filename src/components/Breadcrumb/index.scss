@@ -14,9 +14,11 @@
     color: #1f2f3d;
     text-decoration: none;
 
-    &:hover {
-      color: $success-color;
-      cursor: pointer;
+    &.is-navigative {
+      &:hover {
+        color: $success-color;
+        cursor: pointer;
+      }
     }
 
     &.router-link-active {

@@ -139,13 +139,10 @@ export default {
     flex-direction: column;
     width: 240px;
     height: 90%;
-    overflow: hidden;
+
     background: #fff;
     border-radius: 4px;
 
-    // &:hover {
-    //   overflow: auto;
-    // }
     .nav-sidebar-subitem,
     .nav-sidebar-item {
       display: inline-flex;
@@ -187,17 +184,14 @@ export default {
   }
 
   .content-wrapper {
-    position: absolute;
+    position: fixed;
     top: 30px;
     left: 286px;
     right: 36px;
     bottom: 0;
     margin: 16px 0;
-    padding: 64px 64px;
     background: #fff;
     border-radius: 4px;
-    z-index: 1;
-    overflow: auto;
   }
 }
 </style>

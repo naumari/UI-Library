@@ -1,8 +1,5 @@
 <template>
-  <div class="demo-block" ref="demo-block" @scroll="handleScroll">
-    <h3 class="demo-title">{{ title }}</h3>
-    <span class="demo-subtitle">{{ subtitle }}</span>
-
+  <div class="demo-block-wrapper">
     <div class="demo-nav-wrapper">
       <p
         v-for="(item, index) in nodeList"
@@ -14,9 +11,21 @@
       </p>
     </div>
 
-    <slot></slot>
+    <fat-scroll-view
+      class="demo-block"
+      :scrollDistance="UI.scrollDistance"
+    >
+      <div class="demo-block-inner">
+        <h3 class="demo-title">{{ title }}</h3>
+        <span class="demo-subtitle">{{ subtitle }}</span>
 
-    <div class="markdown-body" v-html="compiledMarkdown" v-highlight></div>
+        <div ref="demo-block">
+          <slot></slot>
+        </div>
+
+        <div class="markdown-body" v-html="compiledMarkdown" v-highlight></div>
+      </div>
+    </fat-scroll-view>
   </div>
 </template>
 
@@ -35,7 +44,8 @@ export default {
   data() {
     return {
       UI: {
-        activeIndex: 0
+        activeIndex: 0,
+        scrollDistance: 0
       },
       nodeList: []
     };
@@ -47,18 +57,8 @@ export default {
   },
   methods: {
     scrollTo(offsetTop) {
-      this.$refs["demo-block"].scrollTop = offsetTop;
-    },
-    handleScroll(event) {
-      const scrollTop = event.target.scrollTop;
-
-      for (let index = 0; index < this.nodeList.length; index++) {
-        const { offsetTop } = this.nodeList[index];
-        if (offsetTop >= scrollTop) {
-          this.UI.activeIndex = index;
-          break;
-        }
-      }
+      console.log(offsetTop)
+      this.UI.scrollDistance = offsetTop;
     },
     updateNode() {
       this.$nextTick(() => {
@@ -75,12 +75,10 @@ export default {
                     }
                   ]
                 : [];
-
             return [...pre, ...result];
           },
           []
         );
-
         this.nodeList = nodeList;
       });
     }
@@ -91,10 +89,18 @@ export default {
 };
 </script>
 <style lang="scss">
-.demo-block {
-  padding: 50px 0;
+.demo-block-wrapper {
   font-size: 16px;
   scroll-behavior: smooth;
+
+  .demo-block {
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    .demo-block-inner {
+      padding: 16px 0 16px 32px;
+    }
+  }
 
   .demo-title:first-child {
     font-size: 32px;
@@ -124,6 +130,7 @@ export default {
     position: fixed;
     top: 128px;
     right: 5%;
+    z-index: 2;
 
     .demo-nav-item {
       position: relative;

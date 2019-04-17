@@ -1,10 +1,42 @@
 <template>
-  <Demo-block title="Slider 滑块" subtitle="通过拖动滑块在一个固定区间内进行选择。" :README="README">
-    <Demo-row title="基础用法" description="当用户操作时，左右滑动，快速改变数值" :code="example1">
-      <fat-scroll-view>
-          <div style="width: max-content;">
-              <p v-for="(item, index) in tests" :key="index">{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}{{ item }}</p>
-          </div>
+  <Demo-block
+    title="ScrollView 滚动框"
+    subtitle="具备兼容主流游览器的自定义滚动条的组件。"
+    :README="README"
+  >
+    <Demo-row
+      title="基础用法"
+      :description="`在ie、firefox、chrome等游览器环境中同一的滚动条样式`"
+      :code="example1"
+    >
+      <fat-scroll-view class="box">
+        <ul style="width: max-content;">
+          <li
+            style="width: max-content;"
+            v-for="(item, index) in arr"
+            :key="index"
+          >
+            {{ _duplicate("这是一段话。", index) }}
+          </li>
+        </ul>
+      </fat-scroll-view>
+    </Demo-row>
+
+    <Demo-row
+      title="自定义滚动条样式"
+      :description="`自定义滚动条样式`"
+      :code="example2"
+    >
+      <fat-scroll-view class="box" :horizontalBarStyle="{ height: '100px' }">
+        <ul style="width: max-content;">
+          <li
+            style="width: max-content;"
+            v-for="(item, index) in arr"
+            :key="index"
+          >
+            {{ _duplicate("这是一段话。", index) }}
+          </li>
+        </ul>
       </fat-scroll-view>
     </Demo-row>
   </Demo-block>
@@ -18,19 +50,36 @@ export default {
   mixins: [DemoCommon],
   data() {
     return {
-      initValue: 10,
-      value: 10,
-
-      tests: Array.from({length: 20}, (v, i) => i),
+      arr: Array.from({ length: 20 }, (v, i) => i),
       README
     };
   },
   computed: {
     example1() {
-      return `<fat-slider />`;
+      return `<fat-scroll-view class="box">
+    <ul style="width: max-content;">
+        <li
+        style="width: max-content;"
+        v-for="(item, index) in arr"
+        :key="index"
+        >
+        {{ _duplicate("这是一段话。", index) }}
+        </li>
+    </ul>
+</fat-scroll-view>`;
     },
     example2() {
-      return `<fat-slider :min="20" :max="40" step="5" />`;
+      return `<fat-scroll-view class="box" :horizontalBarStyle="{ height: '100px' }">
+    <ul style="width: max-content;">
+        <li
+        style="width: max-content;"
+        v-for="(item, index) in arr"
+        :key="index"
+        >
+        {{ _duplicate("这是一段话。", index) }}
+        </li>
+    </ul>
+</fat-scroll-view>`;
     },
     example3() {
       return `<fat-slider v-model="initValue" />`;
@@ -39,29 +88,24 @@ export default {
       return `<fat-slider v-model="value" :show-tooltip="false" />`;
     },
     example5() {
-      return `<fat-slider disabled />`
+      return `<fat-slider disabled />`;
     }
   },
-  created() {
-    // let size = 40
-    // setInterval(() => {
-    //     this.tests = Array.from({length: size}, (v, i) => i)
-    //     size += 40
-    // }, 100)
+  methods: {
+    _duplicate(str, size) {
+      let result = "";
+      for (let index = 0; index < size; index++) {
+        result += str;
+      }
+      return result;
+    }
   }
 };
 </script>
 <style lang="scss">
-.demo-row {
-  .row-item-subtitle {
-    min-width: 100px;
-  }
-  .row-item {
-    margin-top: 32px;
-  }
-  .slider-wrapper {
-    max-width: 520px;
-    flex: 1;
-  }
+.box {
+  display: flex;
+  width: 200px;
+  height: 200px;
 }
 </style>

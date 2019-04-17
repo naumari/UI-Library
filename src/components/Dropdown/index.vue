@@ -2,7 +2,7 @@
   <div
     :class="['dropdown', { 'is-hover': trigger === 'hover' && isOpen }]"
     tabindex="0"
-    @click.stop="isOpen = !isOpen"
+    @click.stop="trigger !== 'hover' && (isOpen = !isOpen)"
     @blur="trigger !== 'hover' && (isOpen = false)"
   >
     <div :class="['dropdown__label']">
@@ -47,7 +47,7 @@ export default {
 <style lang="scss" scoped>
 .dropdown {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   padding-bottom: 12px;
 

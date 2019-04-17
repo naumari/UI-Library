@@ -1,58 +1,47 @@
-import Vue from 'vue'
-import messageBox from './messagebox.vue'
+import Vue from 'vue';
+import messageBox from './messagebox.vue';
 
-const Constructor = Vue.extend(messageBox)
+const Constructor = Vue.extend (messageBox);
 
-function generateInstance(options, type = 'alert') {
-    let instance = new Constructor({
-        propsData: Object.assign(options, {
-            type,
-        }),
-    }).$mount(document.createElement('div'))
+function generateInstance (options, type = 'alert') {
+  let instance = new Constructor ({
+    propsData: Object.assign (options, {
+      type,
+    }),
+  }).$mount (document.createElement ('div'));
 
-    instance.onConfirm = options.onConfirm
-    instance.onCancel = options.onCancel
-    instance.onClose = options.onClose
+  instance.onConfirm = options.onConfirm;
+  instance.onCancel = options.onCancel;
+  instance.onClose = options.onClose;
 
-    function testObject(o) {
-        function F() {}
-        F.prototype = o
-        F.prototype.constructor = o
-        return new F()
-    }
+  if (typeof options.onConfirm === 'function') {
+    instance.onConfirm = options.onConfirm;
+    instance.$on ('confirm', function () {
+      instance.onConfirm ();
+    });
+  }
 
-    const test = testObject({ H: "world" })
+  if (typeof options.onCancel === 'function') {
+    instance.onCancel = options.onCancel;
+    instance.$on ('cancel', function () {
+      instance.onCancel ();
+    });
+  }
 
-    console.log('test', test.H)
+  if (typeof options.onClose === 'function') {
+    instance.onClose = options.onClose;
+    instance.$on ('close', function () {
+      instance.onClose ();
+    });
+  }
 
-    if (typeof options.onConfirm === 'function') {
-        instance.onConfirm = options.onConfirm
-        instance.$on('confirm', function() {
-            instance.onConfirm()
-        })
-    }
-
-    if (typeof options.onCancel === 'function') {
-        instance.onCancel = options.onCancel
-        instance.$on('cancel', function() {
-            instance.onCancel()
-        })
-    }
-
-    if (typeof options.onClose === 'function') {
-        instance.onClose = options.onClose
-        instance.$on('close', function() {
-            instance.onClose()
-        })
-    }
-
-    return instance
+  return instance;
 }
 
 export default {
-    install(Vue) {
-        Vue.prototype.$alert = (options = {}) => generateInstance(options)
-        Vue.prototype.$confirm = (options = {}) =>
-            generateInstance(options, 'confirm')
-    },
-}
+  install (Vue) {
+    Vue.prototype.$alert = (options = {}) => generateInstance (options);
+    Vue.prototype.$confirm = (options = {}) =>
+      generateInstance (options, 'confirm');
+  },
+};

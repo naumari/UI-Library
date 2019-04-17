@@ -1,6 +1,6 @@
 import marked from 'marked';
 import hljs from 'highlight.js/lib/highlight';
-import 'highlight.js/styles/lightfair.css';
+import 'highlight.js/styles/atelier-estuary-light.css';
 import javascript from 'highlight.js/lib/languages/javascript';
 import xml from 'highlight.js/lib/languages/xml';
 

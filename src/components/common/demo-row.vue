@@ -11,14 +11,12 @@
       </div>
 
       <fat-button class="btn open-btn" type="text" @click.stop="handleClick">
-        <fat-icon name="code" />示例代码
+        <fat-icon name="code" />
+        <span class="c-size-m">&nbsp;示例代码</span>
       </fat-button>
-      <div
-        v-if="UI.isOpen && code"
-        class="demo-row-example"
-        v-html="compiledCode"
-        v-highlight
-      ></div>
+      <div v-if="UI.isOpen && code" class="demo-row-example" v-highlight>
+        <div v-html="compiledCode"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -49,26 +47,28 @@ export default {
   methods: {
     handleClick() {
       this.UI.isOpen = !this.UI.isOpen;
-      this.DemoBlock.updateNode();
     }
   }
 };
 </script>
 <style lang="scss">
 .demo-row {
+  margin-top: 14px;
   display: block;
   min-width: 420px;
   max-width: max-content;
   padding: 16px 16px;
   border: 1px solid #ebedf0;
-  transform: all 0.5;
+  border-radius: 2px;
+  box-shadow: 2px 2px 5px #ccc;
+  transition: all .5s;
 
-  &:not(:last-child) {
-    margin-top: 14px;
+  &:last-child {
+    margin-bottom: 14px;
   }
 
   &:hover {
-    box-shadow: 2px 2px 5px #bbb;
+    box-shadow: 4px 4px 5px #bbb;
   }
 
   .demo-row-subtitle:first-child {
@@ -97,7 +97,10 @@ export default {
       margin-top: 16px;
     }
     .hljs {
-      line-height: 24px;
+      font-size: 0.8em;
+      letter-spacing: -1px;
+      line-height: 14px;
+      background: #fafafa;
     }
   }
 

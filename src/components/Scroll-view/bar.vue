@@ -19,81 +19,54 @@
 export default {
   props: {
     type: { type: String },
-    offset: { type: Number, default: 0 }
+    offset: { type: Number, default: 0 },
+    track: { type: Object, default: () => ({}) },
+    thumb: { type: Object, default: () => ({}) },
+    customStyle: { type: Object, default: () => ({}) }
   },
-  inject: { View: { default: "View" } },
   computed: {
     thumbStyle() {
-      const { thumb, offset, type, View } = this;
+      const { thumb, offset, type, track, customStyle } = this;
 
-      if (type === "vertical") {
-        const {
-          view: { height: viewHeight },
-          thumb: { height: thumbHeight }
-        } = View;
-
-        return {
-          height: `${(thumbHeight * 100) / viewHeight}%`,
-          top: `${offset}px`
-        };
-      } else {
-        const {
-          view: { width: viewWidth },
-          thumb: { width: thumbWidth }
-        } = View;
-
-        return {
-          width: `${(thumbWidth * 100) / viewWidth}%`,
-          left: `${offset}px`
-        };
-      }
+      return type === "vertical"
+        ? {
+            ...customStyle,
+            height: `${(thumb.height * 100) / track.height}%`,
+            top: `${offset}px`
+          }
+        : {
+            ...customStyle,
+            width: `${(thumb.width * 100) / track.width}%`,
+            left: `${offset}px`
+          };
     }
   },
   methods: {
     handleClick(e) {
-      const { type, View } = this;
-      let offset = 0;
+      const { type } = this;
+      const { clientX, clientY } = e;
+      const { top, left } = e.target.getBoundingClientRect();
+      let offset = type === "vertical" ? clientY - top : clientX - left;
 
-      if (type === "vertical") {
-        const {
-          view: { height },
-          slotView: { height: slotViewHeight },
-          thumb: { height: thumbHeight }
-        } = View;
-        const { clientY } = e;
-        const { top } = e.target.getBoundingClientRect();
-        offset +=
-          ((clientY - top) * slotViewHeight) / height - thumbHeight / 2;
-      } else {
-        const {
-          view: { width },
-          slotView: { width: slotViewWidth },
-          thumb: { width: thumbWidth }
-        } = View;
-        const { clientX } = e;
-        const { left } = e.target.getBoundingClientRect();
-
-        offset +=
-          ((clientX - left) * slotViewWidth) / width - thumbWidth / 2;
-      }
-      this.$emit("move", type, offset);
+      this.$emit("clickTrack", type, offset);
     },
     handleDrag(e) {
-      const { type, View } = this;
-      let { screenX: x, screenY: y } = e;
+      const { thumb, offset, type, track } = this;
+
+      let { clientX: x, clientY: y } = e;
+      let { top, left } = e.target.getBoundingClientRect();
       const handleDragEnd = () => {
         document.removeEventListener("mousemove", handleDragStart);
         document.removeEventListener("mouseup", handleDragEnd);
       };
       const handleDragStart = e => {
-        const { screenX, screenY } = e;
-        const { scrollLeft, scrollTop } = View.$refs.view;
-        let offset =
+        const { clientX, clientY, movementX, movementY } = e;
+        const rate =
           type === "vertical"
-            ? scrollTop + screenY - y
-            : scrollLeft + screenX - x;
+            ? (clientY - y) / (track.height - thumb.height)
+            : (clientX - x) / (track.width - thumb.width);
 
-        this.$emit("move", type, offset);
+        this.$emit("thumbDrag", type, rate);
       };
 
       document.addEventListener("mousemove", handleDragStart);

@@ -11,14 +11,22 @@
 
     <Bar
       type="vertical"
+      :custom-style="verticalBarStyle"
       :offset="thumbTopOffset"
-      @move="handleMove"
+      :track="view"
+      :thumb="thumb"
+      @thumbDrag="handleDrag"
+      @clickTrack="handleClickTrack"
     />
 
     <Bar
       type="horizontal"
+      :custom-style="horizontalBarStyle"
       :offset="thumbLeftOffset"
-      @move="handleMove"
+      :track="view"
+      :thumb="thumb"
+      @thumbDrag="handleDrag"
+      @clickTrack="handleClickTrack"
     />
   </div>
 </template>
@@ -37,6 +45,11 @@ export default {
     return {
       View: this
     };
+  },
+  props: {
+    scrollDistance: { type: Number, default: 0 },
+    horizontalBarStyle: { type: Object, default: () => ({}) },
+    verticalBarStyle: { type: Object, default: () => ({}) }
   },
   data() {
     return {
@@ -80,25 +93,57 @@ export default {
       };
     }
   },
+  watch: {
+    scrollDistance(newValue) {
+      this.$refs.view.scrollTop = newValue;
+    }
+  },
   methods: {
-    handleScroll(direction) {
+    handleScroll(e) {
       const {
         view: { width: viewWidth, height: viewHeight },
-        slotView: { width: slotViewWidth, height: slotViewHeight }
+        slotView: { width: slotViewWidth, height: slotViewHeight },
+        thumb: { width, height },
+        $refs: {
+          view: { scrollTop, scrollLeft }
+        }
       } = this;
 
       this.thumbTopOffset =
-        (viewHeight + this.$refs.view.scrollTop) *
-          (viewHeight / slotViewHeight) -
-        this.thumb.height;
+        (scrollTop * (viewHeight - height)) / (slotViewHeight - viewHeight);
       this.thumbLeftOffset =
-        (viewWidth + this.$refs.view.scrollLeft) * (viewWidth / slotViewWidth) -
-        this.thumb.width;
+        (scrollLeft * (viewWidth - width)) / (slotViewWidth - viewWidth);
+      this.$emit("scroll", e);
     },
-    handleMove (direction, offset) {
-        const key = direction === "vertical" ? "scrollTop" : "scrollLeft";
+    scrollScreen(direction, offset) {
+      const key = direction === "vertical" ? "scrollTop" : "scrollLeft";
 
-        this.$refs.view[key] = offset;
+      this.$refs.view[key] = offset;
+    },
+    handleClickTrack(direction, offset) {
+      const {
+        view: { width, height },
+        slotView: { width: slotViewWidth, height: slotViewHeight },
+        thumb: { width: thumbWidth, height: thumbHeight }
+      } = this;
+      const scrollOffset =
+        direction === "vertical"
+          ? (offset * slotViewHeight) / height - thumbHeight / 2
+          : (offset * slotViewWidth) / width - thumbWidth / 2;
+
+      this.scrollScreen(direction, scrollOffset);
+    },
+    handleDrag(direction, rate) {
+      const {
+        view: { width, height },
+        slotView: { width: slotViewWidth, height: slotViewHeight }
+      } = this;
+      const scrollOffset =
+        direction === "vertical"
+          ? rate * (slotViewHeight - height)
+          : rate * (slotViewWidth - width);
+
+      this.scrollScreen(direction, scrollOffset);
     }
   },
   created() {
@@ -119,11 +164,13 @@ export default {
         width: slotWidth,
         height: slotHeight
       };
-
       this.thumb = {
-        width: Math.abs(width - slotWidth) > 1 ? ((width * width) / slotWidth).toFixed(2) : 0,
+        width:
+          slotWidth - width > 1 ? ((width * width) / slotWidth).toFixed(2) : 0,
         height:
-          Math.abs(height - slotHeight) > 1 ? ((height * height) / slotHeight).toFixed(2) : 0
+          slotHeight - height > 1
+            ? ((height * height) / slotHeight).toFixed(2)
+            : 0
       };
     };
     const ro = new ResizeObserver(handler);
@@ -131,17 +178,23 @@ export default {
     this.scrollBarWidth = getScrollBarWidth();
     this.$nextTick(() => {
       ro.observe(this.$slots.default[0].elm);
+      this.$destroy = () => {
+        ro.unobserve(this.$slots.default[0].elm);
+      };
     });
   }
 };
 </script>
 <style lang="scss">
 .scroll-view-wrapper {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+
   position: relative;
   overflow: hidden;
 
   .scroll-view-inner {
+    flex: 1;
     overflow: scroll;
   }
 }
