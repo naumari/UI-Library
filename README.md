@@ -1,6 +1,11 @@
 # Fat ui-library
 
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/FatGe)
+[![Build](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg)](https://github.com/FatGe)
+[![Dev](https://img.shields.io/badge/dev-FatGe-green.svg)](https://fatge.xyz/)
+
 > 在经历过多个业务场景后，总结出的一些组件的实现方法，如果能够给你提供一些实现思路，就是这个项目的意义。
+
 
 ## Build Setup
 
@@ -27,39 +32,6 @@ npm run check
 
 * 组件容易扩展，可进行二次封装；
 * 每个组件包含对应的开发文档，方便debug。
-
-<hr/>
-
-> 开发规范
-
-* Style
-
-  参考<span style="color: #666;">[BEM 命名规范](https://www.w3cplus.com/css/bem-definitions.html)</span>进行的魔改自定义：）。
-
-  * 外层：最外层为组件块（Block），命名规范为（组件名），例如 `button`（一般一到两个单词，利用`-`连接）；
-
-  * 子元素：利用`__`符号连接，例如 `table` 组件存在 `head` 以及 `body`，则表示为 `table__head`，以及 `tabel__body`，如果依次往下还存在着子元素，则利用上层元素的来命名 `body__head`；
-
-  * 状态：利用 vue 动态class 结合 sass 
-
-    `:class="['table', { 'is-stripe': stripe }]"`
-
-    ```scss
-    .table {
-      // 或 have-..
-      &.is-stripe {
-        .table__body {
-          ...
-        }
-      }
-    }
-    ```
-
-* JavaScript
-
-  todo 补充
-
-
 
 <hr/>
 
