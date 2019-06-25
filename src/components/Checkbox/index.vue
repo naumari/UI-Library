@@ -104,7 +104,7 @@ export default {
     height: $size;
 
     border: 1px solid #dcdfe6;
-    .icon-wrapper {
+    .icon {
       display: none;
     }
   }

@@ -30,14 +30,5 @@ export default {
         });
       },
     });
-
-    Vue.directive('loading', {
-        bind() {
-            console.log('bind')
-        },
-        componentUpdated(el, binding, vnode, oldVnode) {
-            console.log(el, binding, vnode, oldVnode)
-        }
-    })
   },
 };
