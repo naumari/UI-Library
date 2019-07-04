@@ -1,8 +1,9 @@
-# Fat ui-library
+# 原子组件，提供了通用组件的基本原型。
 
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/FatGe)
 [![Build](https://img.shields.io/appveyor/ci/gruntjs/grunt.svg)](https://github.com/FatGe)
 [![Dev](https://img.shields.io/badge/dev-FatGe-green.svg)](https://fatge.xyz/)
+[![HitCount](http://hits.dwyl.io/FatGe/UI-Library.svg)](http://hits.dwyl.io/FatGe/UI-Library)
 
 > 在经历过多个业务场景后，总结出的一些组件的实现方法，如果能够给你提供一些实现思路，就是这个项目的意义。
 
