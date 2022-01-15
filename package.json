@@ -36,7 +36,7 @@
     "highlight.js": "^9.13.1",
     "html-webpack-plugin": "^3.1.0",
     "jscpd": "^1.2.1",
-    "marked": "^0.6.2",
+    "marked": "^4.0.10",
     "material-design-icons": "^3.0.1",
     "mini-css-extract-plugin": "^0.4.4",
     "node-notifier": "^5.1.2",
